@@ -1,0 +1,9 @@
+%h2 Please Enter apt address
+= simple_form_for @apartment do |f|
+  = f.input :address
+  = f.input :elevator
+  = f.input :doorman
+  = f.input :super
+  = f.input :coop
+  = f.submit :submit
+
