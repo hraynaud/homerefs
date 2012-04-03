@@ -11,12 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120402232406) do
+ActiveRecord::Schema.define(:version => 20120403001014) do
 
   create_table "apartments", :force => true do |t|
     t.string   "address"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "doorman"
+    t.boolean  "elevator"
+    t.boolean  "super"
+    t.boolean  "coop"
   end
 
 end
