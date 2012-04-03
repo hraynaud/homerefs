@@ -26,7 +26,9 @@ class ApartmentsController < ApplicationController
 
   def update
     @apartment =  Apartment.find(params[:id])
-    @aparment.update(params[:apartment])
+    @apartment.update_attributes(params[:apartment])
+    @apartment.save
+    redirect_to apartment_path(@apartment)
   end
 
 end

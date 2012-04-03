@@ -1,2 +1,7 @@
-- @apartments.each do |apt|
-  = apt.address
+%h1 Apartments
+
+%ul
+  - @apartments.each do |apt|
+    %li
+      = apt.address
+      = link_to "view", apartment_path(apt)
