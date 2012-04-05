@@ -4,67 +4,41 @@ class BuildingsController < ApplicationController
   def index
     @buildings = Building.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @buildings }
-    end
   end
 
-  # GET /buildings/1
-  # GET /buildings/1.json
   def show
     @building = Building.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @building }
-    end
   end
 
-  # GET /buildings/new
-  # GET /buildings/new.json
   def new
     @building = Building.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @building }
-    end
   end
 
-  # GET /buildings/1/edit
   def edit
     @building = Building.find(params[:id])
   end
 
-  # POST /buildings
-  # POST /buildings.json
   def create
     @building = Building.new(params[:building])
 
     respond_to do |format|
       if @building.save
-        format.html { redirect_to @building, notice: 'building was successfully created.' }
-        format.json { render json: @building, status: :created, location: @building }
       else
-        format.html { render action: "new" }
-        format.json { render json: @building.errors, status: :unprocessable_entity }
+        render :new
       end
     end
   end
 
-  # PUT /buildings/1
-  # PUT /buildings/1.json
   def update
     @building = Building.find(params[:id])
 
     respond_to do |format|
       if @building.update_attributes(params[:building])
-        format.html { redirect_to @building, notice: 'building was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to @building, notice: 'building was successfully updated.'
       else
-        format.html { render action: "edit" }
-        format.json { render json: @building.errors, status: :unprocessable_entity }
+        render action: "edit"
       end
     end
   end

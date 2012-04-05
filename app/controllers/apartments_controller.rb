@@ -12,7 +12,12 @@ class ApartmentsController < ApplicationController
   def create
 
     @apartment = Apartment.create(params[:apartment])
-    redirect_to apartments_path, :notice => "Apartment Created"
+    if @apartment.save
+      redirect_to apartments_path, :notice => "Apartment Created"
+    else
+      render :new
+    end
+
   end
 
   def show

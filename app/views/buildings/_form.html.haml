@@ -1,10 +1,9 @@
-= form_for @building do |f|
-  -if @building.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@building.errors.count, "error")} prohibited this building from being saved:"
-      %ul
-        - @building.errors.full_messages.each do |msg|
-          %li= msg
 
-  .actions
-    = f.submit 'Save'
+= simple_form_for @building do |f|
+  = f.input :address
+  = f.input :elevator
+  = f.input :doorman
+  = f.input :super
+  = f.input :coop
+  = f.input :construction_date
+  = f.submit :submit
