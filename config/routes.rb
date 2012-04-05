@@ -10,7 +10,7 @@ Homerefs::Application.routes.draw do
   resources :users
 
   #match '/auth/:provider/callback', :to => 'sessions#callback'
-
+  match '/home', to: 'reviews#home'
   match '/auth/:provider/callback', to: 'sessions#create'
   match '/logout', to: 'sessions#destroy', as: 'logout'
 

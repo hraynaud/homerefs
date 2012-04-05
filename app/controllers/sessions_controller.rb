@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     user.location = request.env['omniauth.auth']['info']['location']
     user.save!
     session[:user_id] = user.id
-    redirect_to new_review_path
+    redirect_to home_path
   end
 
   def destroy
