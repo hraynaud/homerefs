@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120405160406) do
+ActiveRecord::Schema.define(:version => 20120405183759) do
 
   create_table "apartments", :force => true do |t|
     t.string   "unit"
@@ -32,6 +32,35 @@ ActiveRecord::Schema.define(:version => 20120405160406) do
     t.boolean  "super"
     t.boolean  "coop"
     t.date     "construction_date"
+  end
+
+  create_table "reviews", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "apartment_id"
+    t.integer  "cleanliness"
+    t.integer  "pests"
+    t.integer  "sunlight"
+    t.integer  "convenience"
+    t.integer  "noise_level"
+    t.integer  "ceilings"
+    t.integer  "closet_space"
+    t.integer  "intercom_system"
+    t.integer  "temp_control"
+    t.integer  "appliances"
+    t.integer  "countertops"
+    t.integer  "floors"
+    t.integer  "bathrooms"
+    t.integer  "walls"
+    t.integer  "utilities"
+    t.integer  "neighbors"
+    t.integer  "laundry"
+    t.integer  "mass_transit"
+    t.integer  "neighborhood"
+    t.integer  "storage"
+    t.integer  "packages"
+    t.integer  "super"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end

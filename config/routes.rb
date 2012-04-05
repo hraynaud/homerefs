@@ -1,5 +1,7 @@
 Homerefs::Application.routes.draw do
 
+  resources :reviews
+
   resources :buildings
 
   resources :apartments
