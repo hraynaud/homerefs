@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 gem 'pg'
+gem 'bootstrap-sass'#Bootstrap
 gem "haml"
 gem "haml-rails"
 gem "omniauth"

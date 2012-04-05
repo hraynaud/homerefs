@@ -33,6 +33,7 @@ GEM
       activesupport
       builder
     arel (3.0.2)
+    bootstrap-sass (2.0.2)
     builder (3.0.0)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -196,6 +197,7 @@ PLATFORMS
 
 DEPENDENCIES
   airbrake
+  bootstrap-sass
   capybara
   coffee-rails (~> 3.2.1)
   database_cleaner
