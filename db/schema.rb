@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120405183759) do
+ActiveRecord::Schema.define(:version => 20120405195924) do
 
   create_table "apartments", :force => true do |t|
     t.string   "unit"
@@ -61,6 +61,20 @@ ActiveRecord::Schema.define(:version => 20120405183759) do
     t.integer  "super"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "facebook_authentication_token"
+    t.string   "facebook_authentication_secret"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "facebook_image_url"
+    t.string   "location"
+    t.string   "facebook_nickname"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
 end
