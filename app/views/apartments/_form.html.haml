@@ -1,6 +1,6 @@
 %h2 Please Enter apt address
 = simple_form_for @apartment do |f|
-  = f.association :building, :collection => Building.all.map(&:address)
+  = f.association :building, :collection => Building.all.map(&:id)
   = f.input :unit
   = f.input :bedrooms
   = f.input :bathrooms

@@ -3,5 +3,5 @@
 %ul
   - @apartments.each do |apt|
     %li
-      = apt.address
+      = apt.building.address
       = link_to "view", apartment_path(apt)

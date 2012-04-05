@@ -1,19 +1,19 @@
 %h1 Apartment Details
 
 Address:
-= @apartment.address
+= @apartment.building.address
 <br />
 Doorman:
-= @apartment.doorman
+= @apartment.building.doorman
 <br />
 Elevator:
-= @apartment.elevator
+= @apartment.building.elevator
 <br />
 Super:
-= @apartment.super
+= @apartment.building.super
 <br />
 Co-op:
-= @apartment.coop
+= @apartment.building.coop
 
 = link_to "back", apartments_path
 = link_to "edit", edit_apartment_path(@apartment)
