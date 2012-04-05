@@ -1,0 +1,60 @@
+!!!
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %title= content_for?(:title) ? yield(:title) : "HomeRefs"
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %meta(name="description" content="")
+    %meta(name="author" content="")
+    = csrf_meta_tags
+    = yield(:head)
+    = stylesheet_link_tag "application", :media => "all"
+
+    :css
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+
+    /[if lt IE 9]
+      %script(src="http://html5shiv.googlecode.com/svn/trunk/html5.js")
+
+    %link(rel="shortcut icon" href="images/favicon.ico")
+    %link(rel="apple-touch-icon" href="images/apple-touch-icon.png")
+    %link(rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png")
+    %link(rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png")
+
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          = link_to "HomeRefs", :root, class: "brand"
+          %ul.nav
+            %li
+              - if user_logged_in?
+                = link_to "Review an Apartment", new_review_path
+            %li
+              - if user_logged_in?
+                = link_to "Search for an Apartment", reviews_path
+          %ul.nav.pull-right
+            %li
+              - if user_logged_in?
+                = link_to "Log out", logout_path
+    .container
+      .row
+        .span12
+          = yield
+
+      %hr
+
+      %footer
+        %p
+          HomeRefs Copyright &copy; 2012. All Rights Reserved.
+
+    = javascript_include_tag "application"
+    = yield :body_end
+
+
