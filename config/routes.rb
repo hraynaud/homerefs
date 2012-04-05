@@ -1,4 +1,5 @@
 Homerefs::Application.routes.draw do
+  root :to => 'public#landing'
 
   resources :reviews
 
@@ -6,8 +7,11 @@ Homerefs::Application.routes.draw do
 
   resources :apartments
 
-  root :to => 'public#landing'
+  resources :users
 
-  match '/auth/:provider/callback', :to => 'sessions#callback'
+  #match '/auth/:provider/callback', :to => 'sessions#callback'
+
+  match '/auth/:provider/callback', to: 'sessions#create'
+  match '/logout', to: 'sessions#destroy', as: 'logout'
 
 end

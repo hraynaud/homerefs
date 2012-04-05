@@ -34,4 +34,8 @@ Homerefs::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  FACEBOOK_APP_ID = 'not yet'
+  FACEBOOK_APP_SECRET = 'not yet'
+
 end

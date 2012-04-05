@@ -34,4 +34,8 @@ Homerefs::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  FACEBOOK_APP_ID = '282674595146894'
+  FACEBOOK_APP_SECRET = 'a1444aed71964c9b6f1ccf85c0e870a2'
+
 end

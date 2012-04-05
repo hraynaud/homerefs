@@ -65,7 +65,7 @@ Homerefs::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  FACEBOOK_APP_ID = '383595351660549'
-  FACEBOOK_APP_SECRET = 'c78a3fca2378aa0f59214be1c069971a'
+  FACEBOOK_APP_ID = '202104286558761'
+  FACEBOOK_APP_SECRET = '1499dc2bbc2828e3c2a84b247319b3bc'
 
 end
