@@ -68,4 +68,7 @@ Homerefs::Application.configure do
   FACEBOOK_APP_ID = '202104286558761'
   FACEBOOK_APP_SECRET = '1499dc2bbc2828e3c2a84b247319b3bc'
 
+  # Needed for active admin
+  config.action_mailer.default_url_options = { :host => 'homerefs-staging.herokuapp.com' }
+  
 end

@@ -38,4 +38,7 @@ Homerefs::Application.configure do
   FACEBOOK_APP_ID = '282674595146894'
   FACEBOOK_APP_SECRET = 'a1444aed71964c9b6f1ccf85c0e870a2'
 
+  # Needed for active admin
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
 end
