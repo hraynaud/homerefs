@@ -1,5 +1,5 @@
 $(function() {
-  $('.slider').datepicker();
+  $('.slider').slider();
 });
 
 
@@ -18,21 +18,32 @@ function hexFromRGB(r, g, b) {
 }
 function refreshSwatch() {
   var red = $( "#red" ).slider( "value" ),
-    green = $( "#green" ).slider( "value" ),
-    blue = $( "#blue" ).slider( "value" ),
-    hex = hexFromRGB( red, green, blue );
+  green = $( "#green" ).slider( "value" ),
+  blue = $( "#blue" ).slider( "value" ),
+  hex = hexFromRGB( red, green, blue );
   $( "#swatch" ).css( "background-color", "#" + hex );
 }
+
+function submitWithAjax() {
+  alert("submitted via js")
+  $.post(this.action, $(this.serialize(), null, "script"));
+  return false;
+}
+
+
+$("#new_review").bind('submit', submitWithAjax);
+
 $(function() {
   $( "#red, #green, #blue" ).slider({
     orientation: "horizontal",
     range: "min",
-    max: 255,
-    value: 127,
+    max: 100,
+    value: 50,
     slide: refreshSwatch,
     change: refreshSwatch
   });
-  $( "#red" ).slider( "value", 255 );
-  $( "#green" ).slider( "value", 140 );
-  $( "#blue" ).slider( "value", 60 );
+  $( "#red" ).slider( "value", 50 );
+  $( "#green" ).slider( "value", 50 );
+  $( "#blue" ).slider( "value", 50 );
 });
+
