@@ -7,28 +7,13 @@ var field_array = ["cleanliness", "pests", "sunlight", "convenience", "noise_lev
 
 function updateValues(){
 
-  $( "#_cleanliness").val( $( "#cleanliness").slider("value"));
-  $( "#_pests").val( $( "#pests").slider("value"));
-  $( "#_sunlight").val( $( "#sunlight").slider("value"));
-  $( "#_convenience").val( $( "#convenience").slider("value"));
-  $( "#_noise_level").val( $( "#noise_level").slider("value"));
-  $( "#_ceilings").val( $( "#ceilings").slider("value"));
-  $( "#_closet_space").val( $( "#closet_space").slider("value"));
-  $( "#_intercom_system").val( $( "#intercom_system").slider("value"));
-  $( "#_temp_control").val( $( "#temp_control").slider("value"));
-  $( "#_appliances").val( $( "#appliances").slider("value"));
-  $( "#_countertops").val( $( "#countertops").slider("value"));
-  $( "#_floors").val( $( "#floors").slider("value"));
-  $( "#_bathrooms").val( $( "#bathrooms").slider("value"));
-  $( "#_walls").val( $( "#walls").slider("value"));
-  $( "#_utilities").val( $( "#utilities").slider("value"));
-  $( "#_neighbors").val( $( "#neighbors").slider("value"));
-  $( "#_laundry").val( $( "#laundry").slider("value"));
-  $( "#_mass_transit").val( $( "#mass_transit").slider("value"));
-  $( "#_neighborhood").val( $( "#neighborhood").slider("value"));
-  $( "#_storage").val( $( "#storage").slider("value"));
-  $( "#_packages").val( $( "#packages").slider("value"));
-  $( "#_super").val( $( "#super").slider("value"));
+  $(".ui-slider").each(function(){
+    var a = $(this).attr("id")
+    if ($("#_"+a).length) {
+    $("#_"+a).val($(this).slider("value"))
+    }
+  })
+
 };
 
 function submitWithAjax() {
