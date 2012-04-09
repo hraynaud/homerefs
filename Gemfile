@@ -20,6 +20,7 @@ gem "meta_search",    ">= 1.1.0.pre" #Activeadmin dependency
 gem "omniauth"
 gem 'omniauth-facebook'
 gem 'pg' #Postgres database
+gem 'pry-remote'
 gem 'simple_form'
 
 group :test, :development  do
