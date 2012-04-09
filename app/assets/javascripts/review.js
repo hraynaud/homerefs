@@ -3,14 +3,14 @@ $(function() {
 });
 
 
-var field_array = ["cleanliness", "pests", "sunlight", "convenience", "noise_level", "ceilings", "closet_space", "intercom_system", "temp_control", "appliances", "countertops", "floors", "bathrooms", "walls", "utilities", "neighbors", "laundry", "mass_transit", "neighborhood", "storage", "packages", "super"]
+var fieldArray = ["cleanliness", "pests", "sunlight", "convenience", "noise_level", "ceilings", "closet_space", "intercom_system", "temp_control", "appliances", "countertops", "floors", "bathrooms", "walls", "utilities", "neighbors", "laundry", "mass_transit", "neighborhood", "storage", "packages", "super"]
 
 function updateValues(){
 
   $(".ui-slider").each(function(){
-    var a = $(this).attr("id")
-    if ($("#_"+a).length) {
-    $("#_"+a).val($(this).slider("value"))
+    var sliderId = $(this).attr("id")
+    if ($("#_"+sliderId).length) {
+    $("#_"+sliderId).val($(this).slider("value"))
     }
   })
 
@@ -26,7 +26,7 @@ function submitWithAjax() {
 $("#new_review").bind('submit', submitWithAjax);
 
 $(function() {
-  field_array.forEach(function(item){
+  fieldArray.forEach(function(item){
     $("#new_review").append("<input type='hidden' name='review[" + item + "]', id='_" + item + "'>");
   });
 
