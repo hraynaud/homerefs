@@ -34,7 +34,8 @@ function submitWithAjax() {
 $("#new_review").bind('submit', submitWithAjax);
 
 $(function() {
-  $( "#red, #green, #blue" ).slider({
+  $( "#cleanliness, #pests, #sunlight, #convenience, #noise_level, #ceilings, #closet_space, #intercom_system, #temp_control, #appliances, #countertops, #floors, #bathrooms, #walls, #utilities, #neighbors, #laundry, #mass_transit, #neighborhood, #storage, #packages, #super"
+ ).slider({
     orientation: "horizontal",
     range: "min",
     max: 100,
@@ -42,8 +43,5 @@ $(function() {
     slide: refreshSwatch,
     change: refreshSwatch
   });
-  $( "#red" ).slider( "value", 50 );
-  $( "#green" ).slider( "value", 50 );
-  $( "#blue" ).slider( "value", 50 );
 });
 

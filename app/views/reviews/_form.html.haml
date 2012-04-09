@@ -7,28 +7,6 @@
           %li= msg
 
   = f.association :apartment, :collection => Apartment.all.map(&:id)
-  = f.input :cleanliness
-  = f.input :pests
-  = f.input :sunlight
-  = f.input :convenience
-  = f.input :noise_level
-  = f.input :ceilings
-  = f.input :closet_space
-  = f.input :intercom_system
-  = f.input :temp_control
-  = f.input :appliances
-  = f.input :countertops
-  = f.input :floors
-  = f.input :bathrooms
-  = f.input :walls
-  = f.input :utilities
-  = f.input :neighbors
-  = f.input :laundry
-  = f.input :mass_transit
-  = f.input :neighborhood
-  = f.input :storage
-  = f.input :packages
-  = f.input :super
   = f.submit 'Save'
-
   = render :partial => 'slider'
+
