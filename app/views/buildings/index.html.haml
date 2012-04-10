@@ -1,17 +1,17 @@
-%h1 Listing buildings
+%h1 What building is your apartment in?
 
 %table
   %tr
     %th
+      Address
     %th
     %th
 
   - @buildings.each do |building|
     %tr
-      %td= link_to 'Review an Apartmnet in this Building', new_review_path(:bldg =>building)
-      %td= link_to 'Show', building
-      %td= link_to 'Edit', edit_building_path(building)
+      %td= building.address
+      %td= link_to 'Add Apartment Review', new_review_path(:bldg =>building)
 
-%br
 
-= link_to 'New building', new_building_path
+%h3
+  = link_to "Don't see your building? Click here to add it'", new_building_path
