@@ -1,9 +1,13 @@
 .slider_panel
-%p.ui-state-default.ui-corner-all.ui-helper-clearfix{:style => "padding:4px;"}
-  %span.ui-icon.ui-icon-pencil{:style => "float:left; margin:-2px 5px 0 0;"}
-  Review Form
-  #cleanliness.slider-bar
-    %p Cleanliness
+
+  .row
+    .span2
+      = hilows["cleanliness"]["low"]
+    .span8
+      #cleanliness.slider-bar
+        %p Cleanliness
+    .span2
+      = hilows["cleanliness"]["hi"]
   #pests.slider-bar
     %p Pests
   #sunlight.slider-bar
