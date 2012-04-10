@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120410193149) do
+ActiveRecord::Schema.define(:version => 20120410212622) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -65,6 +65,14 @@ ActiveRecord::Schema.define(:version => 20120410193149) do
     t.boolean  "super"
     t.boolean  "coop"
     t.date     "construction_date"
+  end
+
+  create_table "hi_low_texts", :force => true do |t|
+    t.string   "field_name"
+    t.string   "hi_text",    :default => "High"
+    t.string   "low_text",   :default => "Low"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "reviews", :force => true do |t|
