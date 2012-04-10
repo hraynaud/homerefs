@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120410212622) do
+ActiveRecord::Schema.define(:version => 20120410215130) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -67,12 +67,13 @@ ActiveRecord::Schema.define(:version => 20120410212622) do
     t.date     "construction_date"
   end
 
-  create_table "hi_low_texts", :force => true do |t|
+  create_table "review_metadata", :force => true do |t|
     t.string   "field_name"
-    t.string   "hi_text",    :default => "High"
-    t.string   "low_text",   :default => "Low"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.string   "hi_text",      :default => "High"
+    t.string   "low_text",     :default => "Low"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "field_weight"
   end
 
   create_table "reviews", :force => true do |t|
