@@ -1,19 +1,12 @@
-#swatch {
-  width: 120px;
-  height: 100px;
-  margin-top: 18px;
-  margin-left: 350px;
-  background-image: none;
-}
-
 .slider-bar {
   float: left;
   clear: left;
   width: 300px;
   margin: 15px;
+  /* padding-bottom: 30px;*/
 }
 
 .slider-bar>p {
-padding-top: 10px;
-font-weight: bold;
+  padding-top: 10px;
+  font-weight: bold;
 }
