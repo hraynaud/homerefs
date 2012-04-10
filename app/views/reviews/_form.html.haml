@@ -6,7 +6,5 @@
         - @review.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.association :apartment, :collection => Apartment.all.map(&:id)
-  = f.submit 'Save'
-  = render :partial => 'slider'
+  = f.submit :submit
 
