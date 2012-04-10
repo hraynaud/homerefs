@@ -74,7 +74,13 @@
     %li
       Super:
       = @review.super
+    %li
+      Comment:
+      = @review.comment
+    %li
+      Feedback:
+      = @review.feedback
 
 = link_to 'Edit', edit_review_path(@review)
-\|
+
 = link_to 'Back', reviews_path
