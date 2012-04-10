@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
     @review = Review.new
     @building = Building.find(params[:bldg])
 
-    @rows = HiLowText.all
+    @rows = ReviewMetadata.all
 
     @hilows ={}
 
