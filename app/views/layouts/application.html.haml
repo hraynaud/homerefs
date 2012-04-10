@@ -35,7 +35,7 @@
           %ul.nav
             %li
               - if user_logged_in?
-                = link_to "Review an Apartment", new_review_path
+                = link_to "Review an Apartment", buildings_path
             %li
               - if user_logged_in?
                 = link_to "Search for an Apartment", reviews_path

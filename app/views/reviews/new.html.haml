@@ -1,5 +1,11 @@
-%h1 New review
+%h1 New Building review
 
-= render 'form'
-
+=@building.address
+= simple_form_for(@building) do |f|
+  = f.input :doorman
+  = f.input :elevator
+  = f.input :super
+  = f.input :coop
+  = f.submit :submit
+= render :partial => "slider"
 = link_to 'Back', reviews_path

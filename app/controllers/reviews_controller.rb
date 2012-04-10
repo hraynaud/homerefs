@@ -14,6 +14,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @building = Building.find(params[:bldg])
   end
 
   def edit
