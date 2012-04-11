@@ -10,7 +10,7 @@
   - @buildings.each do |building|
     %tr
       %td= building.address
-      %td= link_to 'Add Apartment Review', new_review_path(:bldg =>building)
+      %td= link_to 'Select an apartment to review', apartments_path(:bldg =>building)
 
 
 %h3

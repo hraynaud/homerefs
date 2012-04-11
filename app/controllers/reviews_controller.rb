@@ -15,8 +15,7 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @building = Building.find(params[:bldg])
-    @apartments = Apartment.where(:building_id => @building.id)
-
+    @apartment = Apartment.find(params[:apt])
     @rows = ReviewMetadata.all
 
     @hilows ={}

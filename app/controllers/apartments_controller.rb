@@ -1,19 +1,20 @@
 class ApartmentsController < ApplicationController
 
   def index
-    @apartments = Apartment.all
+    @building = Building.find(params[:bldg])
+    @apartments = @building.apartments
   end
 
   def new
     @apartment = Apartment.new
-
+    @building = Building.find(params[:bldg])
   end
 
   def create
 
     @apartment = Apartment.create(params[:apartment])
     if @apartment.save
-      redirect_to apartments_path, :notice => "Apartment Created"
+      redirect_to new_review_path(:apt => @apartment.id, :bldg => @apartment.building_id), :notice => "Apartment Created"
     else
       render :new
     end

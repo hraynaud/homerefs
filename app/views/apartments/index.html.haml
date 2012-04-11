@@ -1,7 +1,11 @@
 %h1 Apartments
 
+= @building.address
+
 %ul
   - @apartments.each do |apt|
     %li
-      = apt.building.address
-      = link_to "view", apartment_path(apt)
+      = apt.unit
+      = link_to "Review this apartment", new_review_path(:bldg => @building.id, :apt => apt.id)
+%h3
+  = link_to "Don't see your apartment here? Click here to add it'", new_apartment_path(:bldg => @building.id)

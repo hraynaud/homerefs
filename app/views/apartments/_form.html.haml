@@ -1,6 +1,7 @@
-%h2 Please Enter apt address
+%h2 Please Add an Apartment for #{@building.address}
 = simple_form_for @apartment do |f|
-  = f.association :building, :collection => Building.all.map(&:id)
+
+  = f.input :building_id, :as => :hidden, :input_html => {:value => @building.id}
   = f.input :unit
   = f.input :bedrooms
   = f.input :bathrooms
