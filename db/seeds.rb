@@ -1,7 +1,22 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+ReviewMetadata.create!(field_name: "cleanliness")
+ReviewMetadata.create!(field_name: "pests")
+ReviewMetadata.create!(field_name: "sunlight")
+ReviewMetadata.create!(field_name: "convenience")
+ReviewMetadata.create!(field_name: "noise_level")
+ReviewMetadata.create!(field_name: "ceilings")
+ReviewMetadata.create!(field_name: "closet_space")
+ReviewMetadata.create!(field_name: "intercom_system")
+ReviewMetadata.create!(field_name: "temp_control")
+ReviewMetadata.create!(field_name: "appliances")
+ReviewMetadata.create!(field_name: "countertops")
+ReviewMetadata.create!(field_name: "floors")
+ReviewMetadata.create!(field_name: "bathrooms")
+ReviewMetadata.create!(field_name: "walls")
+ReviewMetadata.create!(field_name: "utilities")
+ReviewMetadata.create!(field_name: "neighbors")
+ReviewMetadata.create!(field_name: "laundry")
+ReviewMetadata.create!(field_name: "mass_transit")
+ReviewMetadata.create!(field_name: "neighborhood")
+ReviewMetadata.create!(field_name: "storage")
+ReviewMetadata.create!(field_name: "packages")
+ReviewMetadata.create!(field_name: "super")
