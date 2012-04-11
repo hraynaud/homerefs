@@ -15,6 +15,7 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @building = Building.find(params[:bldg])
+    @apartments = Apartment.where(:building_id => @building.id)
 
     @rows = ReviewMetadata.all
 
@@ -31,7 +32,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(params[:review])
-
+    @review.user_id = current_user.id
 
     respond_to do |format|
       if @review.save
