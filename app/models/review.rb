@@ -12,17 +12,20 @@ class Review < ActiveRecord::Base
   private
 
   def calc_score
-
+    apt = Apartment.find(apartment_id)
+    num_reviews = Review.where(:apartment_id => apartment_id).count
     score = 0.0
+    avg_score = apt.avg_score || 0.0
+
     FIELDS.each do |f|
       field = ReviewMetadata.where(:field_name => f).first
       score += field.field_weight/100.0 * self.send(f.to_sym)
     end
 
-    apt = Apartment.find(apartment_id)
-    num_reviews = Review.where(:apartment_id => apartment_id).count
 
-    (apt.avg_score += score)/num_reviews
+    (avg_score += score)/num_reviews
+    apt.avg_score = avg_score
+    apt.save
   end
 
 end
