@@ -1,11 +1,15 @@
 %p#notice= notice
 
+.row
+  .span12
+    %p Thanks for submitting your review, the average scores are below
+    %h3 Average Score for this Apartment is: #{@review.apartment.avg_score}
 %p
   %b User:
-  = @review.user_id
+  = @review.user.name
 %p
   %b Apartment:
-  = @review.apartment_id
+  = @review.apartment.unit
 
   %ul
     %li
