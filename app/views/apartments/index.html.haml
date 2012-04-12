@@ -7,5 +7,6 @@
     %li
       = apt.unit
       = link_to "Review this apartment", new_review_path(:bldg => @building.id, :apt => apt.id)
+      = link_to "View apartment details", apartment_path(apt)
 %h3
   = link_to "Don't see your apartment here? Click here to add it'", new_apartment_path(:bldg => @building.id)

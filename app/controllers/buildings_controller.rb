@@ -2,8 +2,22 @@ class BuildingsController < ApplicationController
   # GET /buildings
   # GET /buildings.json
   def index
-    @buildings = Building.all
+    @buildings = if flash[:results]
+                   flash[:results]
+                 else
+                   Building.all
+                 end
+  end
 
+
+  def search
+
+  end
+
+
+  def results
+    bldg = Building.search(params).first
+    redirect_to apartments_path(:bldg => bldg.id)
   end
 
   def show

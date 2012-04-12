@@ -5,11 +5,13 @@
     %th
       Address
     %th
+      Zipcode
     %th
 
   - @buildings.each do |building|
     %tr
       %td= building.address
+      %td= building.zipcode
       %td= link_to 'Select an apartment to review', apartments_path(:bldg =>building)
 
 

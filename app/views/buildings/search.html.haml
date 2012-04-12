@@ -1,0 +1,6 @@
+= form_tag( results_path, :method => :get) do
+  %p Address
+  = text_field_tag :address
+  %p Zipcode
+  = text_field_tag :zipcode
+  = submit_tag :submit
