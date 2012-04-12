@@ -11,6 +11,7 @@ class Review < ActiveRecord::Base
 
   private
 
+  #TODO set all reviews fields to default to 50.0
   def calc_score
     apt = Apartment.find(apartment_id)
     num_reviews = Review.where(:apartment_id => apartment_id).count
@@ -19,7 +20,7 @@ class Review < ActiveRecord::Base
 
     FIELDS.each do |f|
       field = ReviewMetadata.where(:field_name => f).first
-      score += field.field_weight/100.0 * self.send(f.to_sym)
+      score += field.field_weight/100.0 * (self.send(f.to_sym) || 50.0)
     end
 
 
