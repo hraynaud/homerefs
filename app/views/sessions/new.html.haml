@@ -1,9 +1,5 @@
 
-= link_to "Login with Facebook", "/auth/facebook"
 %p
-  %strong Don't use these services?
-  = link_to "Create an account", new_identity_path
-  or login below.
 = form_tag "/auth/identity/callback" do
   .field
     = label_tag :auth_key, "Email"
@@ -14,3 +10,9 @@
     %br
       = password_field_tag :password
   .actions= submit_tag "Login"
+  %br
+  Don't have account yet?
+  = link_to "Create one now", new_identity_path
+  %p or
+  %h1
+    = link_to "Login with Facebook", "/auth/facebook"

@@ -5,14 +5,22 @@ class ApplicationController < ActionController::Base
 
 
   def user_logged_in?
-    @current_user.present?
+    !get_current_user.nil?
   end
 
 
   def authenticate_user
-     redirect_to login_path unless get_current_user
+    if !user_logged_in?
+      store_location
+      redirect_to login_path
+    end
   end
-private
+
+  def store_location
+    session["user_return_to"] = request.url
+  end
+
+  private
 
   def get_current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

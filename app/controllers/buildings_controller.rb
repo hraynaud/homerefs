@@ -1,6 +1,9 @@
 class BuildingsController < ApplicationController
   # GET /buildings
   # GET /buildings.json
+
+  before_filter :authenticate_user, :only => [:new, :edit, :update, :create]
+
   def index
     @buildings = if flash[:results]
                    flash[:results]
