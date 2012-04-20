@@ -1,5 +1,5 @@
 class Building < ActiveRecord::Base
-  has_many :apartments
+  has_many :reviews
   before_create :normalize
 
   def self.search(params = {})

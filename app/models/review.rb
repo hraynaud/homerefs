@@ -2,7 +2,7 @@ class Review < ActiveRecord::Base
 
   FIELDS = ["cleanliness", "pests", "sunlight", "convenience", "noise_level", "ceilings", "closet_space", "intercom_system", "temp_control", "appliances", "countertops", "floors", "bathrooms", "walls", "utilities", "neighbors", "laundry", "mass_transit", "neighborhood", "storage", "packages", "super"]
 
-  belongs_to :apartment
+  belongs_to :building
   belongs_to :user
   validates :comment, :length => { :maximum => 140 }
 
@@ -13,10 +13,10 @@ class Review < ActiveRecord::Base
 
   #TODO set all reviews fields to default to 50.0
   def calc_score
-    apt = Apartment.find(apartment_id)
-    num_reviews = Review.where(:apartment_id => apartment_id).count
+    bldg = Building.find(building_id)
+    num_reviews = Review.where(:building_id => building_id).count
     score = 0.0
-    avg_score = apt.avg_score || 0.0
+    avg_score = bldg.avg_score || 0.0
 
     FIELDS.each do |f|
       field = ReviewMetadata.where(:field_name => f).first
@@ -25,8 +25,8 @@ class Review < ActiveRecord::Base
 
 
     (avg_score += score)/num_reviews
-    apt.avg_score = avg_score
-    apt.save
+    bldg.avg_score = avg_score
+    bldg.save
   end
 
 end

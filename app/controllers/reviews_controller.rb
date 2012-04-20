@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_filter :authenticate_user, :except => [:show, :index]
 
   def home
 
@@ -15,7 +16,6 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @building = Building.find(params[:bldg])
-    @apartment = Apartment.find(params[:apt])
     @rows = ReviewMetadata.all
 
     @hilows ={}

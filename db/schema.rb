@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120412203913) do
+ActiveRecord::Schema.define(:version => 20120420194345) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -70,6 +70,22 @@ ActiveRecord::Schema.define(:version => 20120412203913) do
     t.string   "zipcode"
   end
 
+  create_table "feedbacks", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "comment"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "identities", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "review_metadata", :force => true do |t|
     t.string   "field_name"
     t.string   "hi_text",      :default => "High"
@@ -81,7 +97,7 @@ ActiveRecord::Schema.define(:version => 20120412203913) do
 
   create_table "reviews", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "apartment_id"
+    t.integer  "building_id"
     t.integer  "cleanliness"
     t.integer  "pests"
     t.integer  "sunlight"
@@ -107,7 +123,6 @@ ActiveRecord::Schema.define(:version => 20120412203913) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "comment"
-    t.string   "feedback"
   end
 
   create_table "users", :force => true do |t|

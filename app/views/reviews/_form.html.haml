@@ -7,7 +7,6 @@
         - @review.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.input :apartment_id, :as => :hidden, :input_html => {:value => @apartment.id}
+  = f.input :building_id, :as => :hidden, :input_html => {:value => @building.id}
   = f.input :comment
-  = f.input :feedback
   = f.submit :submit
