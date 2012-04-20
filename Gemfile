@@ -11,6 +11,7 @@ end
 
 gem 'activeadmin'
 gem 'airbrake'
+gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'bootstrap-sass'#Bootstrap
 gem "haml"
 gem "haml-rails"
@@ -20,6 +21,7 @@ gem 'kumade' # Easy deployment to heroku
 gem "meta_search",    ">= 1.1.0.pre" #Activeadmin dependency
 gem "omniauth"
 gem 'omniauth-facebook'
+gem 'omniauth-identity'
 gem 'pg' #Postgres database
 gem 'pry-remote'
 gem 'simple_form'
