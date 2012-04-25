@@ -27,8 +27,9 @@ class User < ActiveRecord::Base
       else
         UserToken.create(:provider => auth[:provider], :uid => auth["uid"], :user_id => user.id, :email => auth["info"]["email"])
       end
+      user
     end
-    user
+
   end
 
   def self.create_with_omniauth(auth)
