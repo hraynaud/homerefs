@@ -4,7 +4,6 @@
   %tr
     %th User
     %th Integer
-    %th Apartment
     %th Integer
     %th
     %th
@@ -13,7 +12,6 @@
   - @reviews.each do |review|
     %tr
       %td= review.user_id
-      %td= review.apartment_id
       %td= link_to 'Show', review
       %td= link_to 'Edit', edit_review_path(review)
       %td= link_to 'Destroy', review, :confirm => 'Are you sure?', :method => :delete

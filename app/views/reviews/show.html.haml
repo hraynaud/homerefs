@@ -3,13 +3,10 @@
 .row
   .span12
     %p Thanks for submitting your review, the average scores are below
-    %h3 Average Score for this Apartment is: #{@review.apartment.avg_score}
+    %h3 Average Score for this building is: #{@review.building.avg_score}
 %p
   %b User:
   = @review.user.name
-%p
-  %b Apartment:
-  = @review.apartment.unit
 
   %ul
     %li
@@ -81,9 +78,6 @@
     %li
       Comment:
       = @review.comment
-    %li
-      Feedback:
-      = @review.feedback
 
 = link_to 'Edit', edit_review_path(@review)
 
