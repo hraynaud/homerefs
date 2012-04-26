@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120426030009) do
+ActiveRecord::Schema.define(:version => 20120426225650) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -123,9 +123,21 @@ ActiveRecord::Schema.define(:version => 20120426030009) do
     t.integer  "storage"
     t.integer  "packages"
     t.integer  "super"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.string   "comment"
+    t.string   "image1_file_name"
+    t.string   "image1_content_type"
+    t.integer  "image1_file_size"
+    t.datetime "image1_updated_at"
+    t.string   "image2_file_name"
+    t.string   "image2_content_type"
+    t.integer  "image2_file_size"
+    t.datetime "image2_updated_at"
+    t.string   "image3_file_name"
+    t.string   "image3_content_type"
+    t.integer  "image3_file_size"
+    t.datetime "image3_updated_at"
   end
 
   create_table "user_tokens", :force => true do |t|

@@ -11,6 +11,8 @@ end
 
 gem 'activeadmin'
 gem 'airbrake'
+gem 'aws-s3'
+gem 'aws-sdk'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'bootstrap-sass'#Bootstrap
 gem "haml"
@@ -22,6 +24,7 @@ gem "meta_search",    ">= 1.1.0.pre" #Activeadmin dependency
 gem "omniauth"
 gem 'omniauth-facebook'
 gem 'omniauth-identity'
+gem 'paperclip', '2.7'
 gem 'pg' #Postgres database
 gem 'pry-remote'
 gem 'simple_form'

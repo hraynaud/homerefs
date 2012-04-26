@@ -5,11 +5,12 @@ class BuildingsController < ApplicationController
   before_filter :authenticate_user, :only => [:new, :edit, :update, :create]
 
   def index
-    @buildings = if flash[:results]
-                   flash[:results]
+    @buildings = if session[:results]
+                   session[:results]
                  else
                    Building.all
                  end
+    session[:results] = nil
   end
 
 
@@ -19,8 +20,9 @@ class BuildingsController < ApplicationController
 
 
   def results
-    @building = Building.search(params).first
-    render :show
+    @buildings = Building.search(params)
+    session[:results] = @buildings
+    render :index
   end
 
   def show

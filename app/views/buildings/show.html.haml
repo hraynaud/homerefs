@@ -1,11 +1,13 @@
 %p#notice= notice
 
-- if @building
+%h1
   = @building.address
-  = @building.zipcode
+%h4 Details
+= @building.zipcode
 
-  = link_to 'Edit', edit_building_path(@building)
-  = link_to 'Back', buildings_path
-- else
-  No building in the system with that address.
-  = link_to "Create it", new_building_path
+- @building.reviews.each do |review|
+  - 1.upto(3).each do |i|
+    - image = "image#{i}"
+    %td
+      - unless review.send(image.to_sym).url.split("/")[-1] == "missing.png"
+        = image_tag review.send(image.to_sym).url(:small)

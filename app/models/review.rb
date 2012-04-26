@@ -9,6 +9,23 @@ class Review < ActiveRecord::Base
   after_create :calc_score
 
 
+  S3_BUCKET_NAME = 'homerefs'
+  AWS_ACCESS_KEY_ID = 'AKIAJGCCSOF46CCT2CEQ'
+  AWS_SECRET_ACCESS_KEY = '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'
+
+  PAPERCLIP_OPTS = { :styles => { :small => "200x200>"},
+        :storage => :s3,
+        :bucket => S3_BUCKET_NAME,
+        :s3_credentials => {
+          :access_key_id => AWS_ACCESS_KEY_ID,
+          :secret_access_key => AWS_SECRET_ACCESS_KEY
+        }}
+
+  has_attached_file :image1, PAPERCLIP_OPTS
+  has_attached_file :image2, PAPERCLIP_OPTS
+  has_attached_file :image3, PAPERCLIP_OPTS
+
+
   private
 
   #TODO set all reviews fields to default to 50.0

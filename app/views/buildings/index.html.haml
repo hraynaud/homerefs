@@ -10,7 +10,8 @@
 
   - @buildings.each do |building|
     %tr
-      %td= building.address
+      %td
+        = link_to building.address, building_path(building)
       %td= building.zipcode
       %td= link_to 'Create a review', new_review_path(:bldg =>building)
 
