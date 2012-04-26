@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
     return_path = session["user_return_to"] || root_url
