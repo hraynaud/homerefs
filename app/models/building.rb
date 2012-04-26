@@ -8,12 +8,11 @@ class Building < ActiveRecord::Base
   before_create :normalize
 
   def self.search(params = {})
-    address = params[:address] if params[:address].present?
-    zipcode = params[:zipcode] if params[:zipcode].present?
 
-    if address && zipcode
-      where(:address => address.downcase.strip, :zipcode => zipcode.strip)
-    end
+     building= where(:zipcode => params[:zipcode].strip) if params[:zipcode].present?
+     building= where(:address => params[:address].strip) if params[:address].present?
+     # building= where(:neighborhood => params[:neighborhood].strip) if params[:neighborhood].present?
+     building
   end
 
 

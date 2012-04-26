@@ -1,7 +1,11 @@
 %p#notice= notice
 
-= @building.address
-= @building.zipcode
+- if @building
+  = @building.address
+  = @building.zipcode
 
-//= link_to 'Edit', edit_building_path(@building)
-= link_to 'Back', buildings_path
+  = link_to 'Edit', edit_building_path(@building)
+  = link_to 'Back', buildings_path
+- else
+  No building in the system with that address.
+  = link_to "Create it", new_building_path
