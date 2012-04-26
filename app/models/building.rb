@@ -1,9 +1,9 @@
 class Building < ActiveRecord::Base
   has_many :reviews
   validates :address, :zipcode, :presence => true
-validates_format_of :zipcode,
-                    :with => %r{\d{5}(-\d{4})?},
-                    :message => "should be 12345 or 12345-1234"
+  validates_format_of :zipcode,
+    :with => %r{\d{5}(-\d{4})?},
+    :message => "should be 12345 or 12345-1234"
 
   before_create :normalize
 
