@@ -23,16 +23,5 @@
     = label_tag :password_confirmation
     %br
       = password_field_tag :password_confirmation
-  .field
-    %br
-      = radio_button_tag :gender, "m"
-      Male
-      = radio_button_tag :gender, "f"
-      Female
-
-    %br
-  .field
-    =label_tag :birth_year
-    %br
-    = select_year(Date.today, :start_year => 1900, :end_year => 2007)
+  = render :partial => 'shared/dob_and_gender'
   .actions= submit_tag "Register"
