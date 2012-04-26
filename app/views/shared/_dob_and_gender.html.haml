@@ -1,0 +1,12 @@
+.field
+%br
+  = radio_button_tag :gender, "m"
+  Male
+  = radio_button_tag :gender, "f"
+  Female
+
+%br
+.field
+  =label_tag :birth_year
+  %br
+  = select_year(Date.today, :start_year => 1900, :end_year => 2007)
