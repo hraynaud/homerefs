@@ -19,8 +19,8 @@ class BuildingsController < ApplicationController
 
 
   def results
-    bldg = Building.search(params).first
-    redirect_to apartments_path(:bldg => bldg.id)
+    @building = Building.search(params).first
+    render :show
   end
 
   def show
