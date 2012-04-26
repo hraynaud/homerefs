@@ -5,8 +5,6 @@ class UsersController < ApplicationController
     if user.nil?
       user= User.new
 
-      binding.pry
-
       user.dob = Date.new(params["date"]["year"].to_i, 1, 1) if params["date"]["year"].present?
       user.gender = params["gender"] if params["gender"].present?
       user.name = params["name"] if params["name"].present?
