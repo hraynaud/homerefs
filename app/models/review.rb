@@ -25,6 +25,9 @@ class Review < ActiveRecord::Base
   has_attached_file :image2, PAPERCLIP_OPTS
   has_attached_file :image3, PAPERCLIP_OPTS
 
+  def building_address
+    self.building.address
+  end
 
   private
 
