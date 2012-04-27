@@ -1,0 +1,19 @@
+= semantic_form_for [:admin, @building] do |f|
+  = f.input :address
+  = f.input :default_image_id, :as => :select, :collection => building.building_images.map(&:id)
+  = f.input :elevator
+  = f.input :super
+  = f.input :coop
+  = f.input :construction_date
+  = f.input :city
+  = f.input :zipcode
+  = f.input :avg_score
+  = f.input :neighborhood
+  = f.buttons :commit
+
+%h3 Building Images
+- @building.reviews.each do |review|
+  - review.building_images.each do |img|
+    %h3 
+      = img.id
+    = image_tag img.image.url(:small)
