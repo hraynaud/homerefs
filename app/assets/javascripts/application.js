@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require jquery.ui.slider
 //= require jquery.ui.all
+//= require bootstrap-carousel
 //= require_tree .

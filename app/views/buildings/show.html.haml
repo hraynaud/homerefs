@@ -2,12 +2,36 @@
 
 %h1
   = @building.address
+%h2 Average Score:
+= @building.avg_score
 %h4 Details
 = @building.zipcode
+%br
 
-- @building.reviews.each do |review|
-  - 1.upto(3).each do |i|
-    - image = "image#{i}"
-    %td
-      - unless review.send(image.to_sym).url.split("/")[-1] == "missing.png"
-        = image_tag review.send(image.to_sym).url(:small)
+.row
+  %h3 Gallery
+  #myCarousel.carousel.span3.offset2
+    - cntr = 0
+    .carousel-inner
+      - @building.reviews.each do |review|
+        - 1.upto(3).each do |i|
+          - image = "image#{i}"
+          - unless review.send(image.to_sym).url.split("/")[-1] == "missing.png"
+            - if cntr < 1
+              .active.item
+                = image_tag review.send(image.to_sym).url(:small)
+              - cntr += 1
+            - else
+              .item
+                = image_tag review.send(image.to_sym).url(:small)
+
+    %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} ‹
+    %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} ›
+
+.comments
+  %h3 Comments
+  %ul
+    - @building.reviews.each do |review|
+      - unless review.comment.blank?
+        %li
+          = link_to review.comment, review_path(review)
