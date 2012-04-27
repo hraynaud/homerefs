@@ -1,5 +1,7 @@
 class Building < ActiveRecord::Base
+  belongs_to :neighborhood
   has_many :reviews
+  validates :neighborhood, :presence => true
   validates :address, :zipcode, :presence => true
   validates_format_of :zipcode,
     :with => %r{\d{5}(-\d{4})?},
