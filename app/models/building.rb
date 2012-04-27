@@ -6,6 +6,7 @@ class Building < ActiveRecord::Base
     :message => "should be 12345 or 12345-1234"
 
   before_create :normalize
+  has_many :building_images
 
   def self.search(params = {})
 

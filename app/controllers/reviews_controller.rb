@@ -33,13 +33,15 @@ class ReviewsController < ApplicationController
     @review = Review.new(params[:review])
     @review.user_id = get_current_user.id
 
-    respond_to do |format|
-      if @review.save
-        format.html {redirect_to @review, notice: 'Review was successfully created.'}
-        format.json { render :json => @review}
-      else
-        render action: "new"
+    if @review.save
+      1.upto(3).each do |i|
+        if params["review"]["image#{i}"]
+          @review.building_images.create(building_id: @review.building_id, image: params["review"]["image#{i}"])
+        end
       end
+      redirect_to @review, notice: 'Review was successfully created.'
+    else
+      render action: "new"
     end
   end
 

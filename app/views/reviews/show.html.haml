@@ -1,10 +1,8 @@
 %p#notice= notice
 
-- 1.upto(3).each do |i|
-  - image = "image#{i}"
-  %td
-    - unless @review.send(image.to_sym).url.split("/")[-1] == "missing.png"
-      = image_tag @review.send(image.to_sym).url(:small)
+- @review.building_images.each do |img|
+  - unless img.image.url.split("/")[-1] == "missing.png"
+    = image_tag img.image.url(:small)
 .row
   .span12
     %p Thanks for submitting your review, the average scores are below

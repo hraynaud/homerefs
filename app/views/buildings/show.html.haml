@@ -14,16 +14,14 @@
     - cntr = 0
     .carousel-inner
       - @building.reviews.each do |review|
-        - 1.upto(3).each do |i|
-          - image = "image#{i}"
-          - unless review.send(image.to_sym).url.split("/")[-1] == "missing.png"
-            - if cntr < 1
-              .active.item
-                = image_tag review.send(image.to_sym).url(:small)
-              - cntr += 1
-            - else
-              .item
-                = image_tag review.send(image.to_sym).url(:small)
+        - review.building_images.each do |img|
+          - if cntr < 1
+            .active.item
+              = image_tag img.image.url(:small)
+            - cntr += 1
+          - else
+            .item
+              = image_tag img.image.url(:small)
 
     %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} ‹
     %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} ›
@@ -35,3 +33,4 @@
       - unless review.comment.blank?
         %li
           = link_to review.comment, review_path(review)
+
