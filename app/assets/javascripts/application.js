@@ -15,4 +15,5 @@
 //= require jquery.ui.slider
 //= require jquery.ui.all
 //= require bootstrap-carousel
+//= require bootstrap-typeahead
 //= require_tree .
