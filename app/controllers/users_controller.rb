@@ -27,6 +27,7 @@ class UsersController < ApplicationController
       else
         flash.now[:error] = "Idenity already exists"
         render new_identity_path
+        return
       end
     end
     session[:user_id] = user.id
