@@ -1,4 +1,5 @@
 class Building < ActiveRecord::Base
+CONSTRUCTION = {1=>"Pre-War",2 => "Post-War", 3=>"New Construction"}
   belongs_to :neighborhood
   has_many :reviews
   validates :neighborhood, :presence => true
@@ -22,6 +23,10 @@ class Building < ActiveRecord::Base
   def normalize
     self.address = self.address.downcase.strip
     self.zipcode = self.zipcode.strip
+  end
+
+  def construction
+      CONSTRUCTION[construction_type]
   end
 
 end

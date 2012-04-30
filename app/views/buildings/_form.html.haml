@@ -6,5 +6,5 @@
   = f.input :doorman
   = f.input :super
   = f.input :coop
-  = f.input :construction_date
+  = f.input :construction_type, :collection => [["Pre-war",1], ["Post-War",2], ["New Construction",3]]
   = f.submit :submit

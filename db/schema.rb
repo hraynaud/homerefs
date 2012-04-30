@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120427210654) do
+ActiveRecord::Schema.define(:version => 20120430191732) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -74,12 +74,12 @@ ActiveRecord::Schema.define(:version => 20120427210654) do
     t.boolean  "elevator"
     t.boolean  "super"
     t.boolean  "coop"
-    t.date     "construction_date"
     t.string   "city"
     t.string   "zipcode"
     t.float    "avg_score"
     t.integer  "default_image_id"
     t.integer  "neighborhood_id"
+    t.integer  "construction_type"
   end
 
   create_table "feedbacks", :force => true do |t|
