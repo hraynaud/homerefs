@@ -29,6 +29,10 @@ gem 'pg' #Postgres database
 gem 'pry-remote'
 gem 'simple_form'
 
+group :production do
+  gem "thin"
+end
+
 group :test, :development  do
   gem "factory_girl"
   gem 'factory_girl_rails'
