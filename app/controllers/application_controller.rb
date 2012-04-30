@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :user_logged_in?
+  helper_method :user_logged_in?, :get_current_user
 
 
   def user_logged_in?
