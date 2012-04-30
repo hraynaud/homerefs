@@ -1,5 +1,8 @@
 class Review < ActiveRecord::Base
 
+  FLAGS = {-1=>"Not Recommend",2 => "Neutral", 3=>"Would Recommend"}
+  APT_SIZE = {0=>"Studio",1 => "1 Bedroom", 2=>"2 Bedroom"}
+
   FIELDS = ["cleanliness", "pests", "sunlight", "convenience", "noise_level", "ceilings", "closet_space", "intercom_system", "temp_control", "appliances", "countertops", "floors", "bathrooms", "walls", "utilities", "neighbors", "laundry", "mass_transit", "neighborhood", "storage", "packages", "super"]
 
   belongs_to :building
@@ -14,6 +17,17 @@ class Review < ActiveRecord::Base
     self.building.address
   end
 
+  def recommendation
+      FLAGS[assessment]
+  end
+
+  def recommendation
+      FLAGS[assessment]
+  end
+
+  def size
+    APT_SIZE[apt_size]
+  end
   private
 
   #TODO set all reviews fields to default to 50.0

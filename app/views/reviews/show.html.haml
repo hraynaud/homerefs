@@ -1,5 +1,3 @@
-%p#notice= notice
-
 - @review.building_images.each do |img|
   - unless img.image.url.split("/")[-1] == "missing.png"
     = image_tag img.image.url(:small)

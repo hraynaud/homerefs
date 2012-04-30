@@ -8,8 +8,10 @@
           %li= msg
 
   = f.input :building_id, :as => :hidden, :input_html => {:value => @building.id}
+  = f.input :apt_size, :collection => Review::APT_SIZE.map{|k,v| [v,k]}
   = f.input :comment
   = f.input :image1, :as => :file
   = f.input :image2, :as => :file
   = f.input :image3, :as => :file
+  = f.input :assessment, :collection => Review::FLAGS.map{|k,v| [v,k]}, :as => :radio_buttons
   = f.submit :submit
