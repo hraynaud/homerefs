@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def show
+    @reviews = get_current_user.reviews
+
+  end
   def create
     user = User.find_anywhere_by_email(params[:email] || session["omniauth"]["info"]["email"])
 

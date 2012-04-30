@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :user_tokens
   has_one :identity
-
+  has_many :reviews
   validates :gender, :dob, :presence => true
 
   def email

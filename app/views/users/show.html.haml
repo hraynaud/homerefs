@@ -1,0 +1,5 @@
+%ul
+- @reviews.each do |r|
+  %li
+    =link_to r.building_address, building_path(r.building.id)
+    =r.created_at.strftime("%m/%d/%y")
