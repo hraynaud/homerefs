@@ -32,28 +32,20 @@
       .navbar-inner
         .container
           = link_to "HomeRefs", :root, class: "brand"
-          %ul.nav
-            %li
-              - if user_logged_in?
-                = link_to "Review an Building", buildings_path
-            %li
-              - if user_logged_in?
-                = link_to "Search for an Building", search_path
           %ul.nav.pull-right
+            %li
+              = link_to "How It Works", '/how-it-works'
+            %li
+              = link_to "About",'/about'
+            %li
+              = link_to "FAQ",'/faq'
+            %li
+              = link_to "Contact", 'contact'
             - if user_logged_in?
               %li
                 = link_to get_current_user.email, user_path(get_current_user.id)
               %li
-                = link_to "How It Works", '/how-it-works'
-              %li
-                = link_to "About",'/about'
-              %li
-                = link_to "FAQ",'/faq'
-              %li
-                = link_to "Contact", 'contact'
-              %li
-                - if user_logged_in?
-                  = link_to "Log out", logout_path
+                = link_to "Log out", logout_path
     .container
       .row
         .span12
