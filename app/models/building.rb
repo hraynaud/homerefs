@@ -3,10 +3,10 @@ CONSTRUCTION = {1=>"Pre-War",2 => "Post-War", 3=>"New Construction"}
   belongs_to :neighborhood
   has_many :reviews
   validates :neighborhood, :presence => true
-  validates :address, :zipcode, :presence => true
+  validates :address, :presence => true
   validates_format_of :zipcode,
     :with => %r{\d{5}(-\d{4})?},
-    :message => "should be 12345 or 12345-1234"
+    :message => "should be 12345 or 12345-1234", :if => "zipcode.present?"
 
   before_create :normalize
   has_many :building_images
