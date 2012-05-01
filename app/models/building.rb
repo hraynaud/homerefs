@@ -1,5 +1,26 @@
 class Building < ActiveRecord::Base
-CONSTRUCTION = {1=>"Pre-War",2 => "Post-War", 3=>"New Construction"}
+
+  module FieldAvgs
+
+    def self.included(base)
+      base.extend ClassMethods
+    end
+
+    module ClassMethods
+    FIELDS = ["cleanliness", "pests", "sunlight", "convenience", "noise_level", "ceilings", "closet_space", "intercom_system", "temp_control", "appliances", "countertops", "floors", "bathrooms", "walls", "utilities", "neighbors", "laundry", "mass_transit", "neighborhood", "storage", "packages", "super"]
+      def define_field_avgs
+        FIELDS.each do |field|
+          define_method("#{field}_avg".to_sym) {self.reviews.sum(field)}
+        end
+      end
+    end
+  end
+
+  include FieldAvgs
+
+  define_field_avgs
+
+  CONSTRUCTION = {1=>"Pre-War",2 => "Post-War", 3=>"New Construction"}
   belongs_to :neighborhood
   has_many :reviews
   validates :neighborhood, :presence => true
@@ -13,10 +34,10 @@ CONSTRUCTION = {1=>"Pre-War",2 => "Post-War", 3=>"New Construction"}
 
   def self.search(params = {})
 
-     building= where(:zipcode => params[:zipcode].strip) if params[:zipcode].present?
-     building= where(:address => params[:address].strip) if params[:address].present?
-     building= where(:neighborhood_id => params[:neighborhood].strip) if params[:neighborhood].present?
-     building
+    building= where(:zipcode => params[:zipcode].strip) if params[:zipcode].present?
+    building= where(:address => params[:address].strip) if params[:address].present?
+    building= where(:neighborhood_id => params[:neighborhood].strip) if params[:neighborhood].present?
+    building
   end
 
 
@@ -26,7 +47,7 @@ CONSTRUCTION = {1=>"Pre-War",2 => "Post-War", 3=>"New Construction"}
   end
 
   def construction
-      CONSTRUCTION[construction_type]
+    CONSTRUCTION[construction_type]
   end
 
 end
