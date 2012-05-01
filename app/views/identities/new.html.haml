@@ -7,6 +7,8 @@
       %ul
         - @identity.errors.full_messages.each do |msg|
           %li= msg
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
   .field
     = label_tag :name
     %br

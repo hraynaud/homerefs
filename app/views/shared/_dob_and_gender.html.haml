@@ -9,4 +9,4 @@
 .field
   =label_tag :birth_year
   %br
-  = select_year(Date.today, :start_year => 1900, :end_year => 2007)
+  = select_year(Date.today, :start_year => 1999, :end_year => 1900, :prompt => "Please Select Birth Year")
