@@ -1,23 +1,6 @@
+require 'field_avgs'
 class Building < ActiveRecord::Base
-
-  module FieldAvgs
-
-    def self.included(base)
-      base.extend ClassMethods
-    end
-
-    module ClassMethods
-    FIELDS = ["cleanliness", "pests", "sunlight", "convenience", "noise_level", "ceilings", "closet_space", "intercom_system", "temp_control", "appliances", "countertops", "floors", "bathrooms", "walls", "utilities", "neighbors", "laundry", "mass_transit", "neighborhood", "storage", "packages", "super"]
-      def define_field_avgs
-        FIELDS.each do |field|
-          define_method("#{field}_avg".to_sym) {self.reviews.sum(field)}
-        end
-      end
-    end
-  end
-
   include FieldAvgs
-
   define_field_avgs
 
   CONSTRUCTION = {1=>"Pre-War",2 => "Post-War", 3=>"New Construction"}
