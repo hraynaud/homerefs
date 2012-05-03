@@ -9,19 +9,5 @@
 %p
   %b Comment:
   = @feedback.comment
-%p
-  %b Index:
-  = @feedback.index
-%p
-  %b New:
-  = @feedback.new
-%p
-  %b Create:
-  = @feedback.create
-%p
-  %b Show:
-  = @feedback.show
 
-= link_to 'Edit', edit_feedback_path(@feedback)
-\|
-= link_to 'Back', feedbacks_path
+= link_to 'home', root_path
