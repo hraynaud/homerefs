@@ -304,7 +304,6 @@ DEPENDENCIES
   omniauth-identity
   paperclip (= 2.7)
   pg
-  pry
   pry-remote
   rails (= 3.2.2)
   rb-fsevent
