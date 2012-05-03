@@ -7,7 +7,7 @@
     module ClassMethods
       def define_field_avgs
         FIELDS.each do |field|
-          define_method("#{field}_avg".to_sym) {self.reviews.sum(field)}
+          define_method("#{field}_avg".to_sym) {return (self.reviews.average(field)*20)}
         end
       end
     end
