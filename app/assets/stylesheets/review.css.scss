@@ -1,0 +1,28 @@
+.slider-bar {
+  float: left;
+  clear: left;
+  width: 300px;
+  margin: 15px;
+  /* padding-bottom: 30px;*/
+}
+
+.slider-bar>p {
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+
+#progressbar {
+  background-color: black;
+  padding: 3px;
+  margin-bottom: 3px;
+  border-radius: 10px;
+}
+
+#progressbar div {
+  background-color: grey;
+  width: 40%; /* Adjust with JavaScript */
+  height: 20px;
+  border-radius: 10px;
+}
+
