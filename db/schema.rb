@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120430195331) do
+ActiveRecord::Schema.define(:version => 20120503185043) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -121,11 +121,9 @@ ActiveRecord::Schema.define(:version => 20120430195331) do
     t.integer  "cleanliness"
     t.integer  "pests"
     t.integer  "sunlight"
-    t.integer  "convenience"
     t.integer  "noise_level"
     t.integer  "ceilings"
     t.integer  "closet_space"
-    t.integer  "intercom_system"
     t.integer  "temp_control"
     t.integer  "appliances"
     t.integer  "countertops"
@@ -135,10 +133,9 @@ ActiveRecord::Schema.define(:version => 20120430195331) do
     t.integer  "utilities"
     t.integer  "neighbors"
     t.integer  "laundry"
-    t.integer  "mass_transit"
+    t.integer  "prox_mass_transit"
     t.integer  "neighborhood"
     t.integer  "storage"
-    t.integer  "packages"
     t.integer  "super"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
@@ -157,6 +154,7 @@ ActiveRecord::Schema.define(:version => 20120430195331) do
     t.datetime "image3_updated_at"
     t.integer  "apt_size"
     t.integer  "assessment"
+    t.integer  "rent"
   end
 
   create_table "user_tokens", :force => true do |t|
