@@ -1,1 +1,1 @@
-# FIELDS = ReviewMetadata.all.map(&:field_name)
+FIELDS = ReviewMetadata.all.map(&:field_name)
