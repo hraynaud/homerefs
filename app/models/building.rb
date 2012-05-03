@@ -6,6 +6,7 @@ class Building < ActiveRecord::Base
   CONSTRUCTION = {1=>"Pre-War",2 => "Post-War", 3=>"New Construction"}
   belongs_to :neighborhood
   has_many :reviews
+  has_many :reviewers,:through => :reviews, :source => :user
   validates :neighborhood, :presence => true
   validates :address, :presence => true
   validates_format_of :zipcode,
@@ -23,10 +24,18 @@ class Building < ActiveRecord::Base
     building
   end
 
-
   def normalize
     self.address = self.address.downcase.strip
     self.zipcode = self.zipcode.strip
+  end
+
+  def reviewer_average_age
+    if reviewers.count > 0
+      cnt = reviewers.uniq.count
+      reviewers.uniq.map(&:age).inject{|sum,a|sum+a}.to_f/cnt
+    else
+      0
+    end
   end
 
   def construction

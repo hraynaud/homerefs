@@ -24,6 +24,13 @@ class User < ActiveRecord::Base
     end
   end
 
+def age
+  now = Time.now.utc.to_date
+  now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+end
+
+
+
   def self.create_with_omniauth(auth)
     create do |user|
       user.first_name, user.last_name = auth["info"]["name"].split(" ") if auth["info"]["name"].present?
