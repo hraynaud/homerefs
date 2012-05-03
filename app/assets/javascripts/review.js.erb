@@ -3,7 +3,7 @@ $(function() {
 });
 
 
-var fieldArray = ["cleanliness", "pests", "sunlight", "convenience", "noise_level", "ceilings", "closet_space", "intercom_system", "temp_control", "appliances", "countertops", "floors", "bathrooms", "walls", "utilities", "neighbors", "laundry", "mass_transit", "neighborhood", "storage", "packages", "super"]
+var fieldArray = ["cleanliness", "pests", "sunlight", "prox_mass_transit", "noise_level", "ceilings", "closet_space", "intercom_system", "temp_control", "appliances", "countertops", "floors", "bathrooms", "walls", "utilities", "neighbors", "laundry", "mass_transit", "neighborhood", "storage", "packages", "super"]
 
 function updateValues(){
   $(".ui-slider").each(function(){
@@ -29,7 +29,7 @@ $(function() {
     $("#new_review").append("<input type='hidden' name='review[" + item + "]', id='_" + item + "'>");
   });
 
-  $( "#cleanliness, #pests, #sunlight, #convenience, #noise_level, #ceilings, #closet_space, #intercom_system, #temp_control, #appliances, #countertops, #floors, #bathrooms, #walls, #utilities, #neighbors, #laundry, #mass_transit, #neighborhood, #storage, #packages, #super"
+  $( "#cleanliness, #pests, #sunlight, #prox_mass_transit, #noise_level, #ceilings, #closet_space, #intercom_system, #temp_control, #appliances, #countertops, #floors, #bathrooms, #walls, #utilities, #neighbors, #laundry, #mass_transit, #neighborhood, #storage, #packages, #super"
    ).slider({
      range: "min",
      min: 1,
