@@ -10,7 +10,7 @@
   = @review.user.name
 
   %ul
-    - ReviewFields::FIELDS.each do |f|
+    - ReviewMetadata.all_fields.each do |f|
       %li
         = f.titleize
         = @review.send(f.to_sym)

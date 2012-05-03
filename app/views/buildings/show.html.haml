@@ -30,7 +30,7 @@
     %br
 .row
   .span4.offset2
-    - ReviewFields::FIELDS.each do |f|
+    - ReviewMetadata.all_fields.each do |f|
       -pct = @building.send("#{f}_avg".to_sym)
       = f
       #progressbar
