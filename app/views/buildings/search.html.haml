@@ -4,7 +4,7 @@
   %p Zipcode
   = text_field_tag :zipcode
   %p Neighborood
-  = select_tag :neighborhood, options_from_collection_for_select(Neighborhood.all, :id, :name)
+  = select_tag :neighborhood, options_from_collection_for_select(Neighborhood.all(:order => 'name'), :id, :name)
   = submit_tag :submit
 
 - content_for :body_end do

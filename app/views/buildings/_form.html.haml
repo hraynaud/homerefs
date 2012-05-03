@@ -1,6 +1,6 @@
 = simple_form_for @building do |f|
   = f.input :address
-  = f.association :neighborhood, :collection => @neighborhoods
+  = f.association :neighborhood, :collection => Neighborhood.all(:order => 'name')
   = f.input :zipcode
   = f.input :elevator
   = f.input :doorman
