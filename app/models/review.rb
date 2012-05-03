@@ -34,7 +34,7 @@ class Review < ActiveRecord::Base
     score = 0.0
     avg_score = bldg.avg_score || 0.0
 
-    FIELDS.each do |f|
+    ReviewFields::FIELDS.each do |f|
       field = ReviewMetadata.where(:field_name => f).first
       score += field.field_weight * self.send(f.to_sym)
       score
