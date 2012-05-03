@@ -1,12 +1,14 @@
-= form_tag( results_path, :method => :get) do
+= form_tag(results_path, :method => :get) do
   %p Address
-  %input.typeahead{:type => "text", "data-provide" => "typeahead",  "data-source" => "#{Building.all.map(&:address)}"}/
+  %input.typeahead{:name => "address", :type => "text", "data-provide" => 'typeahead'}/
+
   %p Zipcode
   = text_field_tag :zipcode
   %p Neighborood
-  = select_tag :neighborhood, options_from_collection_for_select(Neighborhood.all(:order => 'name'), :id, :name)
-  = submit_tag :submit
+  %br
+  = select_tag :neighborhood, options_from_collection_for_select(Neighborhood.all(:order => 'name'), :id, :name), :prompt => "Select your hood"
+  = submit_tag 'submit'
 
 - content_for :body_end do
-  %script{:type => "text/javascript"}
-    $('.typeahead').typeahead();
+  :javascript
+    $('.typeahead').typeahead({source: #{Building.all.map(&:address)}});
