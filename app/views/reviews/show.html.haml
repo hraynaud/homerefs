@@ -5,17 +5,16 @@
   .span12
     %p Thanks for submitting your review, the average scores are below
     %h3 Average Score for this building is: #{@review.building.avg_score}
-%p
-  %b User:
-  = @review.user.name
 
-  %ul
+.row
+  .span4.offset2
     - ReviewMetadata.all_fields.each do |f|
-      %li
-        = f.titleize
-        = @review.send(f.to_sym)
+      -pct = @review.send(f.to_sym) * 20
+      = f.titleize
+      #progressbar
+        %div{:style =>"width:#{pct}%"}
 
-    %li
+    %p
       Comment:
       = @review.comment
 
