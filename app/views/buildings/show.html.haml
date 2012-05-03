@@ -1,33 +1,41 @@
 %p#notice= notice
 
-%h1
-  = @building.address
-%h2 Average Score:
-= @building.avg_score
-%h2
-  = @building.construction
-%h4 Details
-= @building.zipcode
-%br
-
 .row
-  %h3 Gallery
-  #myCarousel.carousel.span3.offset2
-    - cntr = 0
-    .carousel-inner
-      - @building.reviews.each do |review|
-        - review.building_images.each do |img|
-          - if cntr < 1
-            .active.item
-              = image_tag img.image.url(:small)
-            - cntr += 1
-          - else
-            .item
-              = image_tag img.image.url(:small)
+  .span4
+    %h1
+      = @building.address
+    #myCarousel.carousel
+      - cntr = 0
+      .carousel-inner
+        - @building.reviews.each do |review|
+          - review.building_images.each do |img|
+            - if cntr < 1
+              .active.item
+                = image_tag img.image.url(:small)
+              - cntr += 1
+            - else
+              .item
+                = image_tag img.image.url(:small)
 
-    %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} ‹
-    %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} ›
-
+      %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} ‹
+      %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} ›
+  .span4
+    %h2 Building Score:
+    = @building.avg_score
+  .span4
+    %h2
+      = @building.construction
+    %h4 Details
+    = @building.zipcode
+    %br
+.row
+  .span4.offset2
+    - FIELDS.each do |f|
+      -pct = @building.send("#{f}_avg".to_sym)
+      = f
+      #progressbar
+        %div{:style =>"width:#{pct}%"}
+.row
 .comments
   %h3 Comments
   %ul
