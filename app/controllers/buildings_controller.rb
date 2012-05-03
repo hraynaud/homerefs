@@ -22,6 +22,7 @@ class BuildingsController < ApplicationController
   def results
     @buildings = Building.search(params)
     session[:results] = @buildings
+    @buildings = Building.all unless @buildings
     render :index
   end
 

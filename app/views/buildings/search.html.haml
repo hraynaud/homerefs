@@ -6,7 +6,7 @@
   = text_field_tag :zipcode
   %p Neighborood
   %br
-  = select_tag :neighborhood, options_from_collection_for_select(Neighborhood.all(:order => 'name'), :id, :name), :prompt => "Select your hood"
+  = select_tag :neighborhood, options_from_collection_for_select(Neighborhood.all(:order => 'name'), :id, :name), :prompt => "Select your Neighborhood"
   = submit_tag 'submit'
 
 - content_for :body_end do

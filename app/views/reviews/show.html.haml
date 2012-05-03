@@ -10,72 +10,11 @@
   = @review.user.name
 
   %ul
-    %li
-      Cleanliness:
-      = @review.cleanliness
-    %li
-      Pests:
-      = @review.pests
-    %li
-      Sunlight:
-      = @review.sunlight
-    %li
-      Convenience:
-      = @review.convenience
-    %li
-      Noise Level:
-      = @review.noise_level
-    %li
-      Ceilings:
-      = @review.ceilings
-    %li
-      Closet Space:
-      = @review.closet_space
-    %li
-      Intercom System:
-      = @review.intercom_system
-    %li
-      Temperature Control:
-      = @review.temp_control
-    %li
-      Appliances:
-      = @review.appliances
-    %li
-      Countertops:
-      = @review.countertops
-    %li
-      Floors:
-      = @review.floors
-    %li
-      Bathrooms:
-      = @review.bathrooms
-    %li
-      Walls:
-      = @review.walls
-    %li
-      Utilities:
-      = @review.utilities
-    %li
-      Neighbors:
-      = @review.neighbors
-    %li
-      Laundry:
-      = @review.laundry
-    %li
-      Mass Transit:
-      = @review.mass_transit
-    %li
-      Neighborhood:
-      = @review.neighborhood
-    %li
-      Storage:
-      = @review.storage
-    %li
-      Packages:
-      = @review.packages
-    %li
-      Super:
-      = @review.super
+    - FIELDS.each do |f|
+      %li
+        = f.titleize
+        = @review.send(f.to_sym)
+
     %li
       Comment:
       = @review.comment

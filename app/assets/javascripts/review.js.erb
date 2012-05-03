@@ -2,8 +2,12 @@ $(function() {
   $('.slider').slider();
 });
 
+var fieldArray = <%=ReviewMetadata.all.map(&:field_name)%>
+var fieldArrayIds = [];
 
-var fieldArray = ["cleanliness", "pests", "sunlight", "prox_mass_transit", "noise_level", "ceilings", "closet_space", "intercom_system", "temp_control", "appliances", "countertops", "floors", "bathrooms", "walls", "utilities", "neighbors", "laundry", "mass_transit", "neighborhood", "storage", "packages", "super"]
+fieldArray.forEach(function(item){
+  fieldArrayIds.push("#"+item)
+  });
 
 function updateValues(){
   $(".ui-slider").each(function(){
@@ -29,12 +33,21 @@ $(function() {
     $("#new_review").append("<input type='hidden' name='review[" + item + "]', id='_" + item + "'>");
   });
 
+  fieldArrayIds.forEach(function(item){
+    $(item).slider({
+   range: "min",
+   min: 1,
+   max: 5,
+   value: 3
+    });
+  });
+});
+ /*
   $( "#cleanliness, #pests, #sunlight, #prox_mass_transit, #noise_level, #ceilings, #closet_space, #intercom_system, #temp_control, #appliances, #countertops, #floors, #bathrooms, #walls, #utilities, #neighbors, #laundry, #mass_transit, #neighborhood, #storage, #packages, #super"
    ).slider({
      range: "min",
      min: 1,
      max: 5,
      value: 3
-   });
-});
+   });*/
 
