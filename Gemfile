@@ -33,6 +33,11 @@ group :production do
   gem "thin"
 end
 
+group :staging do
+  gem "pry"
+end
+
+
 group :test, :development  do
   gem "factory_girl"
   gem 'factory_girl_rails'
