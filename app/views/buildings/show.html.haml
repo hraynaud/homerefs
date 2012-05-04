@@ -23,10 +23,24 @@
     %h2 Building Score:
     = @building.avg_score
   .span4
-    %h2
+    %p
+      Doorman
+      = @building.has_doorman
+    %p
+      Elevator
+      = @building.has_elevator
+    %p
+      Super
+      = @building.has_super
+    %p
+      Co-Op
+      = @building.is_coop
+    %p
+      Construction
       = @building.construction
-    %h4 Details
-    = @building.zipcode
+
+
+
     %br
 .row
   .span4.offset2

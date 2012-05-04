@@ -42,4 +42,20 @@ class Building < ActiveRecord::Base
     CONSTRUCTION[construction_type]
   end
 
+  def has_doorman
+    doorman ? "Yes" : "No"
+  end
+
+  def has_elevator
+    elevator ? "Yes" : "No"
+  end
+
+  def has_super
+    self.super ? "Yes" : "No"
+  end
+
+  def is_coop
+    self.coop ? "Yes" : "No"
+  end
+
 end
