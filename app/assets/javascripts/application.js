@@ -16,4 +16,5 @@
 //= require jquery.ui.all
 //= require bootstrap-carousel
 //= require bootstrap-typeahead
+//= require bootstrap-dropdown
 //= require_tree .
