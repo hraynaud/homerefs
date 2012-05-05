@@ -28,10 +28,8 @@ gem 'paperclip', '2.7'
 gem 'pg' #Postgres database
 gem 'pry-remote'
 gem 'simple_form'
+gem 'thin'
 
-group :production do
-  gem "thin"
-end
 
 group :test, :development  do
   gem "factory_girl"
