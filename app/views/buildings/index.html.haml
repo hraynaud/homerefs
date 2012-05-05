@@ -5,14 +5,28 @@
     %th
       Address
     %th
-      Zipcode
+      Score
     %th
+      No. of Review
+    %th
+      Doorman
+    %th
+      Elevator
+    %th
+      Flags
 
   - @buildings.each do |building|
     %tr
       %td
         = link_to building.address, building_path(building)
-      %td= building.zipcode
+      %td= building.avg_score
+      %td= building.reviews.count
+      %td= building.has_doorman
+      %td= building.has_elevator
+      %td
+        %p Green ()
+        %p Yellow ()
+        %p Red ()
       %td= link_to 'Create a review', new_review_path(:bldg =>building)
 
 
