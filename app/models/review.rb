@@ -9,7 +9,6 @@ class Review < ActiveRecord::Base
   has_many :building_images
 
   attr_accessor :image1, :image2, :image3
-  after_create :calc_score
 
   def building_address
     self.building.address
@@ -26,23 +25,17 @@ class Review < ActiveRecord::Base
   def size
     APT_SIZE[apt_size]
   end
-  private
 
-  def calc_score
-    bldg = Building.find(building_id)
-    num_reviews = Review.where(:building_id => building_id).count
+  def score
     score = 0.0
-    avg_score = bldg.avg_score || 0.0
 
     ReviewMetadata.all_fields.each do |f|
       field = ReviewMetadata.where(:field_name => f).first
       score += field.field_weight * self.send(f.to_sym)
       score
     end
-
-
-    avg_score = (score+avg_score)/num_reviews
-    bldg.avg_score = avg_score
-    bldg.save
+    score
   end
+  private
+
 end

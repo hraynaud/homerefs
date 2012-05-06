@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120503185043) do
+ActiveRecord::Schema.define(:version => 20120506013140) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(:version => 20120503185043) do
     t.boolean  "coop"
     t.string   "city"
     t.string   "zipcode"
-    t.float    "avg_score"
     t.integer  "default_image_id"
     t.integer  "neighborhood_id"
     t.integer  "construction_type"
