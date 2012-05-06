@@ -38,6 +38,24 @@ class Building < ActiveRecord::Base
     end
   end
 
+  def average_years_lived
+    if reviews.count > 0
+      cnt = reviews.uniq.count
+      reviews.uniq.map(&:years_lived).inject{|sum,a|sum+a}.to_f/cnt
+    else
+      0
+    end
+  end
+
+  def apt_types
+    types = {}
+    reviews.each do |r|
+      key = r.apt_size.nil? ? "Unknown" : "#{r.apt_size} BR"
+      types[key] = types[key].present? ? types[key]+1 : 0
+    end
+    types
+  end
+
   def construction
     CONSTRUCTION[construction_type]
   end

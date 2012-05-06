@@ -39,8 +39,20 @@
       Construction
       = @building.construction
 
+    %p
+      Avg Review Age
+      = @building.reviewer_average_age
 
+    %p
+      Avg Years lived
+      = @building.average_years_lived
 
+    %P
+      Apt sizes reviewed
+      %ul
+      - @building.apt_types.each do |k,v|
+        %li
+          = "#{k}: #{v}review(s)"
     %br
 .row
   .span4.offset2

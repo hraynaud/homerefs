@@ -9,6 +9,7 @@
 
   = f.input :building_id, :as => :hidden, :input_html => {:value => @building.id}
   = f.input :apt_size, :collection => Review::APT_SIZE.map{|k,v| [v,k]}
+  = f.input :years_lived
   = f.input :comment
   = f.input :image1, :as => :file
   = f.input :image2, :as => :file
