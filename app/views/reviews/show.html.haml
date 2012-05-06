@@ -4,7 +4,7 @@
 .row
   .span12
     %p Thanks for submitting your review, the average scores are below
-    %h3 Average Score for this building is: #{@review.building.avg_score}
+    %h3 Your rating for this #{link_to @review.building.address, @review.building}  is: #{@review.score}
 
 .row
   .span4.offset2
