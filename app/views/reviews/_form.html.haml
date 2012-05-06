@@ -1,5 +1,5 @@
-%br
 = simple_form_for @review do |f|
+
   -if @review.errors.any?
     #error_explanation
       %h2= "#{pluralize(@review.errors.count, "error")} prohibited this review from being saved:"
@@ -8,11 +8,24 @@
           %li= msg
 
   = f.input :building_id, :as => :hidden, :input_html => {:value => @building.id}
-  = f.input :apt_size, :collection => Review::APT_SIZE.map{|k,v| [v,k]}
-  = f.input :years_lived
-  = f.input :comment
-  = f.input :image1, :as => :file
-  = f.input :image2, :as => :file
-  = f.input :image3, :as => :file
-  = f.input :assessment, :collection => Review::FLAGS.map{|k,v| [v,k]}, :as => :radio_buttons
-  = f.submit :submit
+
+  .row
+    .span3.offset3
+      = f.input :apt_size, :collection => Review::APT_SIZE.map{|k,v| [v,k]}
+    .span3
+      = f.input :years_lived
+
+  .row
+    .span12
+      = f.input :comment
+
+  .row
+    .span6.offset3
+      = f.input :image1, :as => :file
+      = f.input :image2, :as => :file
+      = f.input :image3, :as => :file
+
+  .row
+    .span12
+      = f.input :assessment, :collection => Review::FLAGS.map{|k,v| [v,k]}, :as => :radio_buttons
+      = f.submit :submit

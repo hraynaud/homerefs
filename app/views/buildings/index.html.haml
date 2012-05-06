@@ -1,34 +1,53 @@
-%h1 What building is your apartment in?
+%section.search-results-page
 
-%table
-  %tr
-    %th
-      Address
-    %th
-      Score
-    %th
-      No. of Review
-    %th
-      Doorman
-    %th
-      Elevator
-    %th
-      Flags
+  %header
+    %h2 What building is your apartment in?
 
-  - @buildings.each do |building|
-    %tr
-      %td
-        = link_to building.address, building_path(building)
-      %td= building.avg_score
-      %td= building.reviews.count
-      %td= building.has_doorman
-      %td= building.has_elevator
-      %td
-        %p Green ()
-        %p Yellow ()
-        %p Red ()
-      %td= link_to 'Create a review', new_review_path(:bldg =>building)
+  %table.search-results
+
+    %thead.sort-list
+      %tr.container
+        %th
+          Address
+        %th
+          Score
+        %th
+          No. of Review
+        %th
+          Doorman
+        %th
+          Elevator
+        %th
+          Flags
+
+    %tbody.container
+      - @buildings.each do |building|
+        %tr.result
+          %td{colspan:5}
+            %tr
+              %td.name{colspan: 4}
+                = link_to building.address, building_path(building)
+                = link_to 'Create a review', new_review_path(:bldg =>building), class: "create-review"
+            %tr
+              %td
+                .img
+                .score
+                  %span.label Score:
+                  %strong= building.avg_score
+              %td.review-ct
+                = building.reviews.count
+                %span.label reviews
+              %td
+                = building.has_doorman
+              %td
+                = building.has_elevator
+          %td
+            %tr
+              %td.vert-flags
+                %p.flag.green-flag Green ()
+                %p.flag.yellow-flag Yellow ()
+                %p.flag.red-flag Red ()
 
 
-%h3
-  = link_to "Don't see your building? Click here to add it", new_building_path
+  %h3
+    = link_to "Don't see your building? Click here to add it", new_building_path, class: "add-listing"

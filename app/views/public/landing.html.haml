@@ -1,4 +1,7 @@
-%h1
-  = link_to "Review an Apartment", buildings_path
-%h1
-  = link_to "Search for an Apartment", search_path
+.home-links
+
+  %h2.review-link
+    = link_to "Review an Apartment", buildings_path, class: "big-link"
+
+  %h2.search-link
+    = link_to "Search for an Apartment", search_path, class: "big-link"

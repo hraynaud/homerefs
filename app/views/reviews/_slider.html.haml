@@ -1,11 +1,16 @@
 .slider_panel
+
   - @rows.each do |row|
     -field = row.field_name
+
     .row
       .span2
-        = hilows[field]["low"]
+        %strong= hilows[field]["low"]
+
       .span8
-        %div{:id =>"#{field}",:class => "slider-bar"}
-          %p #{field.titleize}
+
+        %p.label= field.titleize
+        .slider-bar{:id => field.titleize }
+
       .span2
-        = hilows[field]["hi"]
+        %strong= hilows[field]["hi"]

@@ -1,17 +1,24 @@
-%h1 New Review for #{@building.address}
+%section.new-review-page
+  %header
+    %h2
+      New Review for
+      %span.address
+        = @building.address
 
-%p
-  Doorman:
-  = @building.doorman
-%p
-  Elevator:
-  = @building.elevator
-%p
-  Live in Super:
-  = @building.super
-%p
-  Co-Op:
-  = @building.coop
+  %ul.bldg-info.inline-list
+    %li
+      %span.label Doorman:
+      = @building.doorman
+    %li
+      %span.label Elevator:
+      = @building.elevator
+    %li
+      %span.label Live in Super:
+      = @building.super
+    %li
+      %span.label Co-Op:
+      = @building.coop
 
-= render :partial => 'slider', :locals => {:hilows => @hilows}
-= render :partial => 'form'
+  = render :partial => 'slider', :locals => {:hilows => @hilows}
+
+  = render :partial => 'form'

@@ -1,72 +1,75 @@
-%p#notice= notice
+%section.bldg-page
+  %p#notice= notice
 
-.row
-  .span4
-    %h1
-      = @building.address
-    #myCarousel.carousel
-      - cntr = 0
-      .carousel-inner
-        - @building.reviews.each do |review|
-          - review.building_images.each do |img|
-            - if cntr < 1
-              .active.item
-                = image_tag img.image.url(:small)
-              - cntr += 1
-            - else
-              .item
-                = image_tag img.image.url(:small)
+  .bldg-overview
 
-      %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} ‹
-      %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} ›
-  .span4
-    %h2 Building Score:
-    = @building.avg_score
-  .span4
-    %p
-      Doorman
-      = @building.has_doorman
-    %p
-      Elevator
-      = @building.has_elevator
-    %p
-      Super
-      = @building.has_super
-    %p
-      Co-Op
-      = @building.is_coop
-    %p
-      Construction
-      = @building.construction
+    .row
+      .span8
+        %h2.address= @building.address
 
-    %p
-      Avg Review Age
-      = @building.reviewer_average_age
+        #myCarousel.carousel
+          - cntr = 0
+          .carousel-inner
+            - @building.reviews.each do |review|
+              - review.building_images.each do |img|
+                - if cntr < 1
+                  .active.item
+                    = image_tag img.image.url(:small)
+                  - cntr += 1
+                - else
+                  .item
+                    = image_tag img.image.url(:small)
 
-    %p
-      Avg Years lived
-      = @building.average_years_lived
+          %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} ‹
+          %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} ›
 
-    %P
-      Apt sizes reviewed
-      %ul
-      - @building.apt_types.each do |k,v|
-        %li
-          = "#{k}: #{v} review(s)"
-    %br
-.row
-  .span4.offset2
-    - ReviewMetadata.all_fields.each do |f|
-      -pct = @building.send("#{f}_avg".to_sym)
-      = f.titleize
-      #progressbar
-        %div{:style =>"width:#{pct}%"}
-.row
-.comments
-  %h3 Comments
-  %ul
-    - @building.reviews.each do |review|
-      - unless review.comment.blank?
-        %li
-          = link_to review.comment, review_path(review)
+        .score
+          %span.label Score:
+          %strong= @building.avg_score
+
+      .span4
+        %ul
+          %li
+            %span.label Doorman
+            = @building.has_doorman
+          %li
+            %span.label Elevator
+            = @building.has_elevator
+          %li
+            %span.label Super
+            = @building.has_super
+          %li
+            %span.label Co-Op
+            = @building.is_coop
+          %li
+            %span.label Construction
+            = @building.construction
+          %li
+            %span.label Apts
+            - @building.apt_types.each do |k,v|
+              -#= "#{k}: #{v}review(s) "
+              = "#{k} "
+          %li
+            %span.label Average Age
+            = @building.reviewer_average_age
+          %li
+            %span.label Average Occupancy
+            = "#{pluralize(@building.average_years_lived, Year)}"
+
+  .bldg-reviews
+    .row
+      .span8.offset2
+        - ReviewMetadata.all_fields.each do |f|
+        -pct = @building.send("#{f}_avg".to_sym)
+        = f.titleize
+        #progressbar
+          %div{:style =>"width:#{pct}%"}
+
+  .bldg-comments
+    %h3 Comments
+    %ul
+      - @building.reviews.each do |review|
+        - unless review.comment.blank?
+          %li
+            = link_to review.comment, review_path(review)
 
