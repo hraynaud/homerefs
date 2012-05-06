@@ -1,26 +1,5 @@
+require 'field_avgs'
 class Building < ActiveRecord::Base
-  module FieldAvgs
-
-    def self.included(base)
-      base.extend ClassMethods
-    end
-
-    module ClassMethods
-      def define_field_avgs
-        # ReviewMetadata.all_fields.each do |field|
-          # define_method("#{field}_avg".to_sym) {
-            # if(reviews != [])
-              # 20 * Review.where(:building_id => self.id).average(field)
-            # else
-              # 0
-            # end
-          # }
-        # end
-      end
-    end
-  end
-
-
   include FieldAvgs
   define_field_avgs
 
@@ -72,7 +51,7 @@ class Building < ActiveRecord::Base
     types = {}
     reviews.each do |r|
       key = r.apt_size.nil? ? "Unknown" : "#{r.apt_size} BR"
-      types[key] = types[key].present? ? types[key]+1 : 0
+      types[key] = types[key].present? ? types[key]+1 : 1
     end
     types
   end
@@ -115,6 +94,5 @@ class Building < ActiveRecord::Base
     reviews !=[] ? total_score/reviews.count : 0
 
   end
-
 
 end
