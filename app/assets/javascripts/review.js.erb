@@ -2,7 +2,7 @@ $(function() {
   $('.slider').slider();
 });
 
-var fieldArray = <%=ReviewMetadata.all.map(&:field_name)%>
+var fieldArray = ["cleanliness","rent","intercom"]
 var fieldArrayIds = [];
 
 fieldArray.forEach(function(item){
