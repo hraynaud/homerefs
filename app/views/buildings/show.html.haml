@@ -53,6 +53,12 @@
       - @building.apt_types.each do |k,v|
         %li
           = "#{k}: #{v} review(s)"
+    %P
+      Flags thrown
+      %ul
+      - @building.flags_thrown.each do |k,v|
+        %li
+          #{k}: #{v}
     %br
 .row
   .span4.offset2

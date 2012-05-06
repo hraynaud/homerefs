@@ -1,6 +1,6 @@
 class Review < ActiveRecord::Base
 
-  FLAGS = {-1=>"Not Recommend",2 => "Neutral", 3=>"Would Recommend"}
+  FLAGS = {0=>"Not Recommend",1 => "Neutral", 2=>"Would Recommend"}
   APT_SIZE = {0=>"Studio",1 => "1 Bedroom", 2=>"2 Bedroom", 3 =>">2"}
 
   belongs_to :building
