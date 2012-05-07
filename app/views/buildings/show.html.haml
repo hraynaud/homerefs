@@ -57,9 +57,9 @@
               = @building.average_years_lived
             %li
               %span.label Flags thrown
-              = @building.flags_thrown.each do |k,v|
-                = "#{k}: #{v}"
-
+              - unless @building.flags_thrown.empty?
+                - @building.flags_thrown.each do |k,v|
+                  = "#{k}: #{v}"
 
     .bldg-reviews
       .row
