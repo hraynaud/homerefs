@@ -1,18 +1,19 @@
-%p
-= form_tag "/auth/identity/callback" do
-  .field
-    = label_tag :auth_key, "Email"
+.login.container
+  %p
+  = form_tag "/auth/identity/callback" do
+    .field
+      = label_tag :auth_key, "Email"
+      %br
+        = text_field_tag :auth_key
+    .field
+      = label_tag :password
+      %br
+        = password_field_tag :password
+    .actions= submit_tag "Login", class: 'btn btn-primary'
     %br
-      = text_field_tag :auth_key
-  .field
-    = label_tag :password
-    %br
-      = password_field_tag :password
-  .actions= submit_tag "Login"
-  %br
-  Don't have account yet?
-  = link_to "Create one now", new_identity_path
-  %p or
-  %h1
-    = link_to "Login with Facebook", "/auth/facebook"
+    Don't have account yet?
+    = link_to "Create one now", new_identity_path
+    %p or
+    %h1
+      = link_to "Login with Facebook", "/auth/facebook"
 

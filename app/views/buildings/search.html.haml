@@ -1,25 +1,26 @@
-.search-page
+.container
+  .search-page
 
-  = form_tag(results_path, :method => :get) do
+    = form_tag(results_path, :method => :get) do
 
-    .field
-      %label{:for => "neighborhood"} Neighborhood
-      = select_tag :neighborhood, options_from_collection_for_select(Neighborhood.all(:order => 'name'), :id, :name), :prompt => "Select your Neighborhood", :id => "neighborhood"
+      .field
+        %label{:for => "neighborhood"} Neighborhood
+        = select_tag :neighborhood, options_from_collection_for_select(Neighborhood.all(:order => 'name'), :id, :name), :prompt => "Select your Neighborhood", :id => "neighborhood"
 
-    %span.or or
+      %span.or or
 
-    .field
-      %label{:for => "address"} Address
-      %input#address.typeahead{:name => "address", :type => "text", "data-provide" => 'typeahead'}
+      .field
+        %label{:for => "address"} Address
+        %input#address.typeahead{:name => "address", :type => "text", "data-provide" => 'typeahead'}
 
-    %span.or or
+      %span.or or
 
-    .field
-      %label{:for => "zipcode"} Zipcode
-      = text_field_tag :zipcode
+      .field
+        %label{:for => "zipcode"} Zipcode
+        = text_field_tag :zipcode
 
-    = submit_tag 'submit', :class => "btn btn-primary"
+      = submit_tag 'submit', :class => "btn btn-primary btn-large"
 
-- content_for :body_end do
-  :javascript
-    $('.typeahead').typeahead({source: #{Building.all.map(&:address)}});
+  - content_for :body_end do
+    :javascript
+      $('.typeahead').typeahead({source: #{Building.all.map(&:address)}});

@@ -1,53 +1,59 @@
 %section.search-results-page
 
-  %header
+  %header.container
     %h2 What building is your apartment in?
 
-  %table.search-results
+  .sort-list
+    .container
+      %ul.row
+        %li.span2
+          %span.sort-item Address
+        %li.span2
+          %span.sort-item Score
+        %li.span2
+          %span.sort-item No. of Review
+        %li.span2
+          %span.sort-item Doorman
+        %li.span2
+          %span.sort-item Elevator
+        %li.span2
+          %span.sort-item Flags
 
-    %thead.sort-list
-      %tr.container
-        %th
-          Address
-        %th
-          Score
-        %th
-          No. of Review
-        %th
-          Doorman
-        %th
-          Elevator
-        %th
-          Flags
-
-    %tbody.container
+  .search-results.alt-section
+    %ul.container
       - @buildings.each do |building|
-        %tr.result
-          %td{colspan:5}
-            %tr
-              %td.name{colspan: 4}
-                = link_to building.address, building_path(building)
-                = link_to 'Create a review', new_review_path(:bldg =>building), class: "create-review"
-            %tr
-              %td
-                .img
-                .score
-                  %span.label Score:
-                  %strong= building.avg_score
-              %td.review-ct
+
+        %li.result.row
+          .main-info.span10
+
+            .business
+              %h3= link_to building.address, building_path(building)
+              = link_to 'Create a review', new_review_path(:bldg =>building), class: "create-review btn btn-mini"
+
+            %ul.bldg-stats.row><
+              -# TODO: add a business image or use default
+              %li.img.span2><
+                = image_tag 'default-bldg.png'
+              %li.score.span2><
+                %b Score:
+                %strong><
+                  =building.avg_score.to_i
+                  %span.small>< %
+              %li.review-cnt.span2><
                 = building.reviews.count
-                %span.label reviews
-              %td
+                %span.small reviews
+              %li.doorman.span2><
                 = building.has_doorman
-              %td
+              %li.elevator.span2><
                 = building.has_elevator
-          %td
-            %tr
-              %td.vert-flags
-                %p.flag.green-flag Green ()
-                %p.flag.yellow-flag Yellow ()
-                %p.flag.red-flag Red ()
 
+          -# TODO add real numbers to flags
+          %ul.flags.vert-flags.span2
+            %li.flag.green-flag 8
+            %li.flag.yellow-flag 2
+            %li.flag.red-flag 0
 
-  %h3
-    = link_to "Don't see your building? Click here to add it", new_building_path, class: "add-listing"
+    .bottom-decor
+
+  %h3.add-listing
+    = link_to "Don't see your building? Click here to add it", new_building_path, class: "btn btn-inverse btn-large"
