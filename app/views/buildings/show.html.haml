@@ -46,15 +46,19 @@
               %span.label Construction
               = @building.construction
             %li
-              %span.label Apts
+              %span.label Apt Sizes Reviewed
               - @building.apt_types.each do |k,v|
-                = "#{k} "
+                = "#{k}: #{v} review(s)"
             %li
               %span.label Average Age
               = @building.reviewer_average_age
             %li
               %span.label Average Occupancy
               = @building.average_years_lived
+            %li
+              %span.label Flags thrown
+              = @building.flags_thrown.each do |k,v|
+                = "#{k}: #{v}"
 
 
     .bldg-reviews

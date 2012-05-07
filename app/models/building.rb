@@ -56,6 +56,16 @@ class Building < ActiveRecord::Base
     types
   end
 
+  def flags_thrown
+    flags = {}
+    reviews.each do |r|
+      key = Review::FLAGS[r.assessment]
+      flags[key] = flags[key].present? ? flags[key]+1 : 1
+    end
+    flags
+  end
+
+
   def construction
     CONSTRUCTION[construction_type]
   end
