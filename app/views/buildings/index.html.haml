@@ -51,11 +51,10 @@
               %li.elevator.span2><
                 = building.has_elevator
 
-          -# TODO add real numbers to flags
           %ul.flags.vert-flags.span2
-            %li.flag.green-flag 8
-            %li.flag.yellow-flag 2
-            %li.flag.red-flag 0
+            %li.flag.green-flag #{building.flags_thrown["Would Recommend"]}
+            %li.flag.yellow-flag #{building.flags_thrown["Neutral"]}
+            %li.flag.red-flag #{building.flags_thrown["Not Recommend"]}
 
     .bottom-decor
 
