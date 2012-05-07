@@ -1,0 +1,7 @@
+@mixin ir($image, $width, $height) {
+  width: $width;
+  height: $height;
+  background: url($image) 0 0 no-repeat;
+  overflow: hidden;
+  text-indent: -999em;
+}

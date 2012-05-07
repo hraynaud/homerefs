@@ -10,39 +10,34 @@
     = yield(:head)
     = stylesheet_link_tag "application", :media => "all"
 
-    :css
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-
     /[if lt IE 9]
       %script(src="http://html5shiv.googlecode.com/svn/trunk/html5.js")
 
-        %link(rel="shortcut icon" href="images/favicon.ico")
+    %link(rel="shortcut icon" href="images/favicon.ico")
     %link(rel="apple-touch-icon" href="images/apple-touch-icon.png")
     %link(rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png")
     %link(rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png")
 
   %body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          = link_to "HomeRefs", :root, class: "brand"
-          %ul.nav.pull-right
-            %li
-              = link_to "How It Works", '/how-it-works'
-            %li
-              = link_to "About",'/about'
-            %li
-              = link_to "FAQ",'/faq'
-            %li
-              = link_to "Contact", 'contact'
-            - if user_logged_in?
-              %ul.nav.nav-pills
+
+    %header.container.clearfix{role: "banner"}
+
+      %h1
+        = link_to "HomeRefs", :root, class: "brand"
+
+      %nav{role: "navigation"}
+        %ul.nav-list
+          %li.nav-item
+            = link_to "How It Works", '/how-it-works'
+          %li.nav-item
+            = link_to "About",'/about'
+          %li.nav-item
+            = link_to "FAQ",'/faq'
+          %li.nav-item
+            = link_to "Contact", 'contact'
+          - if user_logged_in?
+            %li.nav-item
+              %ul
                 %li#menu1.dropdown
                   %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#menu1"}
                     My Account
@@ -53,9 +48,9 @@
                     %li.divider
                     %li
                       = link_to "Log Out", logout_path
-            - else
-              %li
-                = link_to "Log In", login_path
+          - else
+            %li.nav-item
+              = link_to "Log In", login_path
 
     .container
       .row
@@ -65,7 +60,7 @@
 
           = yield
 
-      %footer
+      %footer{role: "contentinfo"}
         %p
           HomeRefs Copyright &copy; 2012. All Rights Reserved.
           = link_to "Feedback", new_feedback_path

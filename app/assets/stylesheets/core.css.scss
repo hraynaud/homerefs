@@ -1,1 +1,150 @@
+@import "reset";
 @import "bootstrap";
+@import "helpers";
+
+
+/* BASE STYLES ===========================================*/
+@font-face {
+  font-family: 'OctinSportsFreeRegular';
+  src: url(font-path('octin_sports_free-webfont.eot'));
+  src: url(font-path('octin_sports_free-webfont.eot') + '?#iefix') format('embedded-opentype'),
+       url(font-path('octin_sports_free-webfont.woff')) format('woff'),
+       url(font-path('octin_sports_free-webfont.ttf')) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+
+}
+html {
+  background: #97ccf4;
+  font-size: 62.5%;
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  font-family: "OctinSportsFreeRegular", helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: #000;
+  background-color: transparent;
+}
+img {
+  max-width: 100%;
+  border: 0;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+  &:hover {
+    color: #000;
+    text-decoration: none;
+  }
+}
+p {
+  font-family: "OctinSportsFreeRegular", helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-size: 1.6rem;
+}
+
+/* MODULES ===========================================*/
+.nav-list .nav-item {
+  display: inline-block;
+  padding: .2em .5em;
+  border-left: 1px solid #fff;
+  &:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+  ul {
+    margin-left: 0;
+  }
+}
+.big-link {
+  display: inline-block;
+  padding: .3em 1em;
+  font-size: 24px;
+  font-size: 2.4rem;
+  text-align: center;
+  color: #000;
+  background: #cbe6fa;
+  border-radius: .5em;
+}
+
+/* HEADER STYLES ===========================================*/
+header[role=banner] {
+  padding-top: 10px;
+  margin-bottom: 40px;
+  h1 {
+    float: left;
+  }
+  nav {
+    float: right;
+    padding-top: 20px;
+  }
+}
+.brand {
+  display: block;
+  @include ir('logo.png', 266px, 50px);
+}
+
+/* LANDING PAGE STYLES ===========================================*/
+.landing-page {
+  position: relative;
+  .review-link,
+  .search-link {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .review-link {
+    padding-top: 78px;
+    background: url(bldg-icon.png) top center no-repeat;
+  }
+  .search-link {
+    padding-top: 88px;
+    background: url(search-icon.png) top center no-repeat;
+  }
+}
+
+/* FOOTER ===========================================*/
+footer[role=contentinfo] {
+  margin-top: 40px;
+  text-align: center;
+  p {
+    color: #fff;
+  }
+}
+
+/* REVIEWS ===========================================*/
+.slider-bar {
+  float: left;
+  clear: left;
+  width: 300px;
+  margin: 15px;
+  /* padding-bottom: 30px;*/
+}
+
+.slider-bar>p {
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+
+#progressbar {
+  background-color: black;
+  padding: 3px;
+  margin-bottom: 3px;
+  border-radius: 10px;
+}
+
+#progressbar div {
+  background-color: grey;
+  width: 40%; /* Gets Adjusted on locally in style tag */
+  height: 20px;
+  border-radius: 10px;
+}
+
