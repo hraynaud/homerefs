@@ -9,23 +9,23 @@
 
   = f.input :building_id, :as => :hidden, :input_html => {:value => @building.id}
 
-  .row
-    .span3.offset3
-      = f.input :apt_size, :collection => Review::APT_SIZE.map{|k,v| [v,k]}
-    .span3
-      = f.input :years_lived
+  .field
+    .row
+      .span3.offset3
+        = f.input :apt_size, :collection => Review::APT_SIZE.map{|k,v| [v,k]}
+      .span3
+        = f.input :years_lived
 
-  .row
-    .span12
-      = f.input :comment
+  .field
+    = f.input :comment
 
-  .row
-    .span6.offset3
-      = f.input :image1, :as => :file
-      = f.input :image2, :as => :file
-      = f.input :image3, :as => :file
+  .field.images
+    = f.input :image1, :as => :file, :label => "Image 1"
+    = f.input :image2, :as => :file, :label => "Image 2"
+    = f.input :image3, :as => :file, :label => "Image 3"
 
-  .row
-    .span12
-      = f.input :assessment, :collection => Review::FLAGS.map{|k,v| [v,k]}, :as => :radio_buttons
-      = f.submit :submit
+  .field
+    = f.input :assessment, :collection => Review::FLAGS.map{|k,v| [v,k]}, :as => :radio_buttons
+
+  .actions
+    = f.submit :submit, class: "btn btn-primary btn-large"

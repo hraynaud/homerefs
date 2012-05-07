@@ -4,7 +4,7 @@
     -field = row.field_name
 
     .row
-      .span2
+      .slider-label.span2
         %strong= hilows[field]["low"]
 
       .span8
@@ -12,5 +12,5 @@
         %p.label= field.titleize
         .slider-bar{:id => field.titleize }
 
-      .span2
+      .slider-label.span2
         %strong= hilows[field]["hi"]

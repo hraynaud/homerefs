@@ -58,10 +58,11 @@
 
     = yield
 
-    %footer.container{role: "contentinfo"}
-      %p
-        HomeRefs Copyright &copy; 2012. All Rights Reserved.
-        = link_to "Feedback", new_feedback_path
+    .container
+      %footer{role: "contentinfo"}
+        %p
+          HomeRefs Copyright &copy; 2012. All Rights Reserved.
+          = link_to "Feedback", new_feedback_path
 
     = javascript_include_tag "application", "core"
     = yield :body_end

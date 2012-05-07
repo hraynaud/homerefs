@@ -1,7 +1,7 @@
 %section.search-results-page
 
-  %header.container
-    %h2 What building is your apartment in?
+  .container
+    %h2.small-heading What building is your apartment in?
 
   .sort-list
     .container
@@ -20,7 +20,11 @@
           %span.sort-item Flags
 
   .search-results.alt-section
+
     %ul.container
+      - if @buildings.blank?
+        %li.no-results No buildings have been added to this neighborhood
+
       - @buildings.each do |building|
 
         %li.result.row

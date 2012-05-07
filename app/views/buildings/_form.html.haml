@@ -1,10 +1,21 @@
 = simple_form_for @building do |f|
-  = f.input :address
-  = f.association :neighborhood, :collection => Neighborhood.all(:order => 'name')
-  = f.input :zipcode
-  = f.input :elevator
-  = f.input :doorman
-  = f.input :super
-  = f.input :coop
-  = f.input :construction_type, :collection => [["Pre-war",1], ["Post-War",2], ["New Construction",3]]
-  = f.submit :submit
+
+  .field
+    = f.input :address
+  .field
+    = f.association :neighborhood, :collection => Neighborhood.all(:order => 'name')
+  .field
+    = f.input :zipcode
+  .field.inline-field
+    = f.input :elevator
+  .field.inline-field
+    = f.input :doorman
+  .field.inline-field
+    = f.input :super
+  .field.inline-field
+    = f.input :coop
+  .field
+    = f.input :construction_type, :collection => [["Pre-war",1], ["Post-War",2], ["New Construction",3]]
+
+  .actions
+    = f.submit :submit, class: "btn btn-primary btn-large"
