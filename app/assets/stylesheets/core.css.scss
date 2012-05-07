@@ -50,6 +50,41 @@ p {
   font-size: 16px;
   font-size: 1.6rem;
 }
+form {
+  label {
+    display: block;
+    margin-bottom: .5em;
+    font-size: 21px;
+    font-size: 2.1rem;
+    color: #fff;
+  }
+  input {
+    box-sizing: border-box;
+    font-size: 16px;
+    font-size: 1.6rem;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, .2), 0 1px 5px rgba(255, 255, 255, .2);
+  }
+  input[type=submit] {
+    display: block;
+  }
+  .field {
+    margin-bottom: 2em;
+  }
+  .or {
+    display: block;
+    margin-bottom: 1em;
+    color: #fff;
+    text-align: center;
+  }
+}
+.ui-widget {
+  font-size: inherit;
+}
+input,
+.ui-slider-horizontal {
+  width: auto;
+  height: auto;
+}
 
 /* MODULES ===========================================*/
 .nav-list .nav-item {
@@ -113,9 +148,22 @@ header[role=banner] {
 /* FOOTER ===========================================*/
 footer[role=contentinfo] {
   margin-top: 40px;
+  margin-bottom: 20px;
   text-align: center;
   p {
     color: #fff;
+  }
+}
+
+/* SEARCH PAGE STYLES ===========================================*/
+.search-page {
+  min-height: 630px;
+  margin: 0 100px;
+  padding: 100px 350px 0 0;
+  background: url(map.png) right top no-repeat;
+  input[type=text], select {
+    box-sizing: border-box;
+    width: 100%;
   }
 }
 
