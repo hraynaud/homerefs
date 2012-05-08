@@ -16,7 +16,10 @@
                   - review.building_images.each do |img|
                     - if cntr < 1
                       .active.item
-                        = image_tag img.image.url(:small)
+                        - if @building.default_image_id.nil?
+                          = image_tag 'default-bldg.png'
+                        - else
+                          = image_tag BuildingImage.find(@building.default_image_id).image.url(:small)
                       - cntr += 1
                     - else
                       .item
