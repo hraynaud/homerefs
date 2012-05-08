@@ -1,24 +1,25 @@
 .container
   %section.login-page
+    .well.well-decor
 
-    %h2 Log In
+      %h2 Log In
 
-    = form_tag "/auth/identity/callback" do
+      = form_tag "/auth/identity/callback" do
 
-      .field
-        = label_tag :auth_key, "Email"
-        = text_field_tag :auth_key
+        .field
+          = label_tag :auth_key, "Email"
+          = text_field_tag :auth_key
 
-      .field
-        = label_tag :password
-        = password_field_tag :password
+        .field
+          = label_tag :password
+          = password_field_tag :password
 
-      .actions
-        = submit_tag "Login", class: 'btn btn-primary btn-large'
-        %span or
-        = link_to "Login with Facebook", "/auth/facebook", class: 'facebook'
+        .actions
+          = submit_tag "Login", class: 'btn btn-primary btn-large'
+          %span or
+          = link_to "Login with Facebook", "/auth/facebook", class: 'facebook'
 
-      %p
-        Don't have account yet?
-        = link_to "Create one now", new_identity_path
+        %p
+          Don't have account yet?
+          = link_to "Create one now", new_identity_path
 

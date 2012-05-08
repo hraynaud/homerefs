@@ -1,23 +1,23 @@
-- @review.building_images.each do |img|
-  - unless img.image.url.split("/")[-1] == "missing.png"
-    = image_tag img.image.url(:small)
-.row
-  .span12
+.container
+  %section.new-review-page.centered-form
+
+    - @review.building_images.each do |img|
+      - unless img.image.url.split("/")[-1] == "missing.png"
+        = image_tag img.image.url(:small)
+
     %p Thanks for submitting your review, the average scores are below
     %h3 Your rating for this #{link_to @review.building.address, @review.building}  is: #{@review.score}
 
-.row
-  .span4.offset2
-    - ReviewMetadata.all_fields.each do |f|
-      -pct = @review.send(f.to_sym) * 20
-      = f.titleize
-      #progressbar
-        %div{:style =>"width:#{pct}%"}
+    .row
+      .span4.offset2
+        - ReviewMetadata.all_fields.each do |f|
+          -pct = @review.send(f.to_sym) * 20
+          = f.titleize
+          #progressbar
+            %div{:style =>"width:#{pct}%"}
 
-    %p
-      Comment:
-      = @review.comment
+        %p
+          Comment:
+          = @review.comment
 
-= link_to 'Edit', edit_review_path(@review)
-
-= link_to 'Back', reviews_path
+    = link_to 'Edit', edit_review_path(@review)

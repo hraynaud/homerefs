@@ -1,80 +1,110 @@
-.container
-  %section.bldg-page
+%section.bldg-page
+  .container
     %p#notice= notice
 
     .bldg-overview
 
       .row
-        .span8
+        .span6.offset1
           %h2.address= @building.address
 
-          #myCarousel.carousel
-            - cntr = 0
-            .carousel-inner
-              - @building.reviews.each do |review|
-                - review.building_images.each do |img|
-                  - if cntr < 1
-                    .active.item
-                      = image_tag img.image.url(:small)
-                    - cntr += 1
-                  - else
-                    .item
-                      = image_tag img.image.url(:small)
+          .row
+            #myCarousel.carousel.span3
+              - cntr = 0
+              .carousel-inner
+                - @building.reviews.each do |review|
+                  - review.building_images.each do |img|
+                    - if cntr < 1
+                      .active.item
+                        = image_tag img.image.url(:small)
+                      - cntr += 1
+                    - else
+                      .item
+                        = image_tag img.image.url(:small)
 
-            %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} ‹
-            %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} ›
+              %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} ‹
+              %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} ›
 
-          .score
-            %span.label Score:
-            %strong= @building.avg_score
+            .score.span3
+              %b Score:
+              %strong><
+                = @building.avg_score
+                %span.small>< %
 
-        .span4
-          %ul
+        .span5
+          %ul.bldg-features
             %li
-              %span.label Doorman
+              %span Doorman:
               = @building.has_doorman
             %li
-              %span.label Elevator
+              %span Elevator:
               = @building.has_elevator
             %li
-              %span.label Super
+              %span Super:
               = @building.has_super
             %li
-              %span.label Co-Op
+              %span Co-Op:
               = @building.is_coop
             %li
-              %span.label Construction
+              %span Construction:
               = @building.construction
             %li
-              %span.label Apt Sizes Reviewed
+              %span Apts:
               - @building.apt_types.each do |k,v|
-                = "#{k}: #{v} review(s)"
+                = "#{k} "
             %li
-              %span.label Average Age
+              %span Average Age:
               = @building.reviewer_average_age
             %li
-              %span.label Average Occupancy
+              %span Average Occupancy:
               = @building.average_years_lived
-            %li
-              %span.label Flags thrown
-              %li.flag.green-flag #{@building.flags_thrown["Would Recommend"]}
-              %li.flag.yellow-flag #{@building.flags_thrown["Neutral"]}
-              %li.flag.red-flag #{@building.flags_thrown["Not Recommend"]}
 
-    .bldg-reviews
       .row
-        .span8.offset2
-          - ReviewMetadata.all_fields.each do |f|
-            -pct = @building.send("#{f}_avg".to_sym)
-            = f.titleize
-            #progressbar
-              %div{:style =>"width:#{pct}%"}
-
-    .bldg-comments
-      %h3 Comments
-      %ul
-        - @building.reviews.each do |review|
-          - unless review.comment.blank?
+        .span12
+          %ul.big-flags
             %li
-              = link_to review.comment, review_path(review)
+              %b.large-flag.green-flag
+                = @building.flags_thrown["Would Recommend"] ? @building.flags_thrown["Would Recommend"] : 0
+              %span.big-link Would recommend
+            %li
+              %b.large-flag.yellow-flag
+                = @building.flags_thrown["Neutral"] ? @building.flags_thrown["Neutral"] : 0
+              %span.big-link Neutral
+            %li
+              %b.large-flag.red-flag
+                = @building.flags_thrown["Not Recommend"] ? @building.flags_thrown["Not Recommend"] : 0
+              %span.big-link Would not recommend
+
+
+  .alt-section
+    .section-decor
+    .container
+
+      .bldg-reviews
+        .row
+          .span10.offset1
+            - ReviewMetadata.all_fields.each do |f|
+              -pct = @building.send("#{f}_avg".to_sym)
+              .row
+                .progress-title.span3
+                  %strong= f.titleize
+                .span5
+                  #progressbar
+                    .inner{:style =>"width:#{pct}%"}
+                .progress-num.span2
+                  %strong= (pct/20).to_i
+
+      .bldg-comments
+        %h3 Comments
+        %ul
+          - @building.reviews.each do |review|
+            - unless review.comment.blank?
+              %li
+                "#{link_to review.comment, review_path(review)}"
+              %li
+                = link_to review.comment, review_path(review)
+              %li
+                = link_to review.comment, review_path(review)
+
+    .section-decor
 

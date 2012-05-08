@@ -23,7 +23,7 @@
 
     %ul.container
       - if @buildings.blank?
-        %li.no-results No buildings have been added to this neighborhood
+        %li.no-results No buildings have been added to be reviewed
 
       - @buildings.each do |building|
 
@@ -56,7 +56,7 @@
             %li.flag.yellow-flag #{building.flags_thrown["Neutral"]}
             %li.flag.red-flag #{building.flags_thrown["Not Recommend"]}
 
-    .bottom-decor
+    .section-decor
 
   %h3.add-listing
     = link_to "Don't see your building? Click here to add it", new_building_path, class: "btn btn-inverse btn-large"

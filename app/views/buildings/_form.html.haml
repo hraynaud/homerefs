@@ -6,14 +6,16 @@
     = f.association :neighborhood, :collection => Neighborhood.all(:order => 'name')
   .field
     = f.input :zipcode
-  .field.inline-field
-    = f.input :elevator
-  .field.inline-field
-    = f.input :doorman
-  .field.inline-field
-    = f.input :super
-  .field.inline-field
-    = f.input :coop
+  .field
+    %ul.inline-list
+      %li.inline-field
+        = f.input :elevator
+      %li.inline-field
+        = f.input :doorman
+      %li.inline-field
+        = f.input :super
+      %li.inline-field
+        = f.input :coop
   .field
     = f.input :construction_type, :collection => [["Pre-war",1], ["Post-War",2], ["New Construction",3]]
 
