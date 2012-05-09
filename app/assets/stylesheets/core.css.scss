@@ -626,3 +626,9 @@ footer[role=contentinfo] {
 }
 
 
+/* MEDIA QUERIES ===========================================*/
+@media all and (max-width: 1023px) {
+  .new-review-page .images {
+    display: none;
+  }
+}
