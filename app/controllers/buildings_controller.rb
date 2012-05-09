@@ -6,7 +6,7 @@ class BuildingsController < ApplicationController
 
   def index
     @buildings = if session[:results]
-                   session[:results]
+                   Building.find(session[:results])
                  else
                    Building.all
                  end
@@ -20,8 +20,13 @@ class BuildingsController < ApplicationController
 
 
   def results
-    @buildings = Building.search(params)
-    session[:results] = @buildings
+    @buildings = if (params[:neighborhood].present? || params[:address].present? || params[:zipcode].present?)
+      Building.search(params)
+    else
+      Building.all
+    end
+
+    session[:results] = @buildings.map(&:id)
     @buildings = Building.all unless @buildings
     render :index
   end
@@ -63,6 +68,6 @@ class BuildingsController < ApplicationController
     @building = Building.find(params[:id])
     @building.destroy
 
-       redirect_to buildings_url
+    redirect_to buildings_url
   end
 end
