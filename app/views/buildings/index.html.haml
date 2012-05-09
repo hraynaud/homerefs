@@ -55,9 +55,9 @@
                 = building.has_elevator
 
           %ul.flags.vert-flags.span2
-            %li.flag.green-flag #{building.flags_thrown["Would Recommend"]}
-            %li.flag.yellow-flag #{building.flags_thrown["Neutral"]}
-            %li.flag.red-flag #{building.flags_thrown["Not Recommend"]}
+            %li.flag.green-flag= building.flags_thrown["Would Recommend"] ? building.flags_thrown["Would Recommend"] : 0
+            %li.flag.yellow-flag= building.flags_thrown["Neutral"] ? building.flags_thrown["Neutral"] : 0
+            %li.flag.red-flag= building.flags_thrown["Not Recommend"] ? building.flags_thrown["Not Recommend"] : 0
 
     .section-decor
 

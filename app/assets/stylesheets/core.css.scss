@@ -215,6 +215,7 @@ input,
   text-align: center;
   font-size: 11px;
   font-size: 1.1rem;
+  font-weight: bold;
 }
 .large-flag {
   display: block;
@@ -277,39 +278,60 @@ input,
   .title {
     color: #fff;
   }
-  .row {
-    margin-bottom: 20px;
-  }
+}
+.slider-group {
+  display: block;
+  margin-bottom: 20px;
+}
+.slider-label,
+.slider-main {
+  display: inline-block;
+  vertical-align: bottom;
 }
 .slider-label {
   font-size: 14px;
   font-size: 1.4rem;
+  margin-bottom: 0;
+}
+.ui-slider .ui-slider-handle {
+  width: 20px;
+  height: 23px;
+  background: url(slider-handle.png) 0 0 no-repeat;
+  border: none;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
 }
 .slider-bar {
   width: 100%;
-  margin: 15px 0;
   height: 10px;
-}
-.slider-bar>p {
-  padding-top: 10px;
-  font-weight: bold;
+  margin: 0 20px;
+  p {
+    padding-top: 10px;
+    font-weight: bold;
+  }
 }
 
 /* PROGRESS BARS ===========================================*/
-#progressbar {
+#progressbar, .slider-bar {
   display: inline-block;
   width: 347px;
   background-color: #fff;
   border-radius: 10px;
-  .inner {
-    background: url(progress-bar.png) left top repeat-y;
-    width: 40%; /* Gets Adjusted on locally in style tag */
-    height: 10px;
-    border-radius: 8px;
-  }
+  border: none;
+}
+#progressbar .inner,
+.ui-slider .ui-slider-range {
+  background: url(progress-bar.png) left top repeat-y;
+  width: 40%; /* Gets Adjusted on locally in style tag */
+  height: 10px;
+  border-radius: 8px;
 }
 #progressbar,
-#progressbar .inner {
+#progressbar .inner,
+.slider-bar,
+.ui-slider .ui-slider-range {
   box-shadow: 0 1px 3px rgba(0, 0, 0, .3) inset;
 }
 
@@ -553,9 +575,26 @@ footer[role=contentinfo] {
       display: inline-block;
     }
   }
+  div.radio_buttons label {
+    margin-bottom: 1.5em;
+  }
   .radio {
     display: inline-block;
     margin: 0 1em;
+  }
+  .collection_radio_buttons {
+    min-height: 31px;
+    padding: 10px 0 0 35px;
+    margin-top: -10px;
+  }
+  label[for=review_assessment_0] {
+    background: url(flag-green.png) left center no-repeat;
+  }
+  label[for=review_assessment_1] {
+    background: url(flag-yellow.png) left center no-repeat;
+  }
+  label[for=review_assessment_2] {
+    background: url(flag-red.png) left center no-repeat;
   }
 }
 .review-page {
@@ -564,6 +603,7 @@ footer[role=contentinfo] {
   }
 }
 .review-info {
+  text-align: center;
   p {
     margin-bottom: 1em;
     em {
@@ -571,6 +611,7 @@ footer[role=contentinfo] {
     }
   }
 }
+
 
 /* CONTENT PAGES ===========================================*/
 .content-page {

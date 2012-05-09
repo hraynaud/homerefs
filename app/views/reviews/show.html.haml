@@ -1,24 +1,22 @@
 %section.bldg-page.review-page
   .container
-    .row
-      .span3
+
+    .review-info
+      %h3 Thanks for submitting your review! The average scores are below
+      %p
+        Your rating for
+        %em
+          #{link_to @review.building.address, @review.building}
+        is:
+        %strong #{@review.score}%
+        = link_to 'Edit', edit_review_path(@review), class: 'btn btn-inverse'
+
+      -if @review.building_images
+        %ul.inline-list
         - @review.building_images.each do |img|
           - unless img.image.url.split("/")[-1] == "missing.png"
-            .img
+            %li.img
               = image_tag img.image.url(:small)
-          - else
-            .img
-              = image_tag "default-bldg.png"
-
-      .review-info.span9
-        %h3 Thanks for submitting your review! The average scores are below
-        %p
-          Your rating for
-          %em
-            #{link_to @review.building.address, @review.building}
-          is:
-          %strong #{@review.score}%
-        = link_to 'Edit', edit_review_path(@review), class: 'btn btn-inverse'
 
   .alt-section
     .section-decor
@@ -38,10 +36,11 @@
 
 
       .bldg-comments
-        %h3
-          Comment
+        - unless @review.comment.empty?
+          %h3
+            Comment
 
-        %p "#{@review.comment}"
+          %p "#{@review.comment}"
 
 
     .section-decor
