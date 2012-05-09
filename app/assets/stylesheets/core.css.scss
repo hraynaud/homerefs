@@ -588,13 +588,13 @@ footer[role=contentinfo] {
     margin-top: -10px;
   }
   label[for=review_assessment_0] {
-    background: url(flag-green.png) left center no-repeat;
+    background: url(flag-red.png) left center no-repeat;
   }
   label[for=review_assessment_1] {
     background: url(flag-yellow.png) left center no-repeat;
   }
   label[for=review_assessment_2] {
-    background: url(flag-red.png) left center no-repeat;
+    background: url(flag-green.png) left center no-repeat;
   }
 }
 .review-page {
