@@ -1,13 +1,13 @@
-%p#notice= notice
+.feedbackcontainer.offset3
+  %h2 Thank you for your feedback!
+  %p
+    %b Name:
+    = @feedback.name
+  %p
+    %b Email:
+    = @feedback.email
+  %p
+    %b Comment:
+    = @feedback.comment
 
-%p
-  %b Name:
-  = @feedback.name
-%p
-  %b Email:
-  = @feedback.email
-%p
-  %b Comment:
-  = @feedback.comment
-
-= link_to 'home', root_path
+  = link_to 'back', root_path
