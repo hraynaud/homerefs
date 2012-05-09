@@ -10,23 +10,20 @@
 
           .row
             #myCarousel.carousel.span3
-              - cntr = 0
               .carousel-inner
+                .active.item
+                  - if @building.default_image_id.blank?
+                    = image_tag 'default-bldg.png'
+                  - else
+                    = image_tag BuildingImage.find(@building.default_image_id).image.url(:small)
                 - @building.reviews.each do |review|
                   - review.building_images.each do |img|
-                    - if cntr < 1
-                      .active.item
-                        - if @building.default_image_id.nil?
-                          = image_tag 'default-bldg.png'
-                        - else
-                          = image_tag BuildingImage.find(@building.default_image_id).image.url(:small)
-                      - cntr += 1
-                    - else
-                      .item
-                        = image_tag img.image.url(:small)
+                    .item
+                      = image_tag img.image.url(:small)
 
-              %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} ‹
-              %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} ›
+              - unless @building.building_images.blank?
+                %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} ‹
+                %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} ›
 
             .score.span3
               %b Score:

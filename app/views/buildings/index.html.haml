@@ -37,7 +37,7 @@
             %ul.bldg-stats.row><
               -# TODO: add a business image or use default
               %li.img.span2><
-                - if building.default_image_id.nil?
+                - if building.default_image_id.blank?
                   = image_tag 'default-bldg.png'
                 - else
                   = image_tag BuildingImage.find(building.default_image_id).image.url(:small)
