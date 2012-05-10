@@ -6,12 +6,11 @@
         = link_to 'Create a review', new_review_path(:bldg =>building), class: "create-review btn btn-mini" unless session[:disable_actions]
 
       %ul.bldg-stats.row><
-        -# TODO: add a business image or use default
         %li.img.span2><
           - if building.default_image_id.blank?
             = image_tag 'default-bldg.png'
           - else
-            = image_tag BuildingImage.find(building.default_image_id).image.url(:small)
+            = image_tag BuildingImage.find(building.default_image_id).image.url(:index)
         %li.score.span2><
           %b Score:
           %strong><
