@@ -16,6 +16,9 @@ class Building < ActiveRecord::Base
   before_create :normalize
   has_many :building_images
 
+  paginates_per 3
+
+
   def self.locate(params = {})
 
     building= where(:zipcode => params[:zipcode].strip) if params[:zipcode].present?

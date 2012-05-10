@@ -29,6 +29,7 @@ gem 'pg' #Postgres database
 gem 'pry-remote'
 gem 'simple_form'
 gem 'thin'
+gem 'kaminari'
 
 
 group :test, :development  do

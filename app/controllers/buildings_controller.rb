@@ -6,13 +6,12 @@ class BuildingsController < ApplicationController
 
   def index
     if (params[:neighborhood].present? || params[:address].present? || params[:zipcode].present?)
-      @buildings =   Building.locate(params)
+      @buildings =   Building.locate(params).order(:address).page params[:page]
     elsif params[:search]
-      @buildings = Building.search(params[:search])
+      @buildings = Building.search(params[:search]).order(:address).page params[:page]
     else
-      @buildings =Building.all
+      @buildings =Building.order(:address).page params[:page]
     end
-
   end
 
   def show
