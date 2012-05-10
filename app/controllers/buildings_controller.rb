@@ -37,7 +37,7 @@ class BuildingsController < ApplicationController
     @building = Building.new(params[:building])
 
     if @building.save
-      redirect_to buildings_path
+      redirect_to new_review_path(:bldg => @building.id)
     else
       render :new
     end
