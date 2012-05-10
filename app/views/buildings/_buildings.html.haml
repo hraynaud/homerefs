@@ -3,7 +3,7 @@
     .main-info.span10
       .business
         %h3= link_to building.address, building_path(building)
-        = link_to 'Create a review', new_review_path(:bldg =>building), class: "create-review btn btn-mini"
+        = link_to 'Create a review', new_review_path(:bldg =>building), class: "create-review btn btn-mini" unless session[:disable_actions]
 
       %ul.bldg-stats.row><
         -# TODO: add a business image or use default

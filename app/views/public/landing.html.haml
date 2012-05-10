@@ -1,7 +1,7 @@
 .landing-page.container
 
   %h2.review-link
-    = link_to "Review an Apartment", buildings_path, class: "big-link"
+    = link_to "Review an Apartment", buildings_path(:reviewer =>true), class: "big-link"
 
   %h2.search-link
     = link_to "Search for a Review", search_path, class: "big-link"

@@ -5,6 +5,7 @@ class BuildingsController < ApplicationController
   before_filter :authenticate_user, :only => [:new, :edit, :update, :create]
 
   def index
+    session[:disable_actions] = nil if params[:reviewer]
     if (params[:neighborhood].present? || params[:address].present? || params[:zipcode].present?)
       @buildings =   Building.locate(params).order(:address).page params[:page]
     elsif params[:search]
@@ -25,6 +26,11 @@ class BuildingsController < ApplicationController
 
   def edit
     @building = Building.find(params[:id])
+  end
+
+
+  def search
+      session[:disable_actions] = true
   end
 
   def create
