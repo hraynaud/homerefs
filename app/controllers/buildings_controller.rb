@@ -5,30 +5,14 @@ class BuildingsController < ApplicationController
   before_filter :authenticate_user, :only => [:new, :edit, :update, :create]
 
   def index
-    @buildings = if session[:results]
-                   Building.find(session[:results])
-                 else
-                   Building.all
-                 end
-    session[:results] = nil
-  end
-
-
-  def search
-
-  end
-
-
-  def results
-    @buildings = if (params[:neighborhood].present? || params[:address].present? || params[:zipcode].present?)
-      Building.search(params)
+    if (params[:neighborhood].present? || params[:address].present? || params[:zipcode].present?)
+      @buildings =   Building.locate(params)
+    elsif params[:search]
+      @buildings = Building.search(params[:search])
     else
-      Building.all
+      @buildings =Building.all
     end
 
-    session[:results] = @buildings.map(&:id)
-    @buildings = Building.all unless @buildings
-    render :index
   end
 
   def show

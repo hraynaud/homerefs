@@ -1,0 +1,32 @@
+- @buildings.each do |building|
+  %li.result.row
+    .main-info.span10
+      .business
+        %h3= link_to building.address, building_path(building)
+        = link_to 'Create a review', new_review_path(:bldg =>building), class: "create-review btn btn-mini"
+
+      %ul.bldg-stats.row><
+        -# TODO: add a business image or use default
+        %li.img.span2><
+          - if building.default_image_id.blank?
+            = image_tag 'default-bldg.png'
+          - else
+            = image_tag BuildingImage.find(building.default_image_id).image.url(:small)
+        %li.score.span2><
+          %b Score:
+          %strong><
+            =building.avg_score.to_i
+            %span.small>< %
+        %li.review-cnt.span2><
+          = building.reviews.count
+          %span.small reviews
+        %li.doorman.span2><
+          = building.has_doorman
+        %li.elevator.span2><
+          = building.has_elevator
+
+    %ul.flags.vert-flags.span2
+      %li.flag.green-flag= building.flags_thrown["Would Recommend"] ? building.flags_thrown["Would Recommend"] : 0
+      %li.flag.yellow-flag= building.flags_thrown["Neutral"] ? building.flags_thrown["Neutral"] : 0
+      %li.flag.red-flag= building.flags_thrown["Not Recommend"] ? building.flags_thrown["Not Recommend"] : 0
+

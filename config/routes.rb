@@ -27,6 +27,5 @@ Homerefs::Application.routes.draw do
   match '/login', to: 'sessions#new', as: 'login'
   match '/logout', to: 'sessions#destroy', as: 'logout'
   match '/search', to: 'buildings#search'
-  match '/results', to: 'buildings#results'
 
 end
