@@ -25,7 +25,7 @@
     = f.input :image3, :as => :file, :label => "Image 3"
 
   .field
-    = f.input :assessment, :collection => Review::FLAGS.map{|k,v| [v,k]}, :as => :radio_buttons
+    = f.input :assessment, :collection => Review::FLAGS.map{|k,v| [v,k]}, :as => :radio_buttons, :label => "Flags"
 
   .actions
     = f.submit :submit, class: "btn btn-primary btn-large"
