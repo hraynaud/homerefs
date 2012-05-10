@@ -9,16 +9,16 @@
     %ul.bldg-info.inline-list
       %li
         %span Doorman:
-        = @building.doorman
+        = @building.has_doorman
       %li
         %span Elevator:
-        = @building.elevator
+        = @building.has_elevator
       %li
         %span Live in Super:
-        = @building.super
+        = @building.has_super
       %li
         %span Co-Op:
-        = @building.coop
+        = @building.is_coop
 
     = render :partial => 'slider', :locals => {:hilows => @hilows}
 
