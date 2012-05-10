@@ -8,6 +8,9 @@
         %label{:for => "address"} Filter by address
         %input#search{:name => "search", :type => "text"}
 
+        %h3.add-listing
+          = link_to "Don't see your building? Click here to add it", new_building_path, class: "btn btn-inverse btn-large"
+
   .sort-list
     .container
       %ul.row
@@ -35,5 +38,3 @@
 
     .section-decor
 
-  %h3.add-listing
-    = link_to "Don't see your building? Click here to add it", new_building_path, class: "btn btn-inverse btn-large"
