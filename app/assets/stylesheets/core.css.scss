@@ -32,6 +32,9 @@ body {
   line-height: 1.5;
   color: #000;
   background-color: transparent;
+  & > section {
+    min-height: 500px;
+  }
 }
 img {
   max-width: 100%;
@@ -152,24 +155,28 @@ input,
     }
   }
 }
-.nav-list .nav-item {
-  display: inline-block;
-  a {
-    padding: .2em .5em;
-    margin: 0;
-    border-left: 1px solid #fff;
-  }
-  &:first-child a {
-    padding-left: 0;
-    border-left: none;
-  }
-  ul {
-    margin-left: 0;
+.nav-list {
+  .nav-item {
+    display: inline-block;
+    a {
+      padding: .2em .5em;
+      margin: 0;
+      border-left: 1px solid #fff;
+    }
+    &:first-child a {
+      padding-left: 0;
+      border-left: none;
+    }
+    ul {
+      margin-left: 0;
+    }
   }
 }
+.main-link,
+.main-link a {
+  color: #000;
+}
 .small-heading {
-  font-size: 16px;
-  font-size: 1.6rem;
   text-align: center;
   color: #fff;
 }
@@ -265,7 +272,7 @@ input,
 }
 .centered-form {
   text-align: center;
-  h2, label {
+  label {
     font-size: 16px;
     font-size: 1.6rem;
     text-align: center;
@@ -282,6 +289,37 @@ input,
 .slider-group {
   display: block;
   margin-bottom: 20px;
+}
+.slider-scale {
+  position: relative;
+  height: 2em;
+  span {
+    position: absolute;
+    display: block;
+    top: 0;
+    line-height: 1.1;
+  }
+  b {
+    display: block;
+    text-align: center;
+    font-weight: normal;
+    color: #fff;
+  }
+  .first {
+    left: 20px;
+  }
+  .second {
+    left: 102px;
+  }
+  .third {
+    left: 189px;
+  }
+  .fourth {
+    left: 276px;
+  }
+  .last {
+    right: 20px;
+  }
 }
 .slider-label,
 .slider-main {
@@ -364,18 +402,33 @@ header[role=banner] {
 /* LANDING PAGE STYLES ===========================================*/
 .landing-page {
   position: relative;
+  padding-top: 140px;
+  min-height: 400px;
   .review-link,
   .search-link {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 130px;
+    position: relative;
   }
-  .review-link {
-    padding-top: 78px;
+  .review-link .decoration,
+  .search-link .decoration {
+    display: block;
+    position: absolute;
+    left: 50%;
+  }
+  .review-link .decoration {
+    width: 79px;
+    height: 78px;
     background: url(bldg-icon.png) top center no-repeat;
+    top: -78px;
+    margin-left: -39px;
   }
-  .search-link {
-    padding-top: 88px;
+  .search-link .decoration {
+    width: 85px;
+    height: 88px;
     background: url(search-icon.png) top center no-repeat;
+    top: -88px;
+    margin-left: -42px;
   }
 }
 
@@ -407,8 +460,22 @@ footer[role=contentinfo] {
 
 /* SEARCH RESULTS PAGE STYLES ===========================================*/
 .search-results-page {
+  #buildings_search {
+    float: right;
+    label {
+      font-size: 16px;
+      font-size: 1.6rem;
+    }
+    .field {
+      margin: 0;
+    }
+    input {
+      width: 300px;
+    }
+  }
   .add-listing {
-    text-align: center;
+    float: left;
+    margin-top: 1em;
   }
   .no-results {
     text-align: center;

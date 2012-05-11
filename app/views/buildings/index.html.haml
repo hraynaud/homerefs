@@ -3,13 +3,15 @@
   .container
     %h2.small-heading What building is your apartment in?
 
-    = form_tag(buildings_path, :method => :get, :id => "buildings_search") do
-      .field
-        %label{:for => "address"} Filter by address
-        %input#search{:name => "search", :type => "text"}
+    .clearfix
 
-        %h3.add-listing
-          = link_to "Don't see your building? Click here to add it", new_building_path, class: "btn btn-inverse btn-large"
+      = form_tag(buildings_path, :method => :get, :id => "buildings_search") do
+        .field
+          %label{:for => "address"} Filter by address
+          %input#search{:name => "search", :type => "text"}
+
+      %h3.add-listing
+        = link_to "Don't see your building? Click here to add it", new_building_path, class: "btn btn-inverse btn-large"
 
   .sort-list
     .container

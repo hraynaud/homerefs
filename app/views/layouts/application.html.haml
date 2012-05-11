@@ -35,7 +35,7 @@
           %li.nav-item
             = link_to "Contact", contact_path
           - if user_logged_in?
-            %li.nav-item
+            %li.nav-item.main-link
               %ul
                 %li#menu1.dropdown
                   %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#menu1"}
@@ -48,7 +48,7 @@
                     %li
                       = link_to "Log Out", logout_path
           - else
-            %li.nav-item
+            %li.nav-item.main-link
               = link_to "Log In", login_path
 
     .container
@@ -61,7 +61,7 @@
       %footer{role: "contentinfo"}
         %p
           HomeRefs Copyright &copy; 2012. All Rights Reserved.
-          = link_to "| Feedback |", new_feedback_path
+          = link_to "| Feedback |", new_feedback_path, class: "main-link"
 
     = javascript_include_tag "application", "core"
     = yield :body_end

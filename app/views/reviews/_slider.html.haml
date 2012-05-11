@@ -1,6 +1,6 @@
 .slider_panel
 
-  - @rows.each do |row|
+  - @rows.each_with_index do |row, index|
     -field = row.field_name
 
     .slider-group
@@ -8,6 +8,30 @@
 
       .slider-main
         %p.title= field.titleize
+
+        - if index == 0
+          .slider-scale.clearfix
+            %span.first
+              1
+              %b
+                |
+            %span.second
+              2
+              %b
+                |
+            %span.third
+              3
+              %b
+                |
+            %span.fourth
+              4
+              %b
+                |
+            %span.last
+              5
+              %b
+                |
+
         .slider-bar{:id => "#{field}"}
 
       %p.slider-label= hilows[field]["hi"]
