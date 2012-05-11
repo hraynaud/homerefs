@@ -1,0 +1,17 @@
+.errorscontainer.offset4
+  %h2 500
+  %div
+    %h3 Something's Wrong
+    %p
+      It looks as though we've broken something on our system.
+    %p
+      Don't panic, we have been notified of the problem and will get on it ASAP.
+    %p
+      In the meantime please feel free to rant and leave us some
+      = link_to "Feedback", feedback_path
+      or
+      = link_to "Contact Us", contact_path
+    %p
+      You can also
+      %a{href: root_path} go back to our home page
+      and try again.

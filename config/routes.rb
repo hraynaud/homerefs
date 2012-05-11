@@ -1,4 +1,7 @@
 Homerefs::Application.routes.draw do
+  # get "errors/error_404"
+  # get "errors/error_500"
+
   resources :feedbacks
 
   ActiveAdmin.routes(self)
@@ -27,5 +30,9 @@ Homerefs::Application.routes.draw do
   match '/login', to: 'sessions#new', as: 'login'
   match '/logout', to: 'sessions#destroy', as: 'logout'
   match '/search', to: 'buildings#search'
+
+  unless Rails.application.config.consider_all_requests_local
+    match '*not_found', to: 'errors#error_404'
+  end
 
 end
