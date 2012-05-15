@@ -96,19 +96,27 @@ class Building < ActiveRecord::Base
 
   def avg_score
 
-    fields = ReviewMetadata.all_fields
-    total_score = 0
-    reviews.each do  |r|
-      score = 0.0
-
-      fields.each do |f|
-        field = ReviewMetadata.where(:field_name => f).first
-        score += field.field_weight * r.send(f.to_sym)
-        score
-      end
-      total_score += score
+    if self.score.nil? and reviews_count>0
+      sum = 0;
+      reviews.each{ |r| sum += r.score }
+      self.score = sum.to_f/reviews_count
+      save
     end
-    reviews !=[] ? total_score/reviews.count : 0
+
+    self.score
+    # fields = ReviewMetadata.all_fields
+    # total_score = 0
+    # reviews.each do  |r|
+    # score = 0.0
+
+    # fields.each do |f|
+    # field = ReviewMetadata.where(:field_name => f).first
+    # score += field.field_weight * r.send(f.to_sym)
+    # score
+    # end
+    # total_score += score
+    # end
+    # reviews !=[] ? total_score/reviews.count : 0
 
   end
 

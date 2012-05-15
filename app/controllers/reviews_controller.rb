@@ -50,6 +50,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.update_attributes(params[:review])
+        @review.calc_score
         format.html {redirect_to @review, notice: 'Review was successfully updated.'}
         format.json { render :json => @review}
       else
