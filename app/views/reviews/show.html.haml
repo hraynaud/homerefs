@@ -8,7 +8,7 @@
         %em
           #{link_to @review.building.address, @review.building}
         is:
-        %strong #{@review.score}%
+        %strong #{@review.score.to_i}%
         -# = link_to 'Edit', edit_review_path(@review), class: 'btn btn-inverse'
 
       -if @review.building_images
