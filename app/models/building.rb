@@ -27,6 +27,10 @@ class Building < ActiveRecord::Base
     building
   end
 
+def self.super_search(params)
+  self.locate(params).search(params[:search])
+end
+
   def self.search(search)
     where('address like ?', "%#{search}%")
   end

@@ -7,10 +7,14 @@ class BuildingsController < ApplicationController
 
   def index
     session[:disable_actions] = nil if params[:reviewer]
-    if (params[:neighborhood].present? || params[:address].present? || params[:zipcode].present?)
-      @buildings =   Building.locate(params).order(sort_column + " " + sort_direction)
-    elsif params[:search]
+    if params[:search]
+      if (params[:neighborhood].present? || params[:address].present? || params[:zipcode].present?)
+      @buildings = Building.super_search(params).order(sort_column + " " + sort_direction)
+      else
       @buildings = Building.search(params[:search]).order(sort_column + " " + sort_direction)
+      end
+    elsif (params[:neighborhood].present? || params[:address].present? || params[:zipcode].present?)
+      @buildings =   Building.locate(params).order(sort_column + " " + sort_direction)
     else
       @buildings =Building.order(sort_column + " " + sort_direction)
     end
