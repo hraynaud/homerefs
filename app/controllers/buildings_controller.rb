@@ -3,15 +3,16 @@ class BuildingsController < ApplicationController
   # GET /buildings.json
 
   before_filter :authenticate_user, :only => [:new, :edit, :update, :create]
+  helper_method :sort_column, :sort_direction
 
   def index
     session[:disable_actions] = nil if params[:reviewer]
     if (params[:neighborhood].present? || params[:address].present? || params[:zipcode].present?)
-      @buildings =   Building.locate(params).order(:address).page params[:page]
+      @buildings =   Building.locate(params).order(sort_column + " " + sort_direction)
     elsif params[:search]
-      @buildings = Building.search(params[:search]).order(:address).page params[:page]
+      @buildings = Building.search(params[:search]).order(sort_column + " " + sort_direction)
     else
-      @buildings =Building.order(:address).page params[:page]
+      @buildings =Building.order(sort_column + " " + sort_direction)
     end
   end
 
@@ -30,7 +31,7 @@ class BuildingsController < ApplicationController
 
 
   def search
-      session[:disable_actions] = true
+    session[:disable_actions] = true
   end
 
   def create
@@ -59,4 +60,14 @@ class BuildingsController < ApplicationController
 
     redirect_to buildings_url
   end
+
+  private
+  def sort_column
+    Building.column_names.include?(params[:sort]) ? params[:sort] : "score"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
 end

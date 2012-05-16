@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120515223828) do
+ActiveRecord::Schema.define(:version => 20120516003650) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(:version => 20120515223828) do
 
   create_table "buildings", :force => true do |t|
     t.string   "address"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.boolean  "doorman"
     t.boolean  "elevator"
     t.boolean  "super"
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(:version => 20120515223828) do
     t.integer  "default_image_id"
     t.integer  "neighborhood_id"
     t.integer  "construction_type"
-    t.float    "score"
-    t.integer  "reviews_count",     :default => 0, :null => false
+    t.float    "score",             :default => 0.0
+    t.integer  "reviews_count",     :default => 0,   :null => false
   end
 
   create_table "feedbacks", :force => true do |t|
