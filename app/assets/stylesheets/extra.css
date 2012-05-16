@@ -1,4 +1,4 @@
-sort.item>a {
+.sort-item  a {
   display: block;
   text-align: center;
   font-size: 12px;
@@ -7,3 +7,18 @@ sort.item>a {
   color:black
 
 }
+
+.sort-item span .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.sort-item span .asc {
+  background-image: url(images/up_arrow.gif);
+}
+
+.sort-item span .desc {
+  background-image: url(images/down_arrow.gif);
+}
+
