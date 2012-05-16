@@ -57,8 +57,10 @@ class Building < ActiveRecord::Base
   def apt_types
     types = {}
     reviews.each do |r|
-      key = r.apt_size.nil? ? "Unknown" : "#{r.apt_size} BR"
-      types[key] = types[key].present? ? types[key]+1 : 1
+      if !r.apt_size.nil?
+        key = r.apt_size ==0 ? "Studio" : "#{r.apt_size} BR"
+        types[key] = types[key].present? ? types[key]+1 : 1
+      end
     end
     types
   end
