@@ -493,6 +493,10 @@ footer[role=contentinfo] {
     font-weight: bold;
     border-right: 1px solid #55a1d9;
     padding-right: 20px;
+    a {
+      color: #000;
+      font-weight: bold;
+    }
   }
   ul {
     margin-bottom: 0;
@@ -540,11 +544,18 @@ footer[role=contentinfo] {
   }
   .flag {
     margin: 0 auto 10px;
-    position: relative;
-    left: -20px; /* to center flags with sort label */
-    &:last-child {
-     margin-bottom: 0;
-    }
+    display: inline-block;
+  }
+  li:last-child .flag {
+   margin-bottom: 0;
+  }
+  .flags .title {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.2;
+    width: 100px;
+    font-size: 12px;
+    font-size: 1.2rem;
   }
 }
 
@@ -682,13 +693,32 @@ footer[role=contentinfo] {
 
 /* CONTENT PAGES ===========================================*/
 .content-page {
+  min-height: 500px;
   h2 {
     margin-bottom: 1em;
   }
+  h3 {
+    font-size: 21px;
+    font-size: 2.1rem;
+    margin-bottom: .5em;
+  }
   p {
     font-family: 'helvetica neue', helvetica, arial, sans-serif;
+    font-size: 18px;
+    font-size: 1.8rem;
     line-height: 1.5;
     margin-bottom: 1em;
+  }
+}
+.how-it-works {
+  img {
+    display: block;
+    margin: 0 0 40px;
+  }
+}
+.faq-page {
+  p {
+    margin-bottom: 2em;
   }
 }
 
