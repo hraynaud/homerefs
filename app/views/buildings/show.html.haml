@@ -92,7 +92,7 @@
                   #progressbar
                     .inner{:style =>"width:#{pct}%"}
                 .progress-num.span2
-                  %strong= (pct/20).to_i
+                  %strong= (pct/20).round(2)
 
       .bldg-comments
         %h3 Comments
