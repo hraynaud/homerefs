@@ -52,7 +52,7 @@ end
   def average_years_lived
     if reviews.count > 0
       cnt = reviews.uniq.count
-      reviews.uniq.map(&:years_lived).inject{|sum,a|sum+a}.to_f/cnt
+      reviews.uniq.map(&:years_lived).inject{|sum,a|sum+a}.to_f/cnt.round
     else
       0
     end
