@@ -43,7 +43,7 @@ end
   def reviewer_average_age
     if reviewers.count > 0
       cnt = reviewers.uniq.count
-      reviewers.uniq.map(&:age).inject{|sum,a|sum+a}.to_f/cnt
+      (reviewers.uniq.map(&:age).inject{|sum,a|sum+a}.to_f/cnt).round
     else
       0
     end
@@ -52,7 +52,7 @@ end
   def average_years_lived
     if reviews.count > 0
       cnt = reviews.uniq.count
-      reviews.uniq.map(&:years_lived).inject{|sum,a|sum+a}.to_f/cnt.round
+      (reviews.uniq.map(&:years_lived).inject{|sum,a|sum+a}.to_f/cnt).round
     else
       0
     end
