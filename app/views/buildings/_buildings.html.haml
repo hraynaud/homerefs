@@ -1,5 +1,5 @@
 - @buildings.each do |building|
-  %li.result.row
+  %li.result.row{data:"#{building.id}"}
     .main-info.span10
       .business
         %h3= link_to building.address, building_path(building)
