@@ -495,6 +495,7 @@ footer[role=contentinfo] {
   padding: .3em 0;
   font-family: 'helvetica neue', helvetica, arial, sans-serif;
   .sort-item {
+    position: relative;
     display: block;
     text-align: center;
     font-size: 12px;
@@ -506,6 +507,16 @@ footer[role=contentinfo] {
       color: #000;
       font-weight: bold;
     }
+  }
+  .arrow {
+    position: relative;
+    top: 10px;
+    margin-right: .5em;
+    width: 0;
+  	height: 0;
+  	border-left: 5px solid transparent;
+  	border-right: 5px solid transparent;
+  	border-top: 5px solid #000;
   }
   ul {
     margin-bottom: 0;
