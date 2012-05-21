@@ -324,12 +324,21 @@ input,
 .slider-label,
 .slider-main {
   display: inline-block;
-  vertical-align: bottom;
+  vertical-align: baseline;
 }
 .slider-label {
+  width: 200px;
   font-size: 14px;
   font-size: 1.4rem;
   margin-bottom: 0;
+}
+.slider-group {
+  .left {
+    text-align: right;
+  }
+  .right {
+    text-align: left;
+  }
 }
 .ui-slider .ui-slider-handle {
   width: 20px;

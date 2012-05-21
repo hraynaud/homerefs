@@ -4,7 +4,7 @@
     -field = row.field_name
 
     .slider-group
-      %p.slider-label= hilows[field]["low"]
+      %p.slider-label.left= hilows[field]["low"]
 
       .slider-main
         %p.title= field.titleize
@@ -34,4 +34,4 @@
 
         .slider-bar{:id => "#{field}"}
 
-      %p.slider-label= hilows[field]["hi"]
+      %p.slider-label.right= hilows[field]["hi"]
