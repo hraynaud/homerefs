@@ -73,11 +73,5 @@ Homerefs::Application.configure do
 
   # Needed for active admin
   config.action_mailer.default_url_options = { :host => 'homerefs-staging.herokuapp.com' }
-  config.after_initialize do
-    Building.class_eval do
-      include FieldAvgs
-    end
-
-  end
 
 end

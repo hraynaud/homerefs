@@ -1,5 +1,8 @@
 class Building < ActiveRecord::Base
 
+  include FieldAvgs
+  define_field_avgs
+
   CONSTRUCTION = {1=>"Pre-War",2 => "Post-War", 3=>"New Construction"}
   belongs_to :neighborhood
   has_many :reviews
