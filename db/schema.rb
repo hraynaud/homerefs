@@ -46,17 +46,6 @@ ActiveRecord::Schema.define(:version => 20120522122548) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
-  create_table "apartments", :force => true do |t|
-    t.string   "unit"
-    t.integer  "bedrooms"
-    t.integer  "bathrooms"
-    t.integer  "sqft"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
-    t.integer  "building_id"
-    t.float    "avg_score",   :default => 0.0
-  end
-
   create_table "building_images", :force => true do |t|
     t.integer  "building_id"
     t.integer  "user_id"
