@@ -33,6 +33,7 @@ class ApplicationController < ActionController::Base
 
   def render_404(exception)
     @not_found_path = exception.message
+    logger.fatal "!!! FATAL_ERROR: #{exception.message}"
     respond_to do |format|
       format.html { render template: 'errors/error_404', layout: 'layouts/application', status: 404 }
       format.all { render nothing: true, status: 404 }
