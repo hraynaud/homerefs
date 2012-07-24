@@ -111,20 +111,6 @@ class Building < ActiveRecord::Base
     end
 
     self.score
-    # fields = ReviewMetadata.all_fields
-    # total_score = 0
-    # reviews.each do  |r|
-    # score = 0.0
-
-    # fields.each do |f|
-    # field = ReviewMetadata.where(:field_name => f).first
-    # score += field.field_weight * r.send(f.to_sym)
-    # score
-    # end
-    # total_score += score
-    # end
-    # reviews !=[] ? total_score/reviews.count : 0
-
-  end
+    end
 
 end
