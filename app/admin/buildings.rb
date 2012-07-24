@@ -3,21 +3,24 @@ ActiveAdmin.register Building do
   index do
 
     column :address
+    column "Reviews" do |r|
+      r.reviews_count
+    end
     column :neighborhood
-    column :doorman do |val|
-      val ? "Yes" : "No"
+    column :doorman do |r|
+     r.doorman ? "Yes" : "No"
     end
 
-    column :elevator do |val|
-      val ? "Yes" : "No"
+    column :elevator do |r|
+      r.elevator ? "Yes" : "No"
     end
 
-    column :super do |val|
-      val ? "Yes" : "No"
+    column :super do |r|
+      r.super ? "Yes" : "No"
     end
 
-    column :coop do |val|
-      val ? "Yes" : "No"
+    column :coop do |r|
+      r.coop ? "Yes" : "No"
     end
     column :construction
     column :zipcode
@@ -27,6 +30,9 @@ ActiveAdmin.register Building do
 
   show :title => :address do |building|
     attributes_table do
+      row "Reviews" do
+        building.reviews_count
+      end
       row :neighborhood
       row :city
       row :construction_type
