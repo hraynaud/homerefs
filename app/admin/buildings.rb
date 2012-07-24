@@ -8,7 +8,7 @@ ActiveAdmin.register Building do
     end
     column :neighborhood
     column :doorman do |r|
-     r.doorman ? "Yes" : "No"
+      r.doorman ? "Yes" : "No"
     end
 
     column :elevator do |r|
@@ -57,7 +57,13 @@ ActiveAdmin.register Building do
         image_tag(building.default_building_image.image.url)
       end
     end
+    panel "All Images" do
+      table_for(building.building_images) do |t|
+        t.column("Image") {|img| image_tag img.image.url(:small)}
+      end
+    end
   end
+
 
   form do |f|
     f.inputs "Main" do
