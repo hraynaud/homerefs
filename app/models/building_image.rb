@@ -16,4 +16,9 @@ class BuildingImage < ActiveRecord::Base
         }}
 
   has_attached_file :image, PAPERCLIP_OPTS
+
+
+  def building_name
+    building.address
+  end
 end
