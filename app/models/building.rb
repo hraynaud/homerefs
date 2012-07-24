@@ -15,6 +15,7 @@ class Building < ActiveRecord::Base
 
   before_create :normalize
   has_many :building_images
+  has_one :default_building_image, :class_name => "BuildingImage", :conditions => proc{["building_images.id = ?", default_image_id || building_images.first ]}
 
   paginates_per 3
 
@@ -27,9 +28,9 @@ class Building < ActiveRecord::Base
     building
   end
 
-def self.super_search(params)
-  self.locate(params).search(params[:search])
-end
+  def self.super_search(params)
+    self.locate(params).search(params[:search])
+  end
 
   def self.search(search)
     where('address like ?', "%#{search}%")
