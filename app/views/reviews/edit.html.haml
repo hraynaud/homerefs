@@ -1,6 +1,25 @@
-%h1 Editing review
+.container
+  %section.new-review-page.centered-form
 
-= render 'form'
+    %h2.small-heading
+      Edit Review for
+      %span.address
+        = @building.address
 
-= link_to 'Show', @review
-= link_to 'Back', reviews_path
+    %ul.bldg-info.inline-list
+      %li
+        %span Doorman:
+        = @building.has_doorman
+      %li
+        %span Elevator:
+        = @building.has_elevator
+      %li
+        %span Live in Super:
+        = @building.has_super
+      %li
+        %span Co-Op:
+        = @building.is_coop
+
+    = render :partial => 'slider', :locals => {:hilows => @hilows}
+
+    = render :partial => 'form'
