@@ -11,6 +11,11 @@ class Review < ActiveRecord::Base
 
   attr_accessor :image1, :image2, :image3
 
+  scope :studio, where(:apt_size => APT_SIZE.invert["Studio"])
+  scope :one_bedroom, where(:apt_size => APT_SIZE.invert["1 Bedroom"])
+  scope :two_bedroom, where(:apt_size => APT_SIZE.invert["2 Bedroom"])
+  scope :two_plus_bedroom, where(:apt_size => APT_SIZE.invert[">2"])
+
 
   def building_address
     self.building.address
