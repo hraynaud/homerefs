@@ -56,7 +56,7 @@ ActiveAdmin.register Building do
       row :zipcode
       row :id
       row :default_image do
-        image_tag(building.default_building_image.image.url)
+        image_tag(building.default_building_image.image.url) if building.default_building_image
       end
     end
     panel "All Images" do
