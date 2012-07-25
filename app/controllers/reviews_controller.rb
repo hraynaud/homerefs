@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_filter :authenticate_user, :except => [:show, :index]
+  before_filter :set_metadata, :only => [:new, :edit]
 
   def home
 
@@ -16,22 +17,15 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @building = Building.find(params[:bldg])
-    @rows = ReviewMetadata.order("position asc").all
-
-    @hilows ={}
-
-    @rows.each do |row|
-      @hilows[row.field_name] = {"hi" => row.hi_text, "low" => row.low_text}
-    end
   end
 
   def edit
     @review = Review.find(params[:id])
+    @building = @review.building
   end
 
   def create
-    @review = Review.new(params[:review])
-    @review.user_id = get_current_user.id
+    @review = current_user.reviews.build(params[:review])
 
     if @review.save
       1.upto(3).each do |i|
@@ -63,6 +57,15 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
 
-    redirect_to reviews_url
+    redirect_to reviews_path
+  end
+
+  private
+  def set_metadata
+    @rows = ReviewMetadata.order("position asc").all
+    @hilows ={}
+    @rows.each do |row|
+      @hilows[row.field_name] = {"hi" => row.hi_text, "low" => row.low_text}
+    end
   end
 end
