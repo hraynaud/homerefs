@@ -9,7 +9,6 @@ class Review < ActiveRecord::Base
   validates :comment, :length => { :maximum => 140 }
   has_many :building_images
 
-  after_create :calc_score
   attr_accessor :image1, :image2, :image3
 
 
@@ -45,6 +44,12 @@ class Review < ActiveRecord::Base
     self.cached_score = score
     save
     score
+  end
+
+  def values
+    ReviewMetadata.all_fields.each.inject({}) do |vals, k|
+      vals[k]=send(k.to_sym); vals
+    end
   end
   private
 

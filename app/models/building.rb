@@ -102,15 +102,11 @@ class Building < ActiveRecord::Base
 
 
   def avg_score
-
-    if self.score.nil? and reviews_count>0
-      sum = 0;
-      reviews.each{ |r| sum += r.score }
-      self.score = sum.to_f/reviews_count
-      save
-    end
-
+    sum = 0;
+    reviews.each{ |r| sum += r.score }
+    self.score = sum.to_f/reviews_count
+    save
     self.score
-    end
+  end
 
 end
