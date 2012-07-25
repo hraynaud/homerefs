@@ -12,11 +12,12 @@
 
   .field
     .row
-      .span3.offset3
+      .span3.offset2
         = f.input :apt_size, :collection => Review::APT_SIZE.map{|k,v| [v,k]}
       .span3
         = f.input :years_lived
-
+      .span3
+        = f.input :monthly_fee, :label => "Rent / Maintenance", :input_html => {:step => 25, :min => 250 }
   .field
     = f.input :comment
 

@@ -28,6 +28,12 @@ class Building < ActiveRecord::Base
     building
   end
 
+
+  def avg_rent(type)
+    arr = reviews.send(type.to_s)
+    arr.empty? ? "-" : arr.inject(0.0) {|sum, rev| sum + rev.monthly_fee}/arr.size
+  end
+
   def self.super_search(params)
     self.locate(params).search(params[:search])
   end
@@ -49,6 +55,7 @@ class Building < ActiveRecord::Base
       0
     end
   end
+
 
   def average_years_lived
     if reviews.count > 0
