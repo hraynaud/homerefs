@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    @reviews = get_current_user.reviews
+    @reviews = current_user.reviews
 
   end
   def create
