@@ -10,7 +10,7 @@ Homerefs::Application.routes.draw do
 
   root :to => 'public#landing'
 
-  resources :reviews
+  resources :reviews, :only => [:new, :show, :edit, :create, :update ]
 
   resources :apartments
 
