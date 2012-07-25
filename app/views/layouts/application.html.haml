@@ -43,7 +43,7 @@
                     %b.caret
                   %ul.dropdown-menu
                     %li
-                      = link_to "History", user_path(get_current_user.id)
+                      = link_to "History", user_path(current_user.id)
                     %li.divider
                     %li
                       = link_to "Log Out", logout_path
