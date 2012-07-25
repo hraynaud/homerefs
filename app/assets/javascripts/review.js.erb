@@ -1,19 +1,8 @@
-$(function() {
-  $('.slider').slider();
-});
-
-var fieldArray = <%=ReviewMetadata.all_fields%>;
-var fieldArrayIds = [];
-
-fieldArray.forEach(function(item){
-  fieldArrayIds.push("#"+item)
-  });
-
 function updateValues(){
   $(".ui-slider").each(function(){
     var sliderId = $(this).attr("id")
     if ($("#_"+sliderId).length) {
-    $("#_"+sliderId).val($(this).slider("value"))
+      $("#_"+sliderId).val($(this).slider("value"))
     }
   })
 
@@ -26,24 +15,31 @@ function submitWithAjax() {
 }
 
 
-$("#new_review").bind('submit', submitWithAjax);
 
 $(function() {
+  var fieldArray = <%=ReviewMetadata.all_fields%>;
+  var fieldArrayIds = [];
+
+  $('.slider').slider();
+
+  $("#review_form").bind('submit', submitWithAjax);
+
   fieldArray.forEach(function(item){
-    $("#new_review").append("<input type='hidden' name='review[" + item + "]', id='_" + item + "'>");
+    fieldArrayIds.push("#"+item)
   });
 
   fieldArrayIds.forEach(function(item){
+    hiddenItem = "#_" + item.substring(1)
     $(item).slider({
-   range: "min",
-   min: 1,
-   max: 5,
-   value: 3
+      range: "min",
+      min: 1,
+      max: 5,
+      value: $(hiddenItem).val() || 3
     });
   });
 
   $("li.result.row").click(function (el){
-      document.location.href ='buildings/' + $(this).attr("data")
+    document.location.href ='buildings/' + $(this).attr("data")
   });
 
 
