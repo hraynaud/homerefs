@@ -121,10 +121,10 @@ class Building < ActiveRecord::Base
 
 
   def avg_score
+    return 0 if reviews.count ==0
     sum = 0;
-    arr =reviews.select {|r|r.score}
-    arr.each{ |r| sum += r.score }
-    sum.to_f/arr.count
+    reviews.each{ |r| sum += r.score }
+    sum.to_f/reviews.count
   end
 
 end
