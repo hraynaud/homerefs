@@ -1,5 +1,6 @@
-= simple_form_for @review do |f|
-
+= simple_form_for @review , :html => {:id => "review_form"} do |f|
+  - @review.values.each do |k,v|
+    = f.input k.to_sym, :as => :hidden, :input_html => {:id => "_#{k}", :value => v}
   -if @review.errors.any?
     #error_explanation
       %h2= "#{pluralize(@review.errors.count, "error")} prohibited this review from being saved:"
