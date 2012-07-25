@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :user_logged_in?, :get_current_user
+  helper_method :user_logged_in?, :current_user
 
 
   def user_logged_in?
-    !get_current_user.nil?
+    !current_user.nil?
   end
 
 
@@ -49,11 +49,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def get_current_user
+  def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
 
-  helper_method :get_current_user
+  helper_method :current_user
 
 end
