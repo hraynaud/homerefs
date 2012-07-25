@@ -28,9 +28,12 @@ class Building < ActiveRecord::Base
     building
   end
 
+  def self.by_average_rent(op, amt, type=nil)
+      Building.all.select { |b| b.avg_rent(type).send(op.to_sym, amt) }
+  end
 
-  def avg_rent(type)
-    arr = reviews.send(type.to_s)
+  def avg_rent(type = nil)
+    arr = type ? reviews.send(type.to_s) : reviews
     arr.empty? ? "-" : arr.inject(0.0) {|sum, rev| sum + rev.monthly_fee}/arr.size
   end
 
