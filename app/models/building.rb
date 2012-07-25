@@ -29,15 +29,16 @@ class Building < ActiveRecord::Base
   end
 
   def self.find_by_reviewer_average_rent(op, amt, type=nil)
-      Building.all.select { |b| b.reviewer_avg_rent(type).send(op.to_sym, amt) }
+    Building.all.select { |b| b.reviewer_avg_rent(type).send(op.to_sym, amt) }
   end
 
   def self.find_by_avg_rent(op, amt )
-      Building.where("avg_rent #{op} ?", amt)
+    Building.where("avg_rent #{op} ?", amt)
   end
 
   def reviewer_avg_rent(type = nil)
     arr = type ? reviews.send(type.to_s) : reviews
+    arr = arr.select {|rev|rev.monthly_fee}
     arr.empty? ? "-" : arr.inject(0.0) {|sum, rev| sum + rev.monthly_fee}/arr.size
   end
 
@@ -118,9 +119,7 @@ class Building < ActiveRecord::Base
   def avg_score
     sum = 0;
     reviews.each{ |r| sum += r.score }
-    self.score = sum.to_f/reviews_count
-    save
-    self.score
+    sum.to_f/reviews_count
   end
 
 end
