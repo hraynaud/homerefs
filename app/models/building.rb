@@ -16,8 +16,12 @@ class Building < ActiveRecord::Base
   before_create :normalize
   has_many :building_images
   has_one :default_building_image, :class_name => "BuildingImage", :conditions => proc{["building_images.id = ?", default_image_id || building_images.first ]}
-
+  default_scope order('created_at')
   paginates_per 3
+
+  def self.highest_rated
+    self.all.max_by(&:avg_score)
+  end
 
 
   def self.locate(params = {})

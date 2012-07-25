@@ -18,6 +18,7 @@ class BuildingsController < ApplicationController
     else
       @buildings =Building.order(sort_column + " " + sort_direction)
     end
+    @buildings = @buildings.page params[:page]
   end
 
   def show
