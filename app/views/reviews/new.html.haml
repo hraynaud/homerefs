@@ -1,25 +1,2 @@
-.container
-  %section.new-review-page.centered-form
+= render :partial => "form_wrapper"
 
-    %h2.small-heading
-      New Review for
-      %span.address
-        = @building.address
-
-    %ul.bldg-info.inline-list
-      %li
-        %span Doorman:
-        = @building.has_doorman
-      %li
-        %span Elevator:
-        = @building.has_elevator
-      %li
-        %span Live in Super:
-        = @building.has_super
-      %li
-        %span Co-Op:
-        = @building.is_coop
-
-    = render :partial => 'slider', :locals => {:hilows => @hilows}
-
-    = render :partial => 'form'
