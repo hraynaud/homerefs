@@ -6,6 +6,7 @@ ActiveAdmin.register Building do
     column "Reviews" do |r|
       r.reviews_count
     end
+    column :avg_rent
     column :neighborhood
     column :doorman do |r|
       r.doorman ? "Yes" : "No"
@@ -33,6 +34,7 @@ ActiveAdmin.register Building do
       row "Reviews" do
         building.reviews_count
       end
+      row :avg_rent
       row :neighborhood
       row :city
       row :construction_type
@@ -68,17 +70,17 @@ ActiveAdmin.register Building do
   form do |f|
     f.inputs "Main" do
       f.input :address, :input_html => { :size => 10 }
-      # f.input :default_image_id, :as => :select, :collection => building.building_images.map(&:id)
       f.input :elevator
       f.input :super
       f.input :coop
+      f.input :avg_rent, :input_html =>{:step => 25, :min =>250}
       f.input :city
       f.input :zipcode
       f.input :neighborhood
       f.input :construction_type, :as => :radio, :collection => Building::CONSTRUCTION.invert
+      f.input :default_image_id, :as => :select, :collection => building.building_images.map(&:id)
       f.buttons :commit
     end
   end
 
-  # form :partial => "form"
 end

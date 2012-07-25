@@ -33,7 +33,7 @@ class Building < ActiveRecord::Base
   end
 
   def self.find_by_avg_rent(op, amt )
-      Building.where("avg_rent ? ?", op, amt)
+      Building.where("avg_rent #{op} ?", amt)
   end
 
   def reviewer_avg_rent(type = nil)
