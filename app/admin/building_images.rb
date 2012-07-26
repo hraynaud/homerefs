@@ -1,7 +1,10 @@
 ActiveAdmin.register BuildingImage do
+  #NOTE active admin will use the name method the model to populate the filter dropdown. If name doesn't exist the collection must be specified
+  #Explicitly using collection_for_select semantics
+  filter :building, :collection => proc {Building.all.inject({}){|bldgs, b| bldgs[b.address]=b.id; bldgs }}
   index do
 
-    column "Address" do |b|
+    column :building do |b|
       b.building.address
     end
 
@@ -28,7 +31,6 @@ ActiveAdmin.register BuildingImage do
   form do |f|
     f.inputs "Main" do
       f.input :building, :as => :select, :collection => Building.all.map{|b|[b.address, b.id]}
-      f.input :user, :as => :select, :collection => User.all.map{|u|[u.name, u.id]}
       f.input :image, :as => :file, :label => "Image"
       f.buttons :commit
     end

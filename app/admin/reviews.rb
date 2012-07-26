@@ -1,16 +1,50 @@
 ActiveAdmin.register Review do
+  filter :building
+  filter :assessment, :as => :select, :collection => Review::FLAGS.invert
+  filter :score
+
   index do
     column :id
     column :user_id
-    column :building_address
+    column :building, :sortable => :name, :collection => proc {Building.all.map(&:name)}
+    column :score, :sortable => false
+
+    column :assessment do |r|
+      r.recommendation
+    end
     column :created_at
     column :updated_at
     column :comment
     default_actions
   end
 
-  show :title => proc{"Review for: #{review.building.address}"}do
-    attributes_table  :cleanliness, :pests, :sunlight, :noise_level, :ceilings, :closet_space,  :temp_control, :appliances, :countertops, :floors, :bathrooms, :walls, :utilities, :neighbors, :laundry, :prox_mass_transit, :neighborhood, :storage,  :super
+  show :title => proc{"Review for: #{review.building.address}"} do
+    panel  'SUMMARY' do
+      render "summary"
+    end
+
+    attributes_table do
+      row :cleanliness
+      row :pests
+      row :sunlight
+      row :noise_level
+      row :ceilings
+      row :closet_space
+      row :temp_control
+      row :appliances
+      row :countertops
+      row :floors
+      row :bathrooms
+      row :walls
+      row :utilities
+      row :neighbors
+      row :laundry
+      row :prox_mass_transit
+      row :neighborhood
+      row :storage
+      row :super
+    end
+
     panel "Review Images" do
       table_for(review.building_images) do |t|
         t.column("Image") {|img| image_tag img.image.url(:small)}

@@ -1,4 +1,12 @@
 ActiveAdmin.register Building do
+  filter :neighborbood, :collection => Neighborhood.order("name asc")
+  filter :address
+  filter :doorman, :as => :select
+  filter :elevator, :as => :select
+  filter :super, :as => :select
+  filter :coop, :as => :select
+  filter :construction_type, :as => :select, :collection => Building::CONSTRUCTION.invert
+  filter :avg_rent, :as => :numeric
 
   index do
 
