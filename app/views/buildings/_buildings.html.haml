@@ -11,6 +11,8 @@
             = image_tag 'default-bldg.png'
           - else
             = image_tag BuildingImage.find(building.default_image_id).image.url(:index)
+          %br
+          = "Rent: #{building.rent_range}"
         %li.score.span2><
           %b Score:
           %strong><

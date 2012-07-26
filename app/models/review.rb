@@ -15,7 +15,7 @@ class Review < ActiveRecord::Base
   scope :one_bedroom, where(:apt_size => APT_SIZE.invert["1 Bedroom"])
   scope :two_bedroom, where(:apt_size => APT_SIZE.invert["2 Bedroom"])
   scope :two_plus_bedroom, where(:apt_size => APT_SIZE.invert[">2"])
-
+  scope :rent_included, where("monthly_fee is not null")
 
   def building_address
     self.building.address

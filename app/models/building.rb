@@ -23,6 +23,16 @@ class Building < ActiveRecord::Base
     self.all.max_by(&:avg_score)
   end
 
+  #name method is picked up by active admin association DSL somehow
+  def name
+    address
+  end
+
+  def rent_range
+    return "NA" if reviews.rent_included == []
+    min, max =  reviews.rent_included.map(&:monthly_fee).minmax
+    min == max ? "$#{min.to_i}" : "$#{min.to_i} - $#{max.to_i}"
+  end
 
   def self.locate(params = {})
 
@@ -41,8 +51,7 @@ class Building < ActiveRecord::Base
   end
 
   def reviewer_avg_rent(type = nil)
-    arr = type ? reviews.send(type.to_s) : reviews
-    arr = arr.select {|rev|rev.monthly_fee}
+    arr = type ? reviews.rent_included.send(type.to_s) : reviews
     arr.empty? ? "-" : arr.inject(0.0) {|sum, rev| sum + rev.monthly_fee}/arr.size
   end
 
