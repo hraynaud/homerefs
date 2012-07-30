@@ -6,5 +6,5 @@
       %li
         =link_to r.building_address, building_path(r.building)
         =link_to "My score #{r.score}", review_path(r)
-        =link_to "Edit this Review", edit_review_path(r)
+        =link_to "Edit this Review", edit_review_path(r), :class => "edit-review"
         =r.created_at.strftime("%m/%d/%y")
