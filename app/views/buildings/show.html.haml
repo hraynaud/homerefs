@@ -58,24 +58,12 @@
             %li
               %span Average Occupancy:
               = @building.average_years_lived
-
             %li
               %span Rent Range:
               = @building.rent_range
-
-            -# %li
-              -# %span Average Studio Rent:
-              -# = @building.reviewer_avg_rent :studio
-            -# %li
-              -# %span Average One Bedroom Rent
-              -# = @building.reviewer_avg_rent :one_bedroom
-            -# %li
-              -# %span Average Two Bedroom Rent:
-              -# = @building.reviewer_avg_rent :two_bedroom
-            -# %li
-              -# %span Average Two-Plus Bedroom Rent:
-              -# = @building.reviewer_avg_rent :two_plus_bedroom
-
+            %li
+              %span Average Rent:
+              = @building.avg_rent
 
       .row
         .span12
