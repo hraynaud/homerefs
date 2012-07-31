@@ -23,18 +23,7 @@ class Building < ActiveRecord::Base
     self.all.max_by(&:avg_score)
   end
 
-  #name method is picked up by active admin association DSL somehow
-  def name
-    address
-  end
-
-  def rent_range
-    return "NA" if reviews.rent_included == []
-    min, max =  reviews.rent_included.map(&:monthly_fee).minmax
-    min == max ? "$#{min.to_i}" : "$#{min.to_i} - $#{max.to_i}"
-  end
-
-  def self.locate(params = {})
+   def self.locate(params = {})
 
     building= where(:zipcode => params[:zipcode].strip) if params[:zipcode].present?
     building= where(:address => params[:address].strip) if params[:address].present?
@@ -62,6 +51,18 @@ class Building < ActiveRecord::Base
   def self.search(search)
     where('address like ?', "%#{search}%")
   end
+
+ #name method is picked up by active admin association DSL somehow
+  def name
+    address
+  end
+
+  def rent_range
+    admin_rent_range || reviewer_rent_range
+  end
+
+
+
 
   def normalize
     self.address = self.address.downcase.strip
@@ -134,6 +135,22 @@ class Building < ActiveRecord::Base
     sum = 0;
     reviews.each{ |r| sum += r.score }
     sum.to_f/reviews.count
+  end
+
+  private
+
+  def reviewer_rent_range
+    return "NA" if reviews.rent_included == []
+    min, max =  reviews.rent_included.map(&:monthly_fee).minmax
+    min == max ? "$#{min.to_i}" : "$#{min.to_i} - $#{max.to_i}"
+  end
+
+  def admin_rent_range
+    if rent_min && rent_max
+      "$#{rent_min} - $#{rent_max}"
+    else
+      nil
+    end
   end
 
 end
