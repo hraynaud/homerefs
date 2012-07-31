@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120725121103) do
+ActiveRecord::Schema.define(:version => 20120731001114) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(:version => 20120725121103) do
     t.float    "score",                                           :default => 0.0
     t.integer  "reviews_count",                                   :default => 0,   :null => false
     t.decimal  "avg_rent",          :precision => 8, :scale => 2
+    t.integer  "rent_min"
+    t.integer  "rent_max"
   end
 
   create_table "feedbacks", :force => true do |t|
