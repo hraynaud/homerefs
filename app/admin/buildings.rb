@@ -1,6 +1,9 @@
 ActiveAdmin.register Building do
   filter :neighborbood, :collection => Neighborhood.order("name asc")
   filter :address
+  filter :rent_min
+  filter :rent_max
+  filter :avg_rent
   filter :doorman, :as => :select
   filter :elevator, :as => :select
   filter :super, :as => :select
@@ -11,25 +14,28 @@ ActiveAdmin.register Building do
   index do
 
     column :address
-    column "Reviews" do |r|
-      r.reviews_count
+    column "Reviews" do |b|
+      b.reviews_count
     end
     column :avg_rent
+    column :rent_range do |b|
+      b.rent_range
+    end
     column :neighborhood
-    column :doorman do |r|
-      r.doorman ? "Yes" : "No"
+    column :doorman do |b|
+      b.doorman ? "Yes" : "No"
     end
 
-    column :elevator do |r|
-      r.elevator ? "Yes" : "No"
+    column :elevator do |b|
+      b.elevator ? "Yes" : "No"
     end
 
-    column :super do |r|
-      r.super ? "Yes" : "No"
+    column :super do |b|
+      b.super ? "Yes" : "No"
     end
 
-    column :coop do |r|
-      r.coop ? "Yes" : "No"
+    column :coop do |b|
+      b.coop ? "Yes" : "No"
     end
     column :construction
     column :zipcode
@@ -44,6 +50,7 @@ ActiveAdmin.register Building do
       end
       row :avg_rent
       row :neighborhood
+      row :rent_range
       row :city
       row :construction_type
       row :doorman do
@@ -76,12 +83,14 @@ ActiveAdmin.register Building do
 
 
   form do |f|
-    f.inputs "Main" do
+    f.inputs "#{building.name.titleize}" do
       f.input :address, :input_html => { :size => 10 }
       f.input :elevator
       f.input :super
       f.input :coop
       f.input :avg_rent, :input_html =>{:step => 25, :min =>250}
+      f.input :rent_min, :input_html =>{:step => 25, :min =>250}
+      f.input :rent_max, :input_html =>{:step => 25, :min =>250}
       f.input :city
       f.input :zipcode
       f.input :neighborhood
