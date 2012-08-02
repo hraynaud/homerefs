@@ -494,6 +494,11 @@ footer[role=contentinfo] {
 .sort-list {
   padding: .3em 0;
   font-family: 'helvetica neue', helvetica, arial, sans-serif;
+  .elevator,
+  .doorman,
+  .avg-rent {
+    width: 86px;
+  }
   .sort-item {
     position: relative;
     display: block;
@@ -548,11 +553,27 @@ footer[role=contentinfo] {
       float: none;
       display: inline-block;
       vertical-align: bottom;
+      position: relative;
+      top: -30px;
     }
+    .img {
+      top: 0;
+    }
+    .rent-range {
+      margin: .5em 0 0;
+      font-size: 21px;
+      font-size: 2.1rem;
+    }
+  }
+  .doorman,
+  .elevator,
+  .avg-rent {
+    width: 86px;
   }
   .review-cnt,
   .doorman,
-  .elevator {
+  .elevator,
+  .avg-rent {
     font-size: 36px;
     font-size: 3.6rem;
     line-height: 1;
