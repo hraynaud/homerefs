@@ -766,6 +766,15 @@ footer[role=contentinfo] {
 color: #8f291f;
 }
 
+.pagination {
+  text-align: center;
+  a {
+    float: none;
+    color: #000;
+    border: 1px solid #55A1D9;
+  }
+}
+
 /* MEDIA QUERIES ===========================================*/
 @media all and (max-width: 1023px) {
   .new-review-page .images {
