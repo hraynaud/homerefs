@@ -537,6 +537,7 @@ footer[role=contentinfo] {
 .result {
   padding: 20px 0;
   border-top: 1px solid #fff;
+  cursor: pointer;
   &:first-child {
     border-top: none;
     padding-top: 0;
