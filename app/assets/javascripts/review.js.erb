@@ -39,9 +39,10 @@ $(function() {
   });
 
   $("li.result.row").click(function (el){
-    document.location.href ='buildings/' + $(this).attr("data")
+    document.location.href ='buildings/' + $(this).attr("data-bldg-id")
   });
 
+  $("li.result.row").tooltip();
 
 }
 

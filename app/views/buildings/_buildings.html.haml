@@ -1,5 +1,5 @@
 - @buildings.each do |building|
-  %li.result.row{data:"#{building.id}"}
+  %li.result.row{:data => {"bldg-id" =>"#{building.id}"}, :title=> "Click to visit profile page for:</br> #{building.address}"}
     .main-info.span10
       .business
         %h3= link_to building.address, building_path(building)
