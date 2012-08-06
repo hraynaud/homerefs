@@ -18,4 +18,5 @@
 //= require bootstrap-typeahead
 //= require bootstrap-dropdown
 //= require bootstrap-tooltip
+//= require bootstrap-popover
 //= require_tree .

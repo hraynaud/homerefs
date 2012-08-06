@@ -23,7 +23,7 @@ class Building < ActiveRecord::Base
     self.all.max_by(&:avg_score)
   end
 
-   def self.locate(params = {})
+  def self.locate(params = {})
 
     building= where(:zipcode => params[:zipcode].strip) if params[:zipcode].present?
     building= where(:address => params[:address].strip) if params[:address].present?
@@ -40,7 +40,7 @@ class Building < ActiveRecord::Base
   end
 
   def reviewer_avg_rent(type = nil)
-    arr = type ? reviews.rent_included.send(type.to_s) : reviews
+    arr = type ? reviews.rent_included.send(type.to_s) : reviews.rent_included
     arr.empty? ? "-" : arr.inject(0.0) {|sum, rev| sum + rev.monthly_fee}/arr.size
   end
 
@@ -52,7 +52,7 @@ class Building < ActiveRecord::Base
     where('address like ?', "%#{search}%")
   end
 
- #name method is picked up by active admin association DSL somehow
+  #name method is picked up by active admin association DSL somehow
   def name
     address
   end
@@ -61,6 +61,12 @@ class Building < ActiveRecord::Base
     admin_rent_range || reviewer_rent_range
   end
 
+  def reviewer_avg_rent_summary
+    rents = [:studio, :one_bedroom, :two_bedroom, :two_plus_bedroom].map  do |i|
+      "#{i}: #{reviewer_avg_rent(i).to_i.to_s}"
+    end
+    rents.join("</br>")
+  end
 
 
 

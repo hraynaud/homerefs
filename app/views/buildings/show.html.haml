@@ -61,7 +61,7 @@
             %li
               %span Rent Range:
               = @building.rent_range
-            %li
+            %li{:rel=>"popover",  :data => {:content => "#{@building.reviewer_avg_rent_summary}", :title => "Rents Reported"}}
               %span Average Rent:
               = @building.avg_rent
 
