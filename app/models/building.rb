@@ -16,7 +16,7 @@ class Building < ActiveRecord::Base
   before_create :normalize
   has_many :building_images
   has_one :default_building_image, :class_name => "BuildingImage", :conditions => proc{["building_images.id = ?", default_image_id || building_images.first ]}
-  default_scope order('created_at')
+  # default_scope order('created_at')
   paginates_per 5
 
   def self.highest_rated
@@ -39,11 +39,6 @@ class Building < ActiveRecord::Base
     Building.where("avg_rent #{op} ?", amt)
   end
 
-  def reviewer_avg_rent(type = nil)
-    arr = type ? reviews.rent_included.send(type.to_s) : reviews.rent_included
-    arr.empty? ? "-" : arr.inject(0.0) {|sum, rev| sum + rev.monthly_fee}/arr.size
-  end
-
   def self.super_search(params)
     self.locate(params).search(params[:search])
   end
@@ -51,6 +46,12 @@ class Building < ActiveRecord::Base
   def self.search(search)
     where('address like ?', "%#{search}%")
   end
+
+  def reviewer_avg_rent(type = nil)
+    arr = type ? reviews.rent_included.send(type.to_s) : reviews.rent_included
+    arr.empty? ? "-" : arr.inject(0.0) {|sum, rev| sum + rev.monthly_fee}/arr.size
+  end
+
 
   #name method is picked up by active admin association DSL somehow
   def name
