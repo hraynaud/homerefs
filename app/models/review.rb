@@ -7,6 +7,7 @@ class Review < ActiveRecord::Base
   belongs_to :user
   validates_numericality_of :years_lived, :greater_than => 0
   validates :comment, :length => { :maximum => 140 }
+  validates :apt_size, :presence => {:message => "Can't be blank if you provide a rent amount"}, :if =>  "monthly_fee.present?"
   has_many :building_images
 
   attr_accessor :image1, :image2, :image3

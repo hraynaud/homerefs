@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_filter :authenticate_user, :except => [:show, :index]
-  before_filter :set_metadata, :only => [:new, :edit]
+  before_filter :set_metadata, :only => [:new, :edit, :create]
 
   def home
 
@@ -11,8 +11,9 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @review = Review.new
+    # @review = Review.new
     @building = Building.find(params[:bldg])
+    @review = @building.reviews.build
   end
 
   def edit
@@ -22,7 +23,6 @@ class ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.build(params[:review])
-
     if @review.save
       1.upto(3).each do |i|
         if params["review"]["image#{i}"]
@@ -31,6 +31,7 @@ class ReviewsController < ApplicationController
       end
       redirect_to @review, notice: 'Review was successfully created.'
     else
+      @building = @review.building
       render action: "new"
     end
   end
