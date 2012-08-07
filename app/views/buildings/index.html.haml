@@ -30,13 +30,15 @@
         %li.span2
           %span.sort-item
             %span.arrow
-            = sortable "reviews_count","# of Reviews"
+            = sortable "reviews_count","No. Reviews"
         %li.span2.doorman
           %span.sort-item Doorman
         %li.span2.elevator
           %span.sort-item Elevator
         %li.span2.avg-rent
-          %span.sort-item Avg Rent
+          %span.sort-item
+            %span.arrow
+            = sortable "avg_rent","Rent"
         %li.span2
           %span.sort-item Flags
 
