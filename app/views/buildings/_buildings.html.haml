@@ -1,11 +1,11 @@
 - @buildings.each do |building|
-  %li.result.row{:data => {"bldg-id" =>"#{building.id}"}, :title=> "Click to visit profile page for:</br> #{building.address}"}
+  %li.result.row
     .main-info.span10
       .business
         %h3= link_to building.address, building_path(building)
         = link_to 'Create a review', new_review_path(:bldg =>building), class: "create-review btn btn-mini" unless session[:disable_actions]
 
-      %ul.bldg-stats.row><
+      %ul.bldg-stats.row{:data => {"bldg-id" =>"#{building.id}"}, :title=> "Click to visit profile page for: #{building.address}"}><
         %li.img.span2><
           - if building.default_image_id.blank?
             = image_tag 'default-bldg.png'

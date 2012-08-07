@@ -63,7 +63,7 @@ class Building < ActiveRecord::Base
 
   def reviewer_avg_rent_summary
     rents = [:studio, :one_bedroom, :two_bedroom, :two_plus_bedroom].map  do |i|
-      "#{i}: #{reviewer_avg_rent(i).to_i.to_s}"
+      "#{i}: $#{reviewer_avg_rent(i).to_i.to_s}"
     end
     rents.join("</br>")
   end
