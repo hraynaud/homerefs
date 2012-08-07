@@ -38,11 +38,11 @@ $(function() {
     });
   });
 
-  $("li.result.row").click(function (el){
+  $("ul.bldg-stats.row").click(function (el){
     document.location.href ='buildings/' + $(this).attr("data-bldg-id")
   });
 
-  $("ul..bldg-stats.row").tooltip();
+  $("ul.bldg-stats.row").tooltip();
 
   $("li[rel=popover]").popover({placement: 'left'});
 }
