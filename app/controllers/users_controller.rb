@@ -43,6 +43,6 @@ class UsersController < ApplicationController
     end
     session[:user_id] = @user.id
     session["omniauth"] = nil
-    redirect_to session["user_return_to"]
+    redirect_to session["user_return_to"] || root_path
   end
 end
