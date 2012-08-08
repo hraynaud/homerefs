@@ -24,6 +24,7 @@ Homerefs::Application.routes.draw do
   match '/about', to: 'public#about_us'
   match '/how-it-works', to: 'public#how_it_works'
   match '/faq', to: 'public#faq'
+  match '/privacy', to: 'public#privacy'
   match '/contact', to: 'public#contact'
   match '/auth/:provider/callback', to: 'sessions#create'
   match "/auth/failure", to: "sessions#failure"

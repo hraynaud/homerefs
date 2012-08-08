@@ -15,4 +15,8 @@ class PublicController < ApplicationController
   def faq
   end
 
+  def privacy
+  end
+
+
 end
