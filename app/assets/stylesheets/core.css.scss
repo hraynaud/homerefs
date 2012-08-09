@@ -495,44 +495,49 @@ footer[role=contentinfo] {
   padding: .3em 0;
   font-family: 'helvetica neue', helvetica, arial, sans-serif;
   .elevator,
-  .doorman,
-  .avg-rent {
+  .doorman {
     width: 86px;
-}
-.sort-item {
-  position: relative;
-  display: block;
-  text-align: center;
-  font-size: 12px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-right: 1px solid #55a1d9;
-  padding-right: 20px;
-  a {
-    color: #000;
-    font-weight: bold;
   }
-}
-.arrow {
-  position: relative;
-  top: 10px;
-  margin-right: .5em;
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #000;
-}
-ul {
-  margin-bottom: 0;
-}
-li:first-child .sort-item {
-  border-left: 1px solid #55a1d9;;
-  padding-right: 0;
-}
-li:last-child .sort-item {
-  padding-left: 0;
-}
+  .avg-rent {
+    width: 98px;
+  }
+  .review-cnt {
+    width: 130px;
+  }
+  .sort-item {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-right: 1px solid #55a1d9;
+    padding-right: 20px;
+    a {
+      color: #000;
+      font-weight: bold;
+    }
+  }
+  .arrow {
+    position: relative;
+    top: 10px;
+    margin-right: .5em;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #000;
+  }
+  ul {
+    margin-bottom: 0;
+  }
+  li:first-child .sort-item {
+    border-left: 1px solid #55a1d9;;
+    padding-right: 0;
+  }
+  li:last-child .sort-item {
+    padding-left: 0;
+  }
 }
 .result {
   padding: 20px 0;
@@ -541,64 +546,69 @@ li:last-child .sort-item {
   &:first-child {
     border-top: none;
     padding-top: 0;
-}
-h3 {
-  display: inline-block;
-  margin-right: 1em;
-}
-.business {
-  margin-bottom: .5em;
-}
-.bldg-stats {
-  .span2 {
-    float: none;
+  }
+  h3 {
     display: inline-block;
-    vertical-align: bottom;
-    position: relative;
-    top: -30px;
+    margin-right: 1em;
   }
-  .img {
-    top: 0;
+  .business {
+    margin-bottom: .5em;
   }
-  .rent-range {
-    margin: .5em 0 0;
-    font-size: 21px;
-    font-size: 2.1rem;
+  .bldg-stats {
+    .span2 {
+      float: none;
+      display: inline-block;
+      vertical-align: bottom;
+      position: relative;
+      top: -30px;
+    }
+    .img {
+      top: 0;
+    }
+    .rent-range {
+      margin: .5em 0 0;
+      font-size: 21px;
+      font-size: 2.1rem;
+    }
+    .avg-rent {
+      width: 98px;
+    }
   }
-}
-.doorman,
-.elevator,
-.avg-rent {
-  width: 86px;
-}
-.review-cnt,
-.doorman,
-.elevator,
-.avg-rent {
-  font-size: 36px;
-  font-size: 3.6rem;
-  line-height: 1;
-  text-align: center;
-}
-.review-cnt .small {
-  font-size: 21px;
-  font-size: 2.1rem;
-}
-.flag {
-  margin: 0 auto 10px;
-  display: inline-block;
-}
-li:last-child .flag {
-  margin-bottom: 0;
-}
-.flags .title {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1.2;
-  width: 100px;
-  font-size: 12px;
-  font-size: 1.2rem;
-}
+  .doorman,
+  .elevator,
+  .avg-rent {
+    width: 86px;
+  }
+  .review-cnt,
+  .doorman,
+  .elevator,
+  .avg-rent {
+    font-size: 36px;
+    font-size: 3.6rem;
+    line-height: 1;
+  }
+  .review-cnt {
+    width: 130px;
+    .small {
+      font-size: 18px;
+      font-size: 1.8rem;
+    }
+  }
+  .flag {
+    margin: 0 auto 10px;
+    display: inline-block;
+  }
+  li:last-child .flag {
+    margin-bottom: 0;
+  }
+  .flags .title {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.2;
+    width: 100px;
+    font-size: 12px;
+    font-size: 1.2rem;
+  }
 }
 
 /* BUILDING PAGE ===========================================*/
@@ -738,20 +748,26 @@ label[for=review_assessment_2] {
   min-height: 500px;
   h2 {
     margin-bottom: 1em;
+  }
+  h3 {
+    font-size: 21px;
+    font-size: 2.1rem;
+    margin-bottom: .5em;
+  }
+  p, li {
+    font-family: 'helvetica neue', helvetica, arial, sans-serif;
+    font-size: 18px;
+    font-size: 1.8rem;
+    line-height: 1.5;
+  }
+  p {
+    margin-bottom: 1em;
+  }
+  li {
+    list-style-type: disc;
+  }
 }
-h3 {
-  font-size: 21px;
-  font-size: 2.1rem;
-  margin-bottom: .5em;
-}
-p {
-  font-family: 'helvetica neue', helvetica, arial, sans-serif;
-  font-size: 18px;
-  font-size: 1.8rem;
-  line-height: 1.5;
-  margin-bottom: 1em;
-}
-}
+
 .how-it-works {
   img {
     display: block;
@@ -761,10 +777,20 @@ p {
 .faq-page {
   p {
     margin-bottom: 2em;
-}
+  }
 }
 .edit-review {
   color: #8f291f;
+}
+#terms {
+  h1 {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  h2 {
+    margin-top: 2em;
+    margin-bottom: .5em;
+  }
 }
 
 .pagination {
