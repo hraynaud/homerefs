@@ -19,11 +19,12 @@ ActiveAdmin.register Review do
   end
 
   show :title => proc{"Review for: #{review.building.address}"} do
-    panel  'SUMMARY' do
-      render "summary"
+    panel  'Review Summary' do
+          render "summary"
     end
 
     attributes_table do
+      row :building
       row :cleanliness
       row :pests
       row :sunlight
@@ -54,7 +55,8 @@ ActiveAdmin.register Review do
 
 
   form do |f|
-    f.inputs "Review Criteria" do
+    f.inputs "Review Answers" do
+      f.input :building
       f.input :cleanliness, :input_html =>{:min=>1, :max => 5}
       f.input :pests, :input_html =>{:min=>1, :max => 5}
       f.input :sunlight, :input_html =>{:min=>1, :max => 5}

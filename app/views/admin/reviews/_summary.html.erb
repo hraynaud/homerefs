@@ -1,6 +1,7 @@
 <table>
   <thead>
     <tr>
+      <th>Reviewer</th>
       <th>Score </th>
       <th>Recommendation</th>
       <th>Rent</th>
@@ -8,6 +9,7 @@
   </thead>
   <tbody>
     <tr>
+      <td><%=@review.user.name%></td>
       <td><%=@review.score%></td>
       <td><%=@review.recommendation%></td>
       <td><%=@review.monthly_fee%></td>
