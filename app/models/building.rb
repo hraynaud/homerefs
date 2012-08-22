@@ -17,7 +17,8 @@ class Building < ActiveRecord::Base
   has_many :building_images
   has_one :default_building_image, :class_name => "BuildingImage", :conditions => proc{["building_images.id = ?", default_image_id || building_images.first ]}
   # default_scope order('created_at')
-  paginates_per 5
+  default_scope :order => "score DESC, reviews_count DESC"
+  paginates_per 10
 
   def self.highest_rated
     self.all.max_by(&:avg_score)
@@ -44,7 +45,7 @@ class Building < ActiveRecord::Base
   end
 
   def self.search(search)
-    where('address like ?', "%#{search}%")
+    where(' upper(address) like ?', "%#{search.upcase}%")
   end
 
   def reviewer_avg_rent(type = nil)
