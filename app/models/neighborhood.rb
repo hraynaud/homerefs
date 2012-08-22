@@ -6,4 +6,10 @@ class Neighborhood < ActiveRecord::Base
       reviews.count
   end
 
+  def highest_rated_address
+    if ! buildings.empty?
+      buildings.highest_rated.address
+    end
+  end
+
 end

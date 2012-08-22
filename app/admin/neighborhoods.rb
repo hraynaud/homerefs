@@ -17,7 +17,7 @@ ActiveAdmin.register Neighborhood do
         neighborhood.buildings.count
       end
       row "Highest Rated Building" do
-        neighborhood.buildings.highest_rated.address
+        neighborhood.highest_rated_address
       end
       row :location
     end
