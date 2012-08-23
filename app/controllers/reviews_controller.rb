@@ -59,7 +59,7 @@ class ReviewsController < ApplicationController
 
   private
   def set_metadata
-    @rows = ReviewMetadata.order("position asc").all
+    @rows = ReviewMetadata.order("position asc")
     @hilows ={}
     @rows.each do |row|
       @hilows[row.field_name] = {"hi" => row.hi_text, "low" => row.low_text}
