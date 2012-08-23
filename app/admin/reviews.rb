@@ -42,6 +42,7 @@ ActiveAdmin.register Review do
       row :laundry
       row :prox_mass_transit
       row :neighborhood
+      row :good_value
       row :storage
       row :super
     end
@@ -74,6 +75,7 @@ ActiveAdmin.register Review do
       f.input :neighbors, :input_html =>{:min=>1, :max => 5}
       f.input :laundry, :input_html =>{:min=>1, :max => 5}
       f.input :neighborhood, :input_html =>{:min=>1, :max => 5}
+      f.input :good_value, :input_html =>{:min=>1, :max => 5}
       f.input :storage, :input_html =>{:min=>1, :max => 5}
       f.input :super
     end
