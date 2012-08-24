@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120823031736) do
+ActiveRecord::Schema.define(:version => 20120824150515) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(:version => 20120823031736) do
     t.datetime "image3_updated_at"
     t.integer  "apt_size"
     t.integer  "assessment"
-    t.integer  "good_value"
+    t.integer  "value"
     t.integer  "years_lived",                                       :default => 1
     t.integer  "cached_score"
     t.decimal  "monthly_fee",         :precision => 8, :scale => 2

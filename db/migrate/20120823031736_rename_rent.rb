@@ -4,6 +4,6 @@ class RenameRent < ActiveRecord::Migration
   end
 
   def down
-    rename_column :reviews, :affordability, :good_value
+    rename_column :reviews, :good_value, :rent
   end
 end
