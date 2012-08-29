@@ -45,6 +45,7 @@ ActiveAdmin.register Review do
       row :value
       row :storage
       row :super
+      f.buttons :commit
     end
 
     panel "Review Images" do
