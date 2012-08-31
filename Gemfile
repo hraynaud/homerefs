@@ -30,7 +30,7 @@ gem 'pry-remote'
 gem 'simple_form'
 gem 'thin'
 gem 'kaminari'
-gem 'rack-www'
+gem 'rack-rewrite'
 
 
 group :test, :development  do
