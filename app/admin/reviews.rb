@@ -1,12 +1,20 @@
 ActiveAdmin.register Review do
+
   filter :building
   filter :assessment, :as => :select, :collection => Review::FLAGS.invert
   filter :score
 
+  controller do
+    def scoped_collection
+      end_of_association_chain.includes(:building )
+    end
+  end
+
+
   index do
     column :id
     column :user_id
-    column :building, :sortable => :name, :collection => proc {Building.all.map(&:name)}
+    column :building, :sortable => 'buildings.name', :collection => proc {Building.all.map(&:name)}
     column :score, :sortable => false
 
     column :assessment do |r|
@@ -20,7 +28,7 @@ ActiveAdmin.register Review do
 
   show :title => proc{"Review for: #{review.building.address}"} do
     panel  'Review Summary' do
-          render "summary"
+      render "summary"
     end
 
     attributes_table do
