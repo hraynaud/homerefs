@@ -11,6 +11,13 @@ ActiveAdmin.register Building do
   filter :construction_type, :as => :select, :collection => Building::CONSTRUCTION.invert
   filter :avg_rent, :as => :numeric
 
+
+ controller do
+    def scoped_collection
+      end_of_association_chain.includes(:neighborhood )
+    end
+  end
+
   index do
 
     column :address
@@ -21,7 +28,7 @@ ActiveAdmin.register Building do
     column :rent_range do |b|
       b.rent_range
     end
-    column :neighborhood
+    column :neighborhood, :sortable =>'neighborhoods.name', :collection => proc {Neighborhood.pluck.(:name)}
     column :doorman do |b|
       b.doorman ? "Yes" : "No"
     end
