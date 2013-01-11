@@ -22,3 +22,7 @@
     = render :partial => 'slider', :locals => {:hilows => @hilows}
 
     = render :partial => 'form'
+
+:javascript
+  var allFields= [];
+  allFields = #{ReviewMetadata.all_fields}
