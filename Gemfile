@@ -18,7 +18,6 @@ gem 'bootstrap-sass'#Bootstrap
 gem "haml"
 gem "haml-rails"
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
 gem 'kumade' # Easy deployment to heroku
 gem "meta_search",    ">= 1.1.0.pre" #Activeadmin dependency
 gem "omniauth"
