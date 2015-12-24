@@ -1,4 +1,4 @@
-<%= simple_form_for @review , :html => {:id => "review_form"} do |f| %>
+<%= simple_form_for @review , :html => {:id => "review_form", :data => {:allFields => ReviewMetadata.all_fields} } do |f| %>
   <% @review.values.each do |k,v| %>
     <%= f.input k.to_sym, :as => :hidden, :input_html => {:id => "_#{k}", :value => v} %>
   <% end %>
