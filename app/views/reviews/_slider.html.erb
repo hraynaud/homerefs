@@ -1,0 +1,54 @@
+<div class="slider_panel">
+  <% @rows.each_with_index do |row, index| %>
+    <% field = row.field_name %>
+    <div class="slider-group">
+      <p class="slider-label left">
+        <%= hilows[field]["low"] %>
+      </p>
+      <div class="slider-main">
+        <p class="title">
+          <%= field.titleize %>
+        </p>
+        <% if index == 0 %>
+          <div class="slider-scale clearfix">
+            <span class="first">
+              1
+              <b>
+                |
+              </b>
+            </span>
+            <span class="second">
+              2
+              <b>
+                |
+              </b>
+            </span>
+            <span class="third">
+              3
+              <b>
+                |
+              </b>
+            </span>
+            <span class="fourth">
+              4
+              <b>
+                |
+              </b>
+            </span>
+            <span class="last">
+              5
+              <b>
+                |
+              </b>
+            </span>
+          </div>
+        <% end %>
+        <div class="slider-bar" id="<%= field %>"></div>
+      </div>
+      <p class="slider-label right">
+        <%= hilows[field]["hi"] %>
+      </p>
+    </div>
+  <% end %>
+</div>
+

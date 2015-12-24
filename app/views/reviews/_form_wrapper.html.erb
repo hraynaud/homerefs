@@ -1,0 +1,31 @@
+<div class="container" data-all-fields= '<%=ReviewMetadata.all_fields%>'>
+  <section class="new-review-page centered-form">
+    <h2 class="small-heading">
+      <%= "#{controller.action_name.capitalize} Review for" %>
+      <span class="address">
+        <%= @building.address %>
+      </span>
+    </h2>
+    <ul class="bldg-info inline-list">
+      <li>
+        <span>Doorman:</span>
+        <%= @building.has_doorman %>
+      </li>
+      <li>
+        <span>Elevator:</span>
+        <%= @building.has_elevator %>
+      </li>
+      <li>
+        <span>Live in Super:</span>
+        <%= @building.has_super %>
+      </li>
+      <li>
+        <span>Co-Op:</span>
+        <%= @building.is_coop %>
+      </li>
+    </ul>
+    <%= render :partial => 'slider', :locals => {:hilows => @hilows} %>
+    <%= render :partial => 'form' %>
+  </section>
+</div>
+
