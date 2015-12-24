@@ -1,0 +1,48 @@
+<%= simple_form_for @review , :html => {:id => "review_form"} do |f| %>
+  <% @review.values.each do |k,v| %>
+    <%= f.input k.to_sym, :as => :hidden, :input_html => {:id => "_#{k}", :value => v} %>
+  <% end %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= "#{pluralize(@review.errors.count, "error")} prohibited this review from being saved:" %>
+      </h2>
+      <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.input :building_id, :as => :hidden, :input_html => {:value => @building.id} %>
+  <div class="field">
+    <div class="row">
+      <div class="span3 offset2">
+        <%= f.input :apt_size, :collection => Review::APT_SIZE.map{|k,v| [v,k]} %>
+      </div>
+      <div class="span3">
+        <%= f.input :years_lived %>
+      </div>
+      <div class="span3">
+        <%= f.input :monthly_fee, :label => "Rent / Maintenance", :input_html => {:step => 25, :min => 250 } %>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.input :comment %>
+  </div>
+  <div class="field images">
+    <%= f.input :image1, :as => :file, :label => "Image 1" %>
+    <%= f.input :image2, :as => :file, :label => "Image 2" %>
+    <%= f.input :image3, :as => :file, :label => "Image 3" %>
+  </div>
+  <div class="field">
+    <%= f.input :assessment, :collection => Review::FLAGS.map{|k,v| [v,k]}, :as => :radio_buttons, :label => "Flags" %>
+  </div>
+  <div class="actions">
+    <%= f.submit :submit, class: "btn btn-primary btn-large" %>
+  </div>
+<% end %>
+
