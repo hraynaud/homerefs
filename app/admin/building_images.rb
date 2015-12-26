@@ -15,7 +15,7 @@ ActiveAdmin.register BuildingImage do
     default_actions
   end
 
-  show  :title => proc {"Uploaded image for: #{building_image.building_name}"}  do |building_image|
+  show  do |building_image|
     attributes_table do
       row :buildiing do
         building_image.building.address
