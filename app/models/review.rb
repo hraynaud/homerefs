@@ -26,9 +26,6 @@ class Review < ActiveRecord::Base
     FLAGS[assessment]
   end
 
-  def recommendation
-    FLAGS[assessment]
-  end
 
   def size
     APT_SIZE[apt_size]
