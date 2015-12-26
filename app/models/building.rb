@@ -4,6 +4,7 @@ class Building < ActiveRecord::Base
   define_field_avgs
 
   CONSTRUCTION = {1=>"Pre-War",2 => "Post-War", 3=>"New Construction"}
+  DEFAULT_SORT = "score desc, reviews_count desc"
   belongs_to :neighborhood
   has_many :reviews
   has_many :reviewers,:through => :reviews, :source => :user
@@ -16,8 +17,6 @@ class Building < ActiveRecord::Base
   before_create :normalize
   has_many :building_images
   has_one :default_building_image, :class_name => "BuildingImage", :conditions => proc{["building_images.id = ?", default_image_id || building_images.first ]}
-  # default_scope order('created_at')
-  default_scope :order => "score DESC, reviews_count DESC"
   paginates_per 10
 
   def self.highest_rated
