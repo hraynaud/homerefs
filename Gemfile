@@ -8,26 +8,26 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'activeadmin'
+gem 'activeadmin', '0.5.1'
 gem 'aws-s3'
-gem 'aws-sdk'
+gem 'aws-sdk', '<2.0'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'bootstrap-sass'#Bootstrap
+gem 'bootstrap-sass',  '2.2.2.0' #Bootstrap
 gem "haml"
 gem "haml-rails"
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem 'jquery-ui-rails', "3.0.1"
 gem "meta_search",    ">= 1.1.0.pre" #Activeadmin dependency
 gem "omniauth"
 gem 'omniauth-facebook'
 gem 'omniauth-identity'
-gem 'paperclip', '2.7'
+gem 'paperclip', '3.5.3'
 gem 'pg' #Postgres database
 gem 'simple_form'
 gem 'thin'
 gem 'kaminari'
 gem 'rack-rewrite'
-
+gem 'devise', '2.2.0'
 
 
 group :test, :development  do
