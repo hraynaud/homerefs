@@ -24,9 +24,12 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.build(params[:review])
     if @review.save
+      #TODO clean this up. 
       1.upto(3).each do |i|
         if params["review"]["image#{i}"]
-          @review.building_images.create(building_id: @review.building_id, image: params["review"]["image#{i}"])
+
+           @review.building_images.create(building_id: @review.building_id, image: params["review"]["image#{i}"])
+
         end
       end
       redirect_to @review, notice: 'Review was successfully created.'
@@ -37,6 +40,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
+
     @review = Review.find(params[:id])
 
     respond_to do |format|
