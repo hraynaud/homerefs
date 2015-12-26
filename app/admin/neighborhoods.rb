@@ -9,6 +9,7 @@ ActiveAdmin.register Neighborhood do
     end
     column :location
 
+    default_actions
   end
 
   show :title => :name do
