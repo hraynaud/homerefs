@@ -86,6 +86,7 @@ ActiveAdmin.register Review do
       f.input :value, :input_html =>{:min=>1, :max => 5}
       f.input :storage, :input_html =>{:min=>1, :max => 5}
       f.input :super
+      f.input :comment, as: :text
     end
 
   end
