@@ -30,6 +30,7 @@ gem 'kaminari'
 gem 'rack-rewrite'
 gem 'devise', '2.2.0'
 gem "bourbon", "~>3.2.3"
+gem "chosen-rails"
 
 group :test, :development  do
   gem "factory_girl"
