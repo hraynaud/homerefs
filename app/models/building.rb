@@ -19,6 +19,9 @@ class Building < ActiveRecord::Base
   has_one :default_building_image, :class_name => "BuildingImage", :conditions => proc{["building_images.id = ?", default_image_id || building_images.first ]}
   paginates_per 10
 
+   accepts_nested_attributes_for :building_images
+
+
   def self.highest_rated
     self.all.max_by(&:avg_score)
   end
