@@ -26,7 +26,7 @@ ActiveAdmin.register Review do
     default_actions
   end
 
-  show  do |review|
+  show  :title => ->(x){x.building.address} do |review|
     panel  'Review Summary' do
       render "summary"
     end
