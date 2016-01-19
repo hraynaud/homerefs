@@ -26,7 +26,7 @@ ActiveAdmin.register Review do
     default_actions
   end
 
-  show :title => proc{"Review for: #{review.building.address}"} do
+  show  :title => ->(x){x.building.address} do |review|
     panel  'Review Summary' do
       render "summary"
     end
@@ -53,7 +53,6 @@ ActiveAdmin.register Review do
       row :value
       row :storage
       row :super
-      f.buttons :commit
     end
 
     panel "Review Images" do
@@ -87,6 +86,7 @@ ActiveAdmin.register Review do
       f.input :value, :input_html =>{:min=>1, :max => 5}
       f.input :storage, :input_html =>{:min=>1, :max => 5}
       f.input :super
+      f.input :comment, as: :text
     end
 
   end

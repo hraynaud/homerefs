@@ -4,32 +4,30 @@
       <h3>Thanks for submitting your review! The average scores are below</h3>
       <p>
         Your rating for
-        <em> <%=#{link_to @review.building.address, @review.building}%></em>
+        <em></em>
+        <%= link_to @review.building.address, @review.building %>
         is:
-        <strong>#{@review.score.to_i}%</strong>
-        <%= link_to 'Edit', edit_review_path(@review), class: 'btn btn-inverse' %>
+        <strong><%=@review.score.to_i%>%</strong>
       </p>
       <% if @review.building_images %>
-        <ul class="inline-list">
-          <% @review.building_images.each do |img| %>
-            <% unless img.image.url.split("/")[-1] == "missing.png" %>
-              <li class="img">
-                <%= image_tag img.image.url(:small) %>
-              </li>
-            <% end %>
+        <ul class="inline-list"></ul>
+        <% @review.building_images.each do |img| %>
+          <% unless img.image.url.split("/")[-1] == "missing.png" %>
+            <li class="img">
+              <%= image_tag img.image.url(:small) %>
+            </li>
           <% end %>
-        </ul>
+        <% end %>
       <% end %>
     </div>
   </div>
   <div class="alt-section">
-    <div class="section-decor">
-      <div class="container">
-        <div class="row">
-          <div class="bldg-reviews span10 offset1">
-            <% ReviewMetadata.all_fields.each do |f| %>
-              <% pct = @review.send(f.to_sym) * 20 %>
-            <% end %>
+    <div class="section-decor"></div>
+    <div class="container">
+      <div class="row">
+        <div class="bldg-reviews span10 offset1">
+          <% ReviewMetadata.all_fields.each do |f| %>
+            <% pct = @review.send(f.to_sym) * 20 %>
             <div class="row">
               <div class="progress-title span3">
                 <strong>
@@ -38,17 +36,16 @@
               </div>
               <div class="span5">
                 <div id="progressbar">
-                  <div class="inner" style="width:<%= pct %>%">
-                    <div class="progress-num span2">
-                      <strong>
-                        <%= (pct/20).to_i %>
-                      </strong>
-                    </div>
-                  </div>
+                  <div class="inner" style="width:<%= pct %>%"></div>
                 </div>
               </div>
+              <div class="progress-num span2">
+                <strong>
+                  <%= (pct/20).to_i %>
+                </strong>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
       <div class="bldg-comments">
@@ -56,14 +53,11 @@
           <h3>
             Comment
           </h3>
-          <p>"#{@review.comment}"</p>
+          <p><%=@review.comment%></p>
         <% end %>
       </div>
     </div>
     <div class="section-decor"></div>
   </div>
 </section>
-
-
-
       

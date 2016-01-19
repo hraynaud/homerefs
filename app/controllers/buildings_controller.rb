@@ -1,6 +1,4 @@
 class BuildingsController < ApplicationController
-  # GET /buildings
-  # GET /buildings.json
 
   before_filter :authenticate_user, :only => [:new, :edit, :update, :create]
   helper_method :sort_column, :sort_direction
@@ -15,8 +13,10 @@ class BuildingsController < ApplicationController
       end
     elsif (params[:neighborhood].present? || params[:address].present? || params[:zipcode].present?)
       @buildings =   Building.locate(params).order(sort_column + " " + sort_direction)
-    else
+    elsif (params[:sort].present?) 
       @buildings =Building.order(sort_column + " " + sort_direction)
+    else 
+      @buildings =Building.order(Building::DEFAULT_SORT)
     end
     @buildings = @buildings.page params[:page]
   end

@@ -12,9 +12,15 @@ ActiveAdmin.register Building do
   filter :avg_rent, :as => :numeric
 
 
- controller do
+  controller do
     def scoped_collection
       end_of_association_chain.includes(:neighborhood )
+    end
+
+    def edit
+      edit! do
+        5.times{ @building.building_images.build}
+      end
     end
   end
 
@@ -103,8 +109,14 @@ ActiveAdmin.register Building do
       f.input :neighborhood
       f.input :construction_type, :as => :radio, :collection => Building::CONSTRUCTION.invert
       f.input :default_image_id, :as => :select, :collection => building.building_images.map(&:id)
-      f.buttons :commit
     end
+
+    f.inputs do
+      f.semantic_fields_for  :building_images do |ff|
+        ff.input :image, :as =>  :file
+      end
+    end
+    f.buttons :commit
   end
 
 end

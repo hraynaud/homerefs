@@ -24,11 +24,7 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.build(params[:review])
     if @review.save
-      1.upto(3).each do |i|
-        if params["review"]["image#{i}"]
-          @review.building_images.create(building_id: @review.building_id, image: params["review"]["image#{i}"])
-        end
-      end
+      save_images
       redirect_to @review, notice: 'Review was successfully created.'
     else
       @building = @review.building
@@ -37,11 +33,13 @@ class ReviewsController < ApplicationController
   end
 
   def update
+
     @review = Review.find(params[:id])
 
     respond_to do |format|
       if @review.update_attributes(params[:review])
         @review.calc_score
+        save_images
         format.html {redirect_to @review, notice: 'Review was successfully updated.'}
         format.json { render :json => @review}
       else
@@ -58,6 +56,17 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+  def save_images
+    #TODO is there a better way to save these images at review create/update
+    #time?
+    1.upto(3).each do |i|
+      if params["review"]["image#{i}"]
+        @review.building_images.create(building_id: @review.building_id, image: params["review"]["image#{i}"])
+      end
+    end
+  end
+
   def set_metadata
     @rows = ReviewMetadata.order("position asc")
     @hilows ={}

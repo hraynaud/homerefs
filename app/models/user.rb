@@ -18,18 +18,20 @@ class User < ActiveRecord::Base
       if user.valid?
         UserToken.create(:provider => auth[:provider], :uid => auth["uid"], :user_id => user.id, :email => auth["info"]["email"])
       end
-        user
+      user
     else
       nil #Should never get here
     end
   end
 
-def age
-  now = Time.now.utc.to_date
-  now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
-end
+  def age
+    now = Time.now.utc.to_date
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+  end
 
-
+  def name
+    self.read_attribute(:name) || "#{self.first_name} #{last_name}"
+  end
 
   def self.create_with_omniauth(auth)
     create do |user|
