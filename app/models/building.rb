@@ -23,7 +23,7 @@ class Building < ActiveRecord::Base
 
 
   def self.highest_rated
-    self.all.max_by(&:avg_score)
+    self.all.max_by(&:score)
   end
 
   def self.locate(params = {})
@@ -39,7 +39,7 @@ class Building < ActiveRecord::Base
   end
 
   def self.find_by_avg_rent(op, amt )
-    Building.where("avg_rent #{op} ?", amt)
+    Building.where("reviewer_avg_rent #{op} ?", amt)
   end
 
   def self.super_search(params)
@@ -50,33 +50,12 @@ class Building < ActiveRecord::Base
     where(' upper(address) like ?', "%#{search.upcase}%")
   end
 
-  def reviewer_avg_rent(type = nil)
-    arr = type ? reviews.rent_included.send(type.to_s) : reviews.rent_included
-    arr.empty? ? "-" : arr.inject(0.0) {|sum, rev| sum + rev.monthly_fee}/arr.size
-  end
-
-
-  #name method is picked up by active admin association DSL somehow
   def name
     address
   end
 
   def rent_range
     admin_rent_range || reviewer_rent_range
-  end
-
-  def reviewer_avg_rent_summary
-    rents = [:studio, :one_bedroom, :two_bedroom, :two_plus_bedroom].map  do |i|
-      "#{i}: $#{reviewer_avg_rent(i).to_i.to_s}"
-    end
-    rents.join("</br>")
-  end
-
-
-
-  def normalize
-    self.address = self.address.downcase.strip
-    self.zipcode = self.zipcode.strip
   end
 
   def reviewer_average_age
@@ -87,7 +66,6 @@ class Building < ActiveRecord::Base
       0
     end
   end
-
 
   def average_years_lived
     if reviews.count > 0
@@ -140,14 +118,25 @@ class Building < ActiveRecord::Base
   end
 
 
-  def avg_score
-    return 0 if reviews.count ==0
-    sum = 0;
-    reviews.each{ |r| sum += r.score }
-    sum.to_f/reviews.count
+  def reset_reviewer_avg_rent
+    self.update_column(:reviewer_avg_rent,  array_avg(reviews.rent_included.map(&:monthly_fee)))
   end
 
+
   private
+
+  def normalize
+    self.address = self.address.downcase.strip
+    self.zipcode = self.zipcode.strip
+  end
+
+  def array_avg amts
+    (amts.inject(0.0) {|sum, fee| sum + fee}/amts.size).round
+  end
+
+  def rents type=nil
+    type.nil? ? reviews.rent_included : reviews.rent_included.send(type.to_s) 
+  end
 
   def reviewer_rent_range
     return "NA" if reviews.rent_included == []
