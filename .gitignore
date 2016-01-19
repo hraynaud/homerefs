@@ -16,3 +16,7 @@
 /public/assets/*
 config/environments/development.rb.back
 .local_env
+*.DS_Store
+.env
+.ruby-version
+tags
