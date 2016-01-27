@@ -19,3 +19,4 @@ config/environments/development.rb.back
 *DS_Store
 .ruby-version
 .env
+tags
