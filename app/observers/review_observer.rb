@@ -49,7 +49,7 @@ class ReviewObserver < ActiveRecord::Observer
 
   def calc_for_new_review amt, type
     if amt==0.0 or num_reviews ==1
-      bldg.send("#{type}=", amount)
+      bldg.send("#{type}=", amt)
     else
       return if  amt.nil?
       total = bldg.send("#{type}") * (num_reviews-1)
