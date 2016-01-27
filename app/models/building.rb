@@ -132,6 +132,8 @@ class Building < ActiveRecord::Base
 
   def array_avg amts
     (amts.inject(0.0) {|sum, fee| sum + fee}/amts.size).round
+  rescue
+    0
   end
 
   def rents type=nil
