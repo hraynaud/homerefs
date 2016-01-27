@@ -20,3 +20,4 @@ config/environments/development.rb.back
 .ruby-version
 .env
 tags
+public/system/*
