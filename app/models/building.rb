@@ -10,6 +10,7 @@ class Building < ActiveRecord::Base
   has_many :reviewers,:through => :reviews, :source => :user
   validates :neighborhood, :presence => true
   validates :address, :presence => true
+  validates :avg_rent, :numericality => true, allow_blank: true
   validates_format_of :zipcode,
     :with => %r{\d{5}(-\d{4})?},
     :message => "should be 12345 or 12345-1234", :if => "zipcode.present?"
@@ -36,6 +37,12 @@ class Building < ActiveRecord::Base
 
   def self.find_by_reviewer_average_rent(op, amt, type=nil)
     Building.all.select { |b| b.reviewer_avg_rent(type).send(op.to_sym, amt) }
+  end
+
+  def avg_rent= value
+    return if value.blank?
+    write_attribute("avg_rent", value)
+    update_column(:reviewer_avg_rent, value)
   end
 
   def self.find_by_avg_rent(op, amt )

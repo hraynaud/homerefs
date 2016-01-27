@@ -31,6 +31,7 @@ ActiveAdmin.register Building do
       b.reviews_count
     end
     column :avg_rent
+    column :reviewer_avg_rent
     column :rent_range do |b|
       b.rent_range
     end
@@ -61,7 +62,8 @@ ActiveAdmin.register Building do
       row "Reviews" do
         building.reviews_count
       end
-      row :avg_rent
+      row :avg_rent 
+      row :reviewer_avg_rent 
       row :neighborhood
       row :rent_range
       row :city
@@ -101,9 +103,11 @@ ActiveAdmin.register Building do
       f.input :elevator
       f.input :super
       f.input :coop
-      f.input :avg_rent, :input_html =>{:step => 25, :min =>250}
+      f.input :avg_rent, :input_html =>{:step => 25, :min =>250}, :label => "Avg Rent (Manually overrides avg from reviews)"
+      f.input :reviewer_avg_rent, :as => :string, :input_html =>{:disabled => true}, :label => "Auto calculated from reviews" 
       f.input :rent_min, :input_html =>{:step => 25, :min =>250}
       f.input :rent_max, :input_html =>{:step => 25, :min =>250}
+      f.input :rent_range, :input_html =>{:step => 25, :min =>250}, :input_html =>{:disabled => true}, :label => "Rent Range (Auto calculated)"
       f.input :city
       f.input :zipcode
       f.input :neighborhood
