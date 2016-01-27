@@ -54,7 +54,7 @@
                 = "#{k} "
             %li
               %span Average Age:
-              = @building.reviewer_average_age
+              = @building.reviewer_average_age.to_i
             %li
               %span Average Occupancy:
               = @building.average_years_lived

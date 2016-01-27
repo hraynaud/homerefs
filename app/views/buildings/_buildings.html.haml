@@ -26,7 +26,7 @@
         %li.elevator.span2><
           = building.has_elevator
         %li.avg-rent.span2><
-          = "$#{building.reviewer_avg_rent}"
+          = "$#{building.reviewer_avg_rent.to_i}"
 
     %ul.flags.vert-flags.span2
       %li
